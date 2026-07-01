@@ -290,20 +290,36 @@ export default function PulsRegionuMockup() {
           overflow: hidden;
           white-space: nowrap;
           border-bottom: 1px solid #000;
+          position: relative;
         }
-        .pr-ticker-inner { display: flex; align-items: center; padding: 9px 0; }
+        .pr-ticker-inner {
+          display: flex;
+          align-items: center;
+          padding: 9px 0 9px 24px;
+          gap: 16px;
+          position: relative;
+        }
         .pr-ticker-label {
           flex-shrink: 0;
-          background: var(--rust);
+          display: inline-flex;
+          align-items: center;
+          background: #B5502A;
           color: #fff;
           font-size: 11px;
           font-weight: 700;
           letter-spacing: 0.08em;
           padding: 5px 14px;
-          margin-right: 16px;
           border-radius: 3px;
+          z-index: 2;
         }
-        .pr-ticker-track { display: flex; gap: 40px; will-change: transform; }
+        .pr-ticker-track {
+          display: flex;
+          gap: 40px;
+          will-change: transform;
+          min-width: 100%;
+          position: relative;
+          z-index: 1;
+        }
         .pr-ticker-item { display: flex; align-items: center; gap: 8px; color: #E8E2D0; font-size: 13px; flex-shrink: 0; }
         .pr-ticker-item b { color: #fff; font-weight: 600; }
         .pr-ticker-trend { font-size: 11px; padding: 2px 7px; border-radius: 999px; background: rgba(255,255,255,0.12); color: #A9D9B6; }
@@ -509,34 +525,36 @@ export default function PulsRegionuMockup() {
       </nav>
 
       {/* HERO */}
-      <section className="pr-hero">
-        <div>
-          <div className="pr-hero-eyebrow">
-            <Leaf size={14} />
-            Eko-Region · Historia z pierwszej strony
+      {!articleView && (
+        <section className="pr-hero">
+          <div>
+            <div className="pr-hero-eyebrow">
+              <Leaf size={14} />
+              Eko-Region · Historia z pierwszej strony
+            </div>
+            <h1 className="pr-serif">
+              Sołtys z Bartoszyc zebrał 8 ton elektroodpadów w jeden weekend
+            </h1>
+            <p>
+              Remondis odebrał sprzęt, gmina dołożyła transport, a sołectwo kupiło za
+              zebrane środki nowy sprzęt ratowniczy dla miejscowej OSP. To już 16. edycja
+              konkursu Eko Sołectwa — i kolejny dowód, że małe działania dają wielkie
+              efekty.
+            </p>
+            <div className="pr-hero-meta">
+              <span>Jan Kowalski, sołtys · 4 min czytania</span>
+              <span className="pr-hero-share">
+                <Share2 size={13} /> Udostępnione 340 razy
+              </span>
+            </div>
           </div>
-          <h1 className="pr-serif">
-            Sołtys z Bartoszyc zebrał 8 ton elektroodpadów w jeden weekend
-          </h1>
-          <p>
-            Remondis odebrał sprzęt, gmina dołożyła transport, a sołectwo kupiło za
-            zebrane środki nowy sprzęt ratowniczy dla miejscowej OSP. To już 16. edycja
-            konkursu Eko Sołectwa — i kolejny dowód, że małe działania dają wielkie
-            efekty.
-          </p>
-          <div className="pr-hero-meta">
-            <span>Jan Kowalski, sołtys · 4 min czytania</span>
-            <span className="pr-hero-share">
-              <Share2 size={13} /> Udostępnione 340 razy
-            </span>
+          <div className="pr-hero-img">
+            <div className="pr-hero-cap">
+              Fot. archiwum sołectwa Bartoszyce — odbiór elektroodpadów, czerwiec 2026
+            </div>
           </div>
-        </div>
-        <div className="pr-hero-img">
-          <div className="pr-hero-cap">
-            Fot. archiwum sołectwa Bartoszyce — odbiór elektroodpadów, czerwiec 2026
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ARTICLE PAGE */}
       {articleView && (
