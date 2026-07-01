@@ -324,9 +324,10 @@ export default function PulsRegionuMockup() {
         .pr-hero-img {
           aspect-ratio: 4/3.1;
           border-radius: 6px;
-          background:
-            radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 40%),
-            linear-gradient(135deg, #3E7A4F 0%, #1F3B2C 55%, #16281C 100%);
+          background-image: url('https://images.unsplash.com/photo-1722692691183-5f979848964d?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
           position: relative;
           overflow: hidden;
         }
