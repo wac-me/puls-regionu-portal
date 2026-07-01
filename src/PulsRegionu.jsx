@@ -324,7 +324,7 @@ export default function PulsRegionuMockup() {
         .pr-hero-img {
           aspect-ratio: 4/3.1;
           border-radius: 6px;
-          background-image: url('https://images.unsplash.com/photo-1722692691183-5f979848964d?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          background-image: url('https://media.istockphoto.com/id/1357827501/pl/zdjęcie/zróżnicowana-grupa-wolontariuszy-sprzątająca-las-z-odpadów-koncepcja-pracy-społecznej.jpg?s=1024x1024&w=is&k=20&c=zd6rZ8mrjU-Q4FYQHCIFX9SgKsA9EbphuYHtN3X1oC8=');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
@@ -379,6 +379,8 @@ export default function PulsRegionuMockup() {
         .pr-card-img {
           aspect-ratio: 16/10;
           background: linear-gradient(135deg, var(--tint, #eee), rgba(0,0,0,0.06));
+          background-size: cover;
+          background-position: center;
           position: relative;
         }
         .pr-card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
@@ -544,7 +546,22 @@ export default function PulsRegionuMockup() {
         <div className="pr-grid">
           {ARTICLES[active].map((a, i) => (
             <article className="pr-card" key={i}>
-              <div className="pr-card-img" style={{ "--tint": activeFilar.tint }} />
+              <div
+                className="pr-card-img"
+                style={{
+                  "--tint": activeFilar.tint,
+                  backgroundImage:
+                    active === "eko"
+                      ? i === 0
+                        ? "url('https://media.istockphoto.com/id/1357827501/pl/zdjęcie/zróżnicowana-grupa-wolontariuszy-sprzątająca-las-z-odpadów-koncepcja-pracy-społecznej.jpg?s=1024x1024&w=is&k=20&c=zd6rZ8mrjU-Q4FYQHCIFX9SgKsA9EbphuYHtN3X1oC8=')"
+                        : i === 1
+                        ? "url('https://media.istockphoto.com/id/2256716039/pl/zdjęcie/koncepcja-ekologii-drewnianych-wiatraków-zielona-energia-natura.jpg?s=1024x1024&w=is&k=20&c=dgXYrromBzV3rJmNoGHLCiydcWzoEWO2M91WKU2vGkk=')"
+                        : i === 2
+                        ? "url('https://media.istockphoto.com/id/821308942/pl/zdjęcie/ciągnik-rolniczy-sprzęt-do-zbierania-zbóż-w-terenie-sektor-rolny.jpg?s=1024x1024&w=is&k=20&c=Fgo0lpxiUBnv-1kIdiC13diaLuiwOPkWIsY44JFfvwI=')"
+                        : undefined
+                      : undefined,
+                }}
+              />
               <div className="pr-card-body">
                 <h3>{a.title}</h3>
                 <p>{a.excerpt}</p>
