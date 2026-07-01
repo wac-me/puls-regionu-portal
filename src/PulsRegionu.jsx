@@ -156,6 +156,33 @@ const ARTICLES = {
   ],
 };
 
+const HERO_POST_CONTENT = `Remondis odebrał sprzęt, gmina dołożyła transport, a sołectwo kupiło za to nowy sprzęt ratowniczy dla miejscowej OSP. To już 16. edycja konkursu Eko Sołectwa — i kolejny dowód, że małe działania dają wielkie efekty. W artykule przyglądamy się organizacji zbiórki, pracy wolontariuszy i planom na przyszłość.`;
+
+const HERO_POST = {
+  ...ARTICLES.eko[0],
+  content: HERO_POST_CONTENT,
+  image:
+    "https://media.istockphoto.com/id/1357827501/pl/zdjęcie/zróżnicowana-grupa-wolontariuszy-sprzątająca-las-z-odpadów-koncepcja-pracy-społecznej.jpg?s=1024x1024&w=is&k=20&c=zd6rZ8mrjU-Q4FYQHCIFX9SgKsA9EbphuYHtN3X1oC8=",
+};
+
+const EKO_POST_IMAGES = [
+  HERO_POST.image,
+  "https://media.istockphoto.com/id/2256716039/pl/zdjęcie/koncepcja-ekologii-drewnianych-wiatraków-zielona-energia-natura.jpg?s=1024x1024&w=is&k=20&c=dgXYrromBzV3rJmNoGHLCiydcWzoEWO2M91WKU2vGkk=",
+  "https://media.istockphoto.com/id/821308942/pl/zdjęcie/ciągnik-rolniczy-sprzęt-do-zbierania-zbóż-w-terenie-sektor-rolny.jpg?s=1024x1024&w=is&k=20&c=Fgo0lpxiUBnv-1kIdiC13diaLuiwOPkWIsY44JFfvwI=",
+];
+
+const EKO_POST_CONTENTS = [
+  HERO_POST_CONTENT,
+  `W rankingu Eko Sołectw 2026 skupiamy się na sprawdzonych praktykach: jak gminy promują selektywną zbiórkę, w jaki sposób inwestują w edukację ekologiczną oraz które sołectwa wyróżniają się realnymi efektami. Przedstawiamy historie zwycięzców i ich plany na kolejny rok.`,
+  `Strażacy z Giżycka odbyli akcję sadzenia 200 drzew wzdłuż drogi wojewódzkiej. Opisujemy organizację wydarzenia, wsparcie leśnictwa oraz kolejne etapy programu, który ma poprawić bezpieczeństwo i jakość powietrza w regionie.`,
+];
+
+const EKO_POSTS = ARTICLES.eko.map((item, index) => ({
+  ...item,
+  content: EKO_POST_CONTENTS[index] || "",
+  image: EKO_POST_IMAGES[index] || "",
+}));
+
 function useTickerLoop() {
   const trackRef = useRef(null);
   useEffect(() => {
@@ -178,8 +205,17 @@ function useTickerLoop() {
 export default function PulsRegionuMockup() {
   const [active, setActive] = useState("eko");
   const [navOpen, setNavOpen] = useState(false);
+  const [articleView, setArticleView] = useState(null);
   const tickerRef = useTickerLoop();
   const activeFilar = FILARY.find((f) => f.id === active);
+
+  const handleOpenArticle = (index) => {
+    if (active === "eko") {
+      setArticleView(EKO_POSTS[index] || HERO_POST);
+    }
+  };
+
+  const handleBackToSection = () => setArticleView(null);
 
   return (
     <div className="pr-root">
@@ -426,7 +462,7 @@ export default function PulsRegionuMockup() {
 
       {/* MASTHEAD */}
       <header className="pr-masthead">
-        <div className="pr-logo-wrap">
+        <div className="pr-logo-wrap" onClick={() => { setActive('eko'); setArticleView(null); }} style={{ cursor: 'pointer' }}>
           <div className="pr-logo pr-serif">
             Puls <em>Regionu</em>
           </div>
@@ -502,6 +538,45 @@ export default function PulsRegionuMockup() {
         </div>
       </section>
 
+      {/* ARTICLE PAGE */}
+      {articleView && (
+        <section className="pr-section">
+          <div className="pr-section-head">
+            <div className="pr-section-title">
+              <div
+                className="pr-ficon"
+                style={{ background: activeFilar.color, width: 34, height: 34, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}
+              >
+                <activeFilar.icon size={17} color="#fff" />
+              </div>
+              <div>
+                <h2 className="pr-serif">{articleView.title}</h2>
+                <p className="pr-section-desc">{articleView.excerpt}</p>
+              </div>
+            </div>
+            <div className="pr-more" style={{ color: activeFilar.color }} onClick={handleBackToSection}>
+              Wróć do sekcji <ArrowUpRight size={14} />
+            </div>
+          </div>
+
+          <div className="pr-card-img" style={{ backgroundImage: `url('${articleView.image}')`, marginBottom: 24 }} />
+
+          <div style={{ maxWidth: 860, lineHeight: 1.8, color: "var(--ink-soft)" }}>
+            <p>{articleView.content}</p>
+            <p>
+              Mieszkańcy, sołtysi i OSP testują teraz nowe sposoby segregacji i transportu
+              elektroodpadów. To historia, która pokazuje, jak dużo może zmienić kilka dni
+              wspólnej pracy.
+            </p>
+            <p>
+              W kolejnych tygodniach będziemy śledzić, jak gmina Bartoszyce wykorzysta
+              środki na sprzęt oraz jakie działania edukacyjne uruchomi dla lokalnych
+              szkół i organizacji społecznych.
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* FILARY STRIP */}
       <div className="pr-filary-strip">
         {FILARY.map((f) => {
@@ -545,7 +620,7 @@ export default function PulsRegionuMockup() {
 
         <div className="pr-grid">
           {ARTICLES[active].map((a, i) => (
-            <article className="pr-card" key={i}>
+            <article className="pr-card" key={i} onClick={() => handleOpenArticle(i)}>
               <div
                 className="pr-card-img"
                 style={{
@@ -553,11 +628,11 @@ export default function PulsRegionuMockup() {
                   backgroundImage:
                     active === "eko"
                       ? i === 0
-                        ? "url('https://media.istockphoto.com/id/1357827501/pl/zdjęcie/zróżnicowana-grupa-wolontariuszy-sprzątająca-las-z-odpadów-koncepcja-pracy-społecznej.jpg?s=1024x1024&w=is&k=20&c=zd6rZ8mrjU-Q4FYQHCIFX9SgKsA9EbphuYHtN3X1oC8=')"
+                        ? `url('${HERO_POST.image}')`
                         : i === 1
-                        ? "url('https://media.istockphoto.com/id/2256716039/pl/zdjęcie/koncepcja-ekologii-drewnianych-wiatraków-zielona-energia-natura.jpg?s=1024x1024&w=is&k=20&c=dgXYrromBzV3rJmNoGHLCiydcWzoEWO2M91WKU2vGkk=')"
+                        ? `url('${EKO_POST_IMAGES[1]}')`
                         : i === 2
-                        ? "url('https://media.istockphoto.com/id/821308942/pl/zdjęcie/ciągnik-rolniczy-sprzęt-do-zbierania-zbóż-w-terenie-sektor-rolny.jpg?s=1024x1024&w=is&k=20&c=Fgo0lpxiUBnv-1kIdiC13diaLuiwOPkWIsY44JFfvwI=')"
+                        ? `url('${EKO_POST_IMAGES[2]}')`
                         : undefined
                       : undefined,
                 }}
