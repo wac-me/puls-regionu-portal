@@ -13,6 +13,10 @@ import {
   Search,
   Mail,
   Sparkles,
+  Accessibility,
+  ZoomIn,
+  Contrast,
+  Eye,
 } from "lucide-react";
 
 /* ------------------------------------------------------------------
@@ -208,6 +212,10 @@ export default function PulsRegionuMockup() {
   const [active, setActive] = useState("eko");
   const [navOpen, setNavOpen] = useState(false);
   const [articleView, setArticleView] = useState(null);
+  const [largeText, setLargeText] = useState(false);
+  const [highContrast, setHighContrast] = useState(false);
+  const [grayscaleMode, setGrayscaleMode] = useState(false);
+  const [panelOpen, setPanelOpen] = useState(true);
   const tickerRef = useTickerLoop();
   const activeFilar = FILARY.find((f) => f.id === active);
 
@@ -219,8 +227,13 @@ export default function PulsRegionuMockup() {
 
   const handleBackToSection = () => setArticleView(null);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setPanelOpen(false), 4000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="pr-root">
+    <div className={`pr-root${largeText ? " pr-large-text" : ""}${highContrast ? " pr-high-contrast" : ""}${grayscaleMode ? " pr-grayscale" : ""}`}>
       <style>{`
         .pr-root {
           --bg: #F6F8FB;
@@ -300,18 +313,143 @@ export default function PulsRegionuMockup() {
         }
         .pr-utility span.pr-dim { opacity: 0.8; }
 
+        .pr-accessibility-container {
+          position: fixed;
+          top: 132px;
+          right: 0;
+          z-index: 999;
+          width: 260px;
+          height: auto;
+          pointer-events: auto;
+          transition: transform 0.35s ease;
+        }
+        .pr-accessibility-container.is-open {
+          transform: translateX(0);
+        }
+        .pr-accessibility-container.is-closed {
+          transform: translateX(260px);
+        }
+        .pr-accessibility-panel {
+          width: 260px;
+          position: relative;
+          padding: 16px 18px 16px 18px;
+          background: #fff;
+          border: 1px solid rgba(15, 23, 42, 0.12);
+          box-shadow: -4px 18px 45px rgba(15, 23, 42, 0.14);
+          border-radius: 18px 0 0 18px;
+          font-size: 13px;
+          color: #10212b;
+          backdrop-filter: blur(10px);
+          pointer-events: auto;
+        }
+        .pr-accessibility-toggle {
+          position: absolute;
+          top: 14px;
+          left: -52px;
+          width: 46px;
+          height: 46px;
+          border-radius: 18px 0 0 18px;
+          border: 1px solid rgba(15, 23, 42, 0.12);
+          background: #0f476f;
+          color: #fff;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          box-shadow: -2px 12px 24px rgba(15, 23, 42, 0.18);
+          pointer-events: auto;
+          transition: transform 0.35s ease;
+        }
+        .pr-accessibility-toggle:hover {
+          background: #16638a;
+        }
+        .pr-accessibility-panel h3 {
+          margin: 0 0 10px;
+          font-size: 14px;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: #0f476f;
+        }
+        .pr-accessibility-panel p {
+          margin: 0 0 14px;
+          line-height: 1.5;
+          color: #47515d;
+        }
+        .pr-accessibility-panel button {
+          width: 100%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          margin-bottom: 10px;
+          padding: 11px 14px;
+          border-radius: 14px;
+          border: 1px solid rgba(15, 23, 42, 0.12);
+          background: #f7fafc;
+          color: #10212b;
+          font-weight: 700;
+          cursor: pointer;
+          transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+        }
+        .pr-accessibility-panel button:last-child { margin-bottom: 0; }
+        .pr-accessibility-panel button:hover {
+          background: #eef4f8;
+          transform: translateY(-1px);
+        }
+        .pr-accessibility-panel button.is-active {
+          background: linear-gradient(120deg, #23a9e0 0%, #3b7d23 100%);
+          color: #fff;
+          border-color: transparent;
+        }
+        .pr-root.pr-large-text { font-size: 1.08rem; }
+        .pr-root.pr-high-contrast {
+          color: #111;
+          background: #f4f7fb;
+        }
+        .pr-root.pr-high-contrast .pr-topline,
+        .pr-root.pr-high-contrast .pr-utility,
+        .pr-root.pr-high-contrast .pr-masthead {
+          background: #0f476f;
+          color: #fff;
+        }
+        .pr-root.pr-high-contrast .pr-search {
+          background: rgba(255,255,255,0.14);
+          color: #fff;
+          border-color: rgba(255,255,255,0.85);
+        }
+        .pr-root.pr-high-contrast .pr-section,
+        .pr-root.pr-high-contrast .pr-card,
+        .pr-root.pr-high-contrast .pr-footer,
+        .pr-root.pr-high-contrast .pr-sponsor-bar {
+          border-color: #0f476f;
+        }
+        .pr-root.pr-grayscale { filter: grayscale(100%); }
+
         /* ---- masthead ---- */
         .pr-masthead {
           padding: 30px 24px 22px;
           background: #E9443B;
           display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          gap: 20px;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 24px;
           border-bottom: 1px solid rgba(255,255,255,0.18);
           color: #fff;
+          position: relative;
         }
-        .pr-logo-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
+        .pr-logo-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; z-index: 2; }
+        .pr-search-block {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex: 1;
+          min-width: 360px;
+          max-width: 600px;
+          z-index: 1;
+        }
         .pr-logo-badge {
           width: auto;
           height: auto;
@@ -335,15 +473,56 @@ export default function PulsRegionuMockup() {
           line-height: 1.5;
           margin: 0;
         }
+        .pr-search-block {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          min-width: 360px;
+          max-width: 600px;
+        }
         .pr-search {
-          display: flex; align-items: center; gap: 10px;
-          border: 1.5px solid var(--border);
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          width: 100%;
+          padding: 18px 24px;
+          border: 1.5px solid rgba(255,255,255,0.45);
+          border-radius: 28px;
+          font-size: 15px;
+          color: #fff;
+          background: rgba(255,255,255,0.14);
+          backdrop-filter: blur(8px);
+          box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+        }
+        .pr-search svg {
+          color: #fff;
+        }
+        .pr-search span {
+          opacity: 0.95;
+        }
+        .pr-search-actions {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px;
+          margin-top: 14px;
+        }
+        .pr-search-actions button {
+          background: rgba(255,255,255,0.16);
+          color: #fff;
+          border: 1px solid rgba(255,255,255,0.24);
           border-radius: 999px;
           padding: 10px 18px;
           font-size: 13px;
-          color: var(--text-soft);
-          background: var(--surface-soft);
-          min-width: 260px;
+          font-weight: 700;
+          cursor: default;
+          opacity: 0.88;
+        }
+        .pr-search-actions button:hover {
+          opacity: 1;
         }
 
         /* ---- ticker ---- */
@@ -543,9 +722,11 @@ export default function PulsRegionuMockup() {
           display: flex;
           align-items: flex-start;
           gap: 16px;
-          margin-bottom: 16px;
+          margin: 0 auto 16px;
           position: relative;
           z-index: 1;
+          max-width: 560px;
+          width: min(100%, 560px);
         }
         .pr-newsletter-icon {
           width: 48px;
@@ -562,22 +743,22 @@ export default function PulsRegionuMockup() {
           display: flex;
           flex-direction: column;
           gap: 16px;
-          margin-top: 18px;
+          margin: 18px auto 0;
           position: relative;
           z-index: 1;
           max-width: 560px;
-          width: 100%;
+          width: min(100%, 560px);
         }
         .pr-newsletter-form input {
           width: 100%;
-          padding: 14px 16px;
-          border: 1px solid rgba(15, 23, 42, 0.12);
-          border-radius: 16px;
+          padding: 16px 18px;
+          border: 1px solid rgba(35, 169, 224, 0.28);
+          border-radius: 18px;
           font-size: 15px;
           color: #10212B;
-          background: #fff;
+          background: linear-gradient(180deg, #ffffff 0%, #f5fbff 100%);
           outline: none;
-          box-shadow: inset 0 1px 2px rgba(16, 33, 43, 0.06);
+          box-shadow: inset 0 1px 4px rgba(16, 33, 43, 0.08);
         }
         .pr-newsletter-form button {
           width: 100%;
@@ -698,6 +879,47 @@ export default function PulsRegionuMockup() {
         </div>
       </div>
 
+      <div className={`pr-accessibility-container ${panelOpen ? "is-open" : "is-closed"}`}>
+        <button
+          type="button"
+          className="pr-accessibility-toggle"
+          aria-label={panelOpen ? "Zamknij panel dostępności" : "Otwórz panel dostępności"}
+          onClick={() => setPanelOpen(!panelOpen)}
+        >
+          <Accessibility size={22} />
+        </button>
+        <div className="pr-accessibility-panel" aria-label="Panel dostępności">
+          <h3>Panel dostępności</h3>
+          <button
+            type="button"
+            className={largeText ? "is-active" : ""}
+            aria-pressed={largeText}
+            onClick={() => setLargeText(!largeText)}
+          >
+            <ZoomIn size={16} />
+            Powiększ tekst
+          </button>
+          <button
+            type="button"
+            className={highContrast ? "is-active" : ""}
+            aria-pressed={highContrast}
+            onClick={() => setHighContrast(!highContrast)}
+          >
+            <Contrast size={16} />
+            Wysoki kontrast
+          </button>
+          <button
+            type="button"
+            className={grayscaleMode ? "is-active" : ""}
+            aria-pressed={grayscaleMode}
+            onClick={() => setGrayscaleMode(!grayscaleMode)}
+          >
+            <Eye size={16} />
+            Skala szarości
+          </button>
+        </div>
+      </div>
+
       {/* MASTHEAD */}
       <header className="pr-masthead">
         <div className="pr-logo-wrap" onClick={() => { setActive('eko'); setArticleView(null); }} style={{ cursor: 'pointer' }}>
@@ -711,9 +933,15 @@ export default function PulsRegionuMockup() {
             </div>
           </div>
         </div>
-        <div className="pr-search">
-          <Search size={15} />
-          Szukaj artykułów, sołectw, gmin…
+        <div className="pr-search-block">
+          <div className="pr-search">
+            <Search size={18} />
+            <span>Szukaj artykułów, sołectw, gmin…</span>
+          </div>
+          <div className="pr-search-actions">
+            <button type="button">Archiwum</button>
+            <button type="button">Nowości</button>
+          </div>
         </div>
       </header>
 
