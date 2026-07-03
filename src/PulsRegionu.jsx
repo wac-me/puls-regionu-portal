@@ -515,7 +515,7 @@ export default function PulsRegionuMockup() {
         .pr-top-block,
         .pr-topline,
         .pr-masthead {
-          background: linear-gradient(180deg, #D20000 0%, #F10000 100%);
+          background: linear-gradient(360deg, #EA0000 0%, #EA0000 100%);
         }
         .pr-search svg {
           color: #fff;
@@ -883,10 +883,21 @@ export default function PulsRegionuMockup() {
           .pr-filary-strip { grid-template-columns: repeat(3, 1fr); }
           .pr-grid { grid-template-columns: repeat(2, 1fr); }
           .pr-footer-grid { grid-template-columns: 1fr 1fr; }
+          .pr-search-block {
+            position: static;
+            left: auto;
+            transform: none;
+            min-width: 0;
+            max-width: 100%;
+            width: 100%;
+            margin-top: 18px;
+          }
+          .pr-search { width: 100%; }
         }
         @media (max-width: 600px) {
           .pr-masthead { flex-direction: column; align-items: flex-start; }
           .pr-tagline { border-left: none; padding-left: 0; border-top: 2px solid rgba(255,255,255,0.12); padding-top: 10px; max-width: 100%; }
+          .pr-search-block { margin-top: 12px; }
           .pr-filary-strip { grid-template-columns: repeat(2, 1fr); }
           .pr-grid { grid-template-columns: 1fr; }
           .pr-footer-grid { grid-template-columns: 1fr; gap: 22px; }
