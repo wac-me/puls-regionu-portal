@@ -220,6 +220,14 @@ export default function PulsRegionuMockup() {
   const tickerRef = useTickerLoop();
   const activeFilar = FILARY.find((f) => f.id === active);
 
+  const colorToRgba = (hex, alpha) => {
+    const [r, g, b] = hex.slice(1).match(/.{2}/g).map((value) => parseInt(value, 16));
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  };
+
+  const filarGradient = (hex) =>
+    `linear-gradient(180deg, ${colorToRgba(hex, 0.18)} 0%, ${colorToRgba(hex, 0.08)} 100%)`;
+
   const handleOpenArticle = (index) => {
     if (active === "eko") {
       setArticleView(EKO_POSTS[index] || HERO_POST);
@@ -268,7 +276,7 @@ export default function PulsRegionuMockup() {
           gap: 18px;
           padding: 10px 24px;
           background: #E9443B;
-          border-bottom: 1px solid rgba(255,255,255,0.16);
+          border-bottom: none;
           color: #fff;
           font-size: 12px;
         }
@@ -284,7 +292,6 @@ export default function PulsRegionuMockup() {
           width: 24px;
           height: auto;
           display: block;
-          filter: brightness(0) invert(1);
           opacity: 0.92;
         }
         .pr-top-block strong,
@@ -296,9 +303,9 @@ export default function PulsRegionuMockup() {
         .pr-utility {
           background: var(--brand-blue);
           color: #FFF;
-          font-size: 12px;
+          font-size: 13px;
           letter-spacing: 0.04em;
-          padding: 10px 24px;
+          padding: 12px 24px;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -314,7 +321,11 @@ export default function PulsRegionuMockup() {
           height: auto;
           display: block;
         }
-        .pr-utility span.pr-dim { opacity: 0.8; }
+        .pr-utility span.pr-dim {
+          opacity: 1;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+        }
 
         .pr-accessibility-container {
           position: fixed;
@@ -330,7 +341,7 @@ export default function PulsRegionuMockup() {
           transform: translateX(0);
         }
         .pr-accessibility-container.is-closed {
-          transform: translateX(208px);
+          transform: translateX(260px);
         }
         .pr-accessibility-panel {
           width: 260px;
@@ -431,7 +442,7 @@ export default function PulsRegionuMockup() {
         /* ---- masthead ---- */
         .pr-masthead {
           padding: 34px 24px 24px;
-          background: linear-gradient(180deg, #EA0000 0%, #D20000 100%);
+          background: #F10000;
           display: flex;
           justify-content: flex-start;
           align-items: center;
@@ -439,6 +450,7 @@ export default function PulsRegionuMockup() {
           border-bottom: 1px solid rgba(255,255,255,0.18);
           color: #fff;
           position: relative;
+          z-index: 1;
         }
         .pr-logo-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; z-index: 2; }
         .pr-search-block {
@@ -469,8 +481,9 @@ export default function PulsRegionuMockup() {
         .pr-logo em { font-style: italic; color: rgba(255,255,255,0.88); }
         .pr-tagline-wrapper { display: block; }
         .pr-tagline {
-          font-size: 14px;
-          color: rgba(255,255,255,0.9);
+          font-size: 15px;
+          font-weight: 600;
+          color: rgba(255,255,255,0.97);
           max-width: 320px;
           line-height: 1.5;
           margin: 0;
@@ -498,6 +511,11 @@ export default function PulsRegionuMockup() {
           background: rgba(255,255,255,0.14);
           backdrop-filter: blur(8px);
           box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+        }
+        .pr-top-block,
+        .pr-topline,
+        .pr-masthead {
+          background: linear-gradient(180deg, #D20000 0%, #F10000 100%);
         }
         .pr-search svg {
           color: #fff;
@@ -673,11 +691,14 @@ export default function PulsRegionuMockup() {
           padding: 18px 16px;
           border-right: 1px solid var(--border);
           cursor: pointer;
-          transition: background 0.2s ease, transform 0.2s ease;
+          transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
         }
         .pr-filar-tab:hover { background: var(--surface-soft); transform: translateY(-1px); }
         .pr-filar-tab:last-child { border-right: none; }
-        .pr-filar-tab .pr-ficon { width: 34px; height: 34px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+        .pr-filar-tab .pr-ficon { width: 42px; height: 42px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: inset 0 0 0 rgba(255,255,255,0.1); color: #16586b; }
+        .pr-filar-tab .pr-ficon svg { color: #16586b; }
+        .pr-filar-tab.is-active { border-color: rgba(33, 111, 255, 0.32); }
+        .pr-filar-tab.is-active .pr-ficon { box-shadow: 0 0 0 3px rgba(33, 111, 255, 0.16); }
         .pr-filar-tab .pr-flabel { font-size: 13px; font-weight: 700; }
         .pr-filar-tab .pr-flead { font-size: 12px; color: var(--text-soft); margin-top: 4px; }
 
@@ -1039,7 +1060,7 @@ export default function PulsRegionuMockup() {
             <div className="pr-section-title">
               <div
                 className="pr-ficon"
-                style={{ background: activeFilar.color, width: 34, height: 34, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}
+                style={{ background: filarGradient(activeFilar.color), width: 34, height: 34, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}
               >
                 <activeFilar.icon size={17} color="#fff" />
               </div>
@@ -1078,12 +1099,12 @@ export default function PulsRegionuMockup() {
           return (
             <div
               key={f.id}
-              className="pr-filar-tab"
+              className={`pr-filar-tab ${active === f.id ? "is-active" : ""}`}
               style={{ background: active === f.id ? f.tint : "transparent" }}
               onClick={() => setActive(f.id)}
             >
-              <div className="pr-ficon" style={{ background: f.color }}>
-                <Icon size={16} color="#fff" />
+              <div className="pr-ficon" style={{ background: filarGradient(f.color) }}>
+                <Icon size={16} color="#16586b" />
               </div>
               <div className="pr-flabel">{f.label}</div>
               <div className="pr-flead">{f.lead}</div>
