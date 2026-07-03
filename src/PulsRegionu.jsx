@@ -216,6 +216,7 @@ export default function PulsRegionuMockup() {
   const [highContrast, setHighContrast] = useState(false);
   const [grayscaleMode, setGrayscaleMode] = useState(false);
   const [panelOpen, setPanelOpen] = useState(true);
+  const searchRef = useRef(null);
   const tickerRef = useTickerLoop();
   const activeFilar = FILARY.find((f) => f.id === active);
 
@@ -262,7 +263,7 @@ export default function PulsRegionuMockup() {
         /* ---- utility bar ---- */
         .pr-topline {
           display: flex;
-          justify-content: flex-start;
+          justify-content: space-between;
           align-items: center;
           gap: 18px;
           padding: 10px 24px;
@@ -280,9 +281,11 @@ export default function PulsRegionuMockup() {
           background: transparent;
         }
         .pr-top-block img {
-          width: 26px;
+          width: 24px;
           height: auto;
           display: block;
+          filter: brightness(0) invert(1);
+          opacity: 0.92;
         }
         .pr-top-block strong,
         .pr-top-block span {
@@ -327,7 +330,7 @@ export default function PulsRegionuMockup() {
           transform: translateX(0);
         }
         .pr-accessibility-container.is-closed {
-          transform: translateX(260px);
+          transform: translateX(208px);
         }
         .pr-accessibility-panel {
           width: 260px;
@@ -427,8 +430,8 @@ export default function PulsRegionuMockup() {
 
         /* ---- masthead ---- */
         .pr-masthead {
-          padding: 30px 24px 22px;
-          background: #E9443B;
+          padding: 34px 24px 24px;
+          background: linear-gradient(180deg, #EA0000 0%, #D20000 100%);
           display: flex;
           justify-content: flex-start;
           align-items: center;
@@ -445,9 +448,8 @@ export default function PulsRegionuMockup() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          flex: 1;
           min-width: 360px;
-          max-width: 600px;
+          max-width: 620px;
           z-index: 1;
         }
         .pr-logo-badge {
@@ -460,7 +462,7 @@ export default function PulsRegionuMockup() {
           overflow: visible;
           padding: 0;
         }
-        .pr-logo-badge img { width: 230px; height: auto; display: block; }
+        .pr-logo-badge img { width: 240px; height: auto; display: block; }
         .pr-logo {
           display: none;
         }
@@ -500,8 +502,17 @@ export default function PulsRegionuMockup() {
         .pr-search svg {
           color: #fff;
         }
-        .pr-search span {
-          opacity: 0.95;
+        .pr-search input {
+          flex: 1;
+          border: none;
+          background: transparent;
+          color: #fff;
+          font-size: 15px;
+          outline: none;
+          min-width: 0;
+        }
+        .pr-search input::placeholder {
+          color: rgba(255,255,255,0.75);
         }
         .pr-search-actions {
           display: flex;
@@ -511,18 +522,21 @@ export default function PulsRegionuMockup() {
           margin-top: 14px;
         }
         .pr-search-actions button {
-          background: rgba(255,255,255,0.16);
+          background: rgba(255,255,255,0.22);
           color: #fff;
-          border: 1px solid rgba(255,255,255,0.24);
+          border: 1px solid rgba(255,255,255,0.3);
           border-radius: 999px;
           padding: 10px 18px;
           font-size: 13px;
           font-weight: 700;
-          cursor: default;
-          opacity: 0.88;
+          cursor: pointer;
+          opacity: 0.95;
+          transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
         }
         .pr-search-actions button:hover {
           opacity: 1;
+          transform: translateY(-1px);
+          background: rgba(255,255,255,0.3);
         }
 
         /* ---- ticker ---- */
@@ -588,13 +602,18 @@ export default function PulsRegionuMockup() {
 
         /* ---- hero ---- */
         .pr-hero {
-          padding: 44px 24px;
+          padding: 48px 24px;
           display: grid;
           grid-template-columns: 1.1fr 0.9fr;
           gap: 40px;
           align-items: center;
           border-bottom: 1px solid var(--border);
-          background: var(--surface);
+          position: relative;
+          overflow: hidden;
+          background: radial-gradient(circle at top left, rgba(35, 169, 224, 0.18), transparent 32%),
+            radial-gradient(circle at bottom right, rgba(123, 193, 66, 0.14), transparent 28%),
+            linear-gradient(140deg, #f9fcfe 0%, #eef9f5 42%, #eef5fb 100%);
+          color: var(--text);
         }
         .pr-hero-eyebrow {
           display: inline-flex; align-items: center; gap: 8px;
@@ -691,7 +710,7 @@ export default function PulsRegionuMockup() {
             linear-gradient(145deg, #eef9f5 0%, #d9ecf9 55%, #f4f7ff 100%);
           padding: 42px 24px;
           margin: 0 0 28px;
-          border-radius: 30px;
+          border-radius: 0;
           box-shadow: 0 28px 72px rgba(15, 23, 42, 0.14);
           border: 1px solid rgba(34, 60, 80, 0.08);
           overflow: hidden;
@@ -870,12 +889,12 @@ export default function PulsRegionuMockup() {
       {/* TOP LINE */}
       <div className="pr-topline">
         <div className="pr-top-block">
-          <img src="/logo_uni_europejskiej.png" alt="Logo Unii Europejskiej" />
-          <strong>Unia Europejska</strong>
-        </div>
-        <div className="pr-top-block" style={{ marginLeft: 'auto' }}>
           <img src="/godlo_warmi_i_mazur.png" alt="Godło Warmii i Mazur" />
           <span>Województwo Warmińsko-Mazurskie</span>
+        </div>
+        <div className="pr-top-block" style={{ marginLeft: 'auto' }}>
+          <img src="/logo_uni_europejskiej.png" alt="Logo Unii Europejskiej" />
+          <strong>Unia Europejska</strong>
         </div>
       </div>
 
@@ -934,9 +953,14 @@ export default function PulsRegionuMockup() {
           </div>
         </div>
         <div className="pr-search-block">
-          <div className="pr-search">
+          <div className="pr-search" onClick={() => searchRef.current?.focus()}>
             <Search size={18} />
-            <span>Szukaj artykułów, sołectw, gmin…</span>
+            <input
+              type="text"
+              ref={searchRef}
+              placeholder="Szukaj artykułów, sołectw, gmin…"
+              aria-label="Szukaj artykułów, sołectw, gmin"
+            />
           </div>
           <div className="pr-search-actions">
             <button type="button">Archiwum</button>
