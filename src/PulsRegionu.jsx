@@ -10,7 +10,6 @@ import {
   Menu,
   X,
   ArrowUpRight,
-  Search,
   Mail,
   Sparkles,
   Accessibility,
@@ -189,6 +188,14 @@ const EKO_POSTS = ARTICLES.eko.map((item, index) => ({
   image: EKO_POST_IMAGES[index] || "",
 }));
 
+const MAIN_NAV = [
+  { id: "home", label: "Home" },
+  { id: "o-nas", label: "O nas" },
+  { id: "konkurs", label: "Konkurs" },
+  { id: "archiwum", label: "Archiwum" },
+  { id: "kontakt", label: "Kontakt" },
+];
+
 function useTickerLoop() {
   const trackRef = useRef(null);
   useEffect(() => {
@@ -210,13 +217,13 @@ function useTickerLoop() {
 
 export default function PulsRegionuMockup() {
   const [active, setActive] = useState("eko");
+  const [activeMenu, setActiveMenu] = useState("home");
   const [navOpen, setNavOpen] = useState(false);
   const [articleView, setArticleView] = useState(null);
   const [largeText, setLargeText] = useState(false);
   const [highContrast, setHighContrast] = useState(false);
   const [grayscaleMode, setGrayscaleMode] = useState(false);
   const [panelOpen, setPanelOpen] = useState(true);
-  const searchRef = useRef(null);
   const tickerRef = useTickerLoop();
   const activeFilar = FILARY.find((f) => f.id === active);
 
@@ -327,6 +334,62 @@ export default function PulsRegionuMockup() {
           letter-spacing: 0.06em;
         }
 
+        /* ---- main navbar ---- */
+        .pr-main-nav {
+          background: var(--surface);
+          border-bottom: 1px solid var(--border);
+          padding: 0 24px;
+          display: flex;
+          justify-content: center;
+          align-items: stretch;
+          position: relative;
+          box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+        }
+        .pr-main-nav-toggle {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          margin: 8px 0;
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          background: var(--surface-soft);
+          color: var(--text);
+          cursor: pointer;
+        }
+        .pr-main-nav-list {
+          display: flex;
+          align-items: stretch;
+          gap: 0;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        .pr-main-nav-item {
+          display: flex;
+          align-items: center;
+          padding: 16px 22px;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          color: var(--text-soft);
+          cursor: pointer;
+          border-bottom: 3px solid transparent;
+          transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+          white-space: nowrap;
+          text-decoration: none;
+        }
+        .pr-main-nav-item:hover {
+          color: var(--text);
+          background: var(--surface-soft);
+        }
+        .pr-main-nav-item.is-active {
+          color: var(--brand-blue);
+          border-bottom-color: var(--brand-blue);
+          background: rgba(32, 150, 209, 0.06);
+        }
+
         .pr-accessibility-container {
           position: fixed;
           top: 132px;
@@ -426,10 +489,13 @@ export default function PulsRegionuMockup() {
           background: #0f476f;
           color: #fff;
         }
-        .pr-root.pr-high-contrast .pr-search {
-          background: rgba(255,255,255,0.14);
-          color: #fff;
-          border-color: rgba(255,255,255,0.85);
+        .pr-root.pr-high-contrast .pr-main-nav {
+          background: #fff;
+          border-color: #0f476f;
+        }
+        .pr-root.pr-high-contrast .pr-main-nav-item.is-active {
+          color: #0f476f;
+          border-bottom-color: #0f476f;
         }
         .pr-root.pr-high-contrast .pr-section,
         .pr-root.pr-high-contrast .pr-card,
@@ -453,17 +519,6 @@ export default function PulsRegionuMockup() {
           z-index: 1;
         }
         .pr-logo-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; z-index: 2; }
-        .pr-search-block {
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          min-width: 360px;
-          max-width: 620px;
-          z-index: 1;
-        }
         .pr-logo-badge {
           width: auto;
           height: auto;
@@ -488,75 +543,11 @@ export default function PulsRegionuMockup() {
           line-height: 1.5;
           margin: 0;
         }
-        .pr-search-block {
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          min-width: 360px;
-          max-width: 600px;
-        }
-        .pr-search {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          width: 100%;
-          padding: 18px 24px;
-          border: 1.5px solid rgba(255,255,255,0.45);
-          border-radius: 28px;
-          font-size: 15px;
-          color: #fff;
-          background: rgba(255,255,255,0.14);
-          backdrop-filter: blur(8px);
-          box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-        }
         .pr-top-block,
         .pr-topline,
         .pr-masthead {
           background: linear-gradient(360deg, #EA0000 0%, #EA0000 100%);
         }
-        .pr-search svg {
-          color: #fff;
-        }
-        .pr-search input {
-          flex: 1;
-          border: none;
-          background: transparent;
-          color: #fff;
-          font-size: 15px;
-          outline: none;
-          min-width: 0;
-        }
-        .pr-search input::placeholder {
-          color: rgba(255,255,255,0.75);
-        }
-        .pr-search-actions {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 12px;
-          margin-top: 14px;
-        }
-        .pr-search-actions button {
-          background: rgba(255,255,255,0.22);
-          color: #fff;
-          border: 1px solid rgba(255,255,255,0.3);
-          border-radius: 999px;
-          padding: 10px 18px;
-          font-size: 13px;
-          font-weight: 700;
-          cursor: pointer;
-          opacity: 0.95;
-          transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
-        }
-        .pr-search-actions button:hover {
-          opacity: 1;
-          transform: translateY(-1px);
-          background: rgba(255,255,255,0.3);
-        }
-
         /* ---- ticker ---- */
         .pr-ticker {
           background: linear-gradient(90deg, #264ECD, #2280F7);
@@ -883,28 +874,44 @@ export default function PulsRegionuMockup() {
           .pr-filary-strip { grid-template-columns: repeat(3, 1fr); }
           .pr-grid { grid-template-columns: repeat(2, 1fr); }
           .pr-footer-grid { grid-template-columns: 1fr 1fr; }
-          .pr-search-block {
-            position: static;
-            left: auto;
-            transform: none;
-            min-width: 0;
-            max-width: 100%;
-            width: 100%;
-            margin-top: 18px;
+        }
+        @media (max-width: 720px) {
+          .pr-main-nav {
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            padding: 8px 16px;
           }
-          .pr-search { width: 100%; }
+          .pr-main-nav-toggle { display: inline-flex; }
+          .pr-main-nav-list {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            border-top: 1px solid var(--border);
+            margin-top: 4px;
+            padding-top: 4px;
+          }
+          .pr-main-nav.is-open .pr-main-nav-list { display: flex; }
+          .pr-main-nav-item {
+            width: 100%;
+            border-bottom: none;
+            border-left: 3px solid transparent;
+            padding: 14px 12px;
+          }
+          .pr-main-nav-item.is-active {
+            border-left-color: var(--brand-blue);
+            border-bottom-color: transparent;
+          }
         }
         @media (max-width: 600px) {
           .pr-masthead { flex-direction: column; align-items: flex-start; }
           .pr-tagline { border-left: none; padding-left: 0; border-top: 2px solid rgba(255,255,255,0.12); padding-top: 10px; max-width: 100%; }
-          .pr-search-block { margin-top: 12px; }
           .pr-filary-strip { grid-template-columns: repeat(2, 1fr); }
           .pr-grid { grid-template-columns: 1fr; }
           .pr-footer-grid { grid-template-columns: 1fr; gap: 22px; }
         }
 
         a, button { font-family: inherit; }
-        button:focus-visible, .pr-nav-item:focus-visible, .pr-filar-tab:focus-visible {
+        button:focus-visible, .pr-nav-item:focus-visible, .pr-filar-tab:focus-visible, .pr-main-nav-item:focus-visible {
           outline: 2px solid var(--rust); outline-offset: 2px;
         }
       `}</style>
@@ -917,6 +924,41 @@ export default function PulsRegionuMockup() {
         </div>
         <span className="pr-dim pr-mono">1 lipca 2026 · Wydanie cyfrowe</span>
       </div>
+
+      {/* MAIN NAVBAR */}
+      <nav className={`pr-main-nav${navOpen ? " is-open" : ""}`} aria-label="Menu główne">
+        <button
+          type="button"
+          className="pr-main-nav-toggle"
+          aria-label={navOpen ? "Zamknij menu" : "Otwórz menu"}
+          aria-expanded={navOpen}
+          onClick={() => setNavOpen(!navOpen)}
+        >
+          {navOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+        <ul className="pr-main-nav-list">
+          {MAIN_NAV.map((item) => (
+            <li key={item.id}>
+              <a
+                href="#"
+                className={`pr-main-nav-item${activeMenu === item.id ? " is-active" : ""}`}
+                aria-current={activeMenu === item.id ? "page" : undefined}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActiveMenu(item.id);
+                  setNavOpen(false);
+                  if (item.id === "home") {
+                    setActive("eko");
+                    setArticleView(null);
+                  }
+                }}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       {/* TOP LINE */}
       <div className="pr-topline">
@@ -982,21 +1024,6 @@ export default function PulsRegionuMockup() {
               16 lat w druku. Teraz — ogólnopolski portal regionalny o ekologii, ludziach
               i miejscach, które warto znać.
             </div>
-          </div>
-        </div>
-        <div className="pr-search-block">
-          <div className="pr-search" onClick={() => searchRef.current?.focus()}>
-            <Search size={18} />
-            <input
-              type="text"
-              ref={searchRef}
-              placeholder="Szukaj artykułów, sołectw, gmin…"
-              aria-label="Szukaj artykułów, sołectw, gmin"
-            />
-          </div>
-          <div className="pr-search-actions">
-            <button type="button">Archiwum</button>
-            <button type="button">Nowości</button>
           </div>
         </div>
       </header>
