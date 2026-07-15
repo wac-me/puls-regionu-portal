@@ -1,36 +1,21 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import {
   Leaf,
   Home,
   Mountain,
   Users2,
   Cpu,
-  Share2,
-  MapPin,
-  Menu,
-  X,
   ArrowUpRight,
   Mail,
   Sparkles,
-  Accessibility,
-  ZoomIn,
-  Contrast,
-  Eye,
 } from "lucide-react";
-import LiveTicker from "./components/common/LiveTicker";
-import AccessibilityBar from "./components/layout/AccessibilityBar";
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
 import HeroSection from "./components/home/HeroSection";
 import PillarGrid from "./components/home/PillarGrid";
 import ActivePillarContent from "./components/home/ActivePillarContent";
+import Layout from "./components/layout/Layout";
 
-/* ------------------------------------------------------------------
-   PULS REGIONU — makieta portalu (homepage)
-   Docelowo: motyw WordPress. Tu: statyczny prototyp React do prezentacji.
-------------------------------------------------------------------- */
-
-const FILARY = [
+// --- DANE (FILARY, ARTICLES, etc.) ---
+const FILARY_DATA = [
   {
     id: "eko",
     label: "Eko-Region",
@@ -78,28 +63,17 @@ const FILARY = [
   },
 ];
 
-const TICKER = [
-  { gmina: "Sołectwo Bartoszyce", stat: "8,4 t elektroodpadów", trend: "+12%" },
-  { gmina: "Sołectwo Mrągowo", stat: "156 nowych nasadzeń", trend: "+34%" },
-  { gmina: "Sołectwo Giżycko", stat: "sprzęt OSP za 12 400 zł", trend: "nowość" },
-  { gmina: "Sołectwo Ostróda", stat: "3 ogrody społeczne", trend: "+2" },
-  { gmina: "Sołectwo Kętrzyn", stat: "22,1 t elektroodpadów", trend: "+8%" },
-  { gmina: "Sołectwo Pisz", stat: "czyste jezioro Roś — akcja 140 os.", trend: "rekord" },
-];
-
 const ARTICLES = {
   eko: [
     {
       title: "Sołtys z Bartoszyc zebrał 8 ton elektroodpadów w jeden weekend",
-      excerpt:
-        "Remondis odebrał sprzęt, gmina dołożyła transport. Wieś kupiła za to nowy sprzęt dla OSP.",
+      excerpt: "Remondis odebrał sprzęt, gmina dołożyła transport. Wieś kupiła za to nowy sprzęt dla OSP.",
       author: "Jan Kowalski, sołtys",
       shares: 340,
     },
     {
       title: "Ranking Eko Sołectw 2026 — kto zebrał najwięcej, kto wydał najlepiej",
-      excerpt:
-        "16. edycja konkursu. Sprawdzamy, które sołectwa zamieniły odpady w realny sprzęt dla mieszkańców.",
+      excerpt: "16. edycja konkursu. Sprawdzamy, które sołectwa zamieniły odpady w realny sprzęt dla mieszkańców.",
       author: "Redakcja",
       shares: 512,
     },
@@ -173,8 +147,7 @@ const HERO_POST_CONTENT = `Remondis odebrał sprzęt, gmina dołożyła transpor
 const HERO_POST = {
   ...ARTICLES.eko[0],
   content: HERO_POST_CONTENT,
-  image:
-    "https://media.istockphoto.com/id/1357827501/pl/zdjęcie/zróżnicowana-grupa-wolontariuszy-sprzątająca-las-z-odpadów-koncepcja-pracy-społecznej.jpg?s=1024x1024&w=is&k=20&c=zd6rZ8mrjU-Q4FYQHCIFX9SgKsA9EbphuYHtN3X1oC8=",
+  image: "https://media.istockphoto.com/id/1357827501/pl/zdjęcie/zróżnicowana-grupa-wolontariuszy-sprzątająca-las-z-odpadów-koncepcja-pracy-społecznej.jpg?s=1024x1024&w=is&k=20&c=zd6rZ8mrjU-Q4FYQHCIFX9SgKsA9EbphuYHtN3X1oC8=",
 };
 
 const EKO_POST_IMAGES = [
@@ -195,26 +168,11 @@ const EKO_POSTS = ARTICLES.eko.map((item, index) => ({
   image: EKO_POST_IMAGES[index] || "",
 }));
 
-const MAIN_NAV = [
-  { id: "home", label: "Home" },
-  { id: "o-nas", label: "O nas" },
-  { id: "konkurs", label: "Konkurs" },
-  { id: "archiwum", label: "Archiwum" },
-  { id: "kontakt", label: "Kontakt" },
-];
-
-export default function PulsRegionuMockup({ onNavigate }) {
-  console.log('PulsRegionuMockup received onNavigate:', onNavigate);
-  const [active, setActive] = useState("eko");
-  const [activeMenu, setActiveMenu] = useState("home");
-  const [navOpen, setNavOpen] = useState(false);
+export default function PulsRegionuMockup(props) {
+  const { onNavigate, activeFilarId, setActiveFilarId, TICKER } = props;
   const [articleView, setArticleView] = useState(null);
-  const [largeText, setLargeText] = useState(false);
-  const [highContrast, setHighContrast] = useState(false);
-  const [grayscaleMode, setGrayscaleMode] = useState(false);
-  const [panelOpen, setPanelOpen] = useState(true);
-  const activeFilar = FILARY.find((f) => f.id === active);
-
+  
+  const activeFilar = FILARY_DATA.find((f) => f.id === activeFilarId) || FILARY_DATA[0];
 
   const colorToRgba = (hex, alpha) => {
     const [r, g, b] = hex.slice(1).match(/.{2}/g).map((value) => parseInt(value, 16));
@@ -225,783 +183,19 @@ export default function PulsRegionuMockup({ onNavigate }) {
     `linear-gradient(180deg, ${colorToRgba(hex, 0.18)} 0%, ${colorToRgba(hex, 0.08)} 100%)`;
 
   const handleOpenArticle = (index) => {
-    if (active === "eko") {
+    if (activeFilarId === "eko") {
       setArticleView(EKO_POSTS[index] || HERO_POST);
     }
   };
 
   const handleBackToSection = () => setArticleView(null);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => setPanelOpen(false), 4000);
-  //   return () => clearTimeout(timer);
-  // }, []);
-
   return (
-    <div className={`pr-root${largeText ? " pr-large-text" : ""}${highContrast ? " pr-high-contrast" : ""}${grayscaleMode ? " pr-grayscale" : ""}`}>
-      <style>{`
-        .pr-root {
-          --bg: #F6F8FB;
-          --surface: #FFFFFF;
-          --surface-soft: #F1F4F8;
-          --text: #1F2937;
-          --text-soft: #5B6670;
-          --accent: #23A9E0;
-          --accent-soft: #D9EFFB;
-          --accent-alt: #F4C860;
-          --brand-green: #7BC142;
-          --brand-yellow: #F7D13D;
-          --brand-blue: #2096D1;
-          --brand-navy: #0F476F;
-          --border: #E4E7EC;
-          --shadow: rgba(34, 60, 80, 0.08);
-          font-family: 'Public Sans', -apple-system, sans-serif;
-          background: var(--bg);
-          color: var(--text);
-          min-height: 100vh;
-        }
-        .pr-root * { box-sizing: border-box; }
-        .pr-serif { font-family: 'Fraunces', Georgia, serif; }
-        .pr-mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
-
-        /* ---- utility bar ---- */
-        .pr-topline {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 18px;
-          padding: 10px 24px;
-          background: #E9443B;
-          border-bottom: none;
-          color: #fff;
-          font-size: 12px;
-        }
-        .pr-top-block {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          padding: 0;
-          border-radius: 0;
-          background: transparent;
-        }
-        .pr-top-block img {
-          width: 24px;
-          height: auto;
-          display: block;
-          opacity: 0.92;
-        }
-        .pr-top-block strong,
-        .pr-top-block span {
-          font-weight: 700;
-          color: #fff;
-        }
-
-        .pr-utility {
-          background: var(--brand-blue);
-          color: #FFF;
-          font-size: 13px;
-          letter-spacing: 0.04em;
-          padding: 12px 24px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          box-shadow: 0 8px 20px rgba(32, 150, 209, 0.15);
-        }
-        .pr-utility-logo {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-        }
-        .pr-utility-logo img {
-          width: 28px;
-          height: auto;
-          display: block;
-        }
-        .pr-utility span.pr-dim {
-          opacity: 1;
-          font-weight: 600;
-          letter-spacing: 0.06em;
-        }
-
-        /* ---- main navbar ---- */
-        .pr-main-nav {
-          background: var(--surface);
-          border-bottom: 1px solid var(--border);
-          padding: 0 24px;
-          display: flex;
-          justify-content: center;
-          align-items: stretch;
-          position: relative;
-          box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
-        }
-        .pr-main-nav-toggle {
-          display: none;
-          align-items: center;
-          justify-content: center;
-          width: 44px;
-          height: 44px;
-          margin: 8px 0;
-          border: 1px solid var(--border);
-          border-radius: 12px;
-          background: var(--surface-soft);
-          color: var(--text);
-          cursor: pointer;
-        }
-        .pr-main-nav-list {
-          display: flex;
-          align-items: stretch;
-          gap: 0;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
-        .pr-main-nav-item {
-          display: flex;
-          align-items: center;
-          padding: 16px 22px;
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.02em;
-          color: var(--text-soft);
-          cursor: pointer;
-          border-bottom: 3px solid transparent;
-          transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-          white-space: nowrap;
-          text-decoration: none;
-        }
-        .pr-main-nav-item:hover {
-          color: var(--text);
-          background: var(--surface-soft);
-        }
-        .pr-main-nav-item.is-active {
-          color: var(--brand-blue);
-          border-bottom-color: var(--brand-blue);
-          background: rgba(32, 150, 209, 0.06);
-        }
-
-        .pr-accessibility-container {
-          position: fixed;
-          top: 132px;
-          right: 0;
-          z-index: 999;
-          width: 260px;
-          height: auto;
-          pointer-events: auto;
-          transition: transform 0.35s ease;
-        }
-        .pr-accessibility-container.is-open {
-          transform: translateX(0);
-        }
-        .pr-accessibility-container.is-closed {
-          transform: translateX(260px);
-        }
-        .pr-accessibility-panel {
-          width: 260px;
-          position: relative;
-          padding: 16px 18px 16px 18px;
-          background: #fff;
-          border: 1px solid rgba(15, 23, 42, 0.12);
-          box-shadow: -4px 18px 45px rgba(15, 23, 42, 0.14);
-          border-radius: 18px 0 0 18px;
-          font-size: 13px;
-          color: #10212b;
-          backdrop-filter: blur(10px);
-          pointer-events: auto;
-        }
-        .pr-accessibility-toggle {
-          position: absolute;
-          top: 14px;
-          left: -52px;
-          width: 46px;
-          height: 46px;
-          border-radius: 18px 0 0 18px;
-          border: 1px solid rgba(15, 23, 42, 0.12);
-          background: #0f476f;
-          color: #fff;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          box-shadow: -2px 12px 24px rgba(15, 23, 42, 0.18);
-          pointer-events: auto;
-          transition: transform 0.35s ease;
-        }
-        .pr-accessibility-toggle:hover {
-          background: #16638a;
-        }
-        .pr-accessibility-panel h3 {
-          margin: 0 0 10px;
-          font-size: 14px;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          color: #0f476f;
-        }
-        .pr-accessibility-panel p {
-          margin: 0 0 14px;
-          line-height: 1.5;
-          color: #47515d;
-        }
-        .pr-accessibility-panel button {
-          width: 100%;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          margin-bottom: 10px;
-          padding: 11px 14px;
-          border-radius: 14px;
-          border: 1px solid rgba(15, 23, 42, 0.12);
-          background: #f7fafc;
-          color: #10212b;
-          font-weight: 700;
-          cursor: pointer;
-          transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-        }
-        .pr-accessibility-panel button:last-child { margin-bottom: 0; }
-        .pr-accessibility-panel button:hover {
-          background: #eef4f8;
-          transform: translateY(-1px);
-        }
-        .pr-accessibility-panel button.is-active {
-          background: linear-gradient(120deg, #23a9e0 0%, #3b7d23 100%);
-          color: #fff;
-          border-color: transparent;
-        }
-        .pr-root.pr-large-text { font-size: 1.08rem; }
-        .pr-root.pr-high-contrast {
-          color: #111;
-          background: #f4f7fb;
-        }
-        .pr-root.pr-high-contrast .pr-topline,
-        .pr-root.pr-high-contrast .pr-utility,
-        .pr-root.pr-high-contrast .pr-masthead {
-          background: #0f476f;
-          color: #fff;
-        }
-        .pr-root.pr-high-contrast .pr-main-nav {
-          background: #fff;
-          border-color: #0f476f;
-        }
-        .pr-root.pr-high-contrast .pr-main-nav-item.is-active {
-          color: #0f476f;
-          border-bottom-color: #0f476f;
-        }
-        .pr-root.pr-high-contrast .pr-section,
-        .pr-root.pr-high-contrast .pr-card,
-        .pr-root.pr-high-contrast .pr-footer,
-        .pr-root.pr-high-contrast .pr-sponsor-bar {
-          border-color: #0f476f;
-        }
-        .pr-root.pr-grayscale { filter: grayscale(100%); }
-
-        /* ---- masthead ---- */
-        .pr-masthead {
-          padding: 34px 24px 24px;
-          background: #F10000;
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          gap: 24px;
-          border-bottom: 1px solid rgba(255,255,255,0.18);
-          color: #fff;
-          position: relative;
-          z-index: 1;
-        }
-        .pr-logo-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; z-index: 2; }
-        .pr-logo-badge {
-          width: auto;
-          height: auto;
-          display: block;
-          background: transparent;
-          border-radius: 0;
-          border: none;
-          overflow: visible;
-          padding: 0;
-        }
-        .pr-logo-badge img { width: 240px; height: auto; display: block; }
-        .pr-logo {
-          display: none;
-        }
-        .pr-logo em { font-style: italic; color: rgba(255,255,255,0.88); }
-        .pr-tagline-wrapper { display: block; }
-        .pr-tagline {
-          font-size: 15px;
-          font-weight: 600;
-          color: rgba(255,255,255,0.97);
-          max-width: 320px;
-          line-height: 1.5;
-          margin: 0;
-        }
-        .pr-top-block,
-        .pr-topline,
-        .pr-masthead {
-          background: linear-gradient(360deg, #EA0000 0%, #EA0000 100%);
-        }
-        /* ---- ticker ---- */
-        .pr-ticker {
-          background: linear-gradient(90deg, #264ECD, #2280F7);
-          overflow: hidden;
-          white-space: nowrap;
-          position: relative;
-          box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.12);
-        }
-        .pr-ticker-inner {
-          display: flex;
-          align-items: center;
-          padding: 12px 24px;
-          gap: 18px;
-          position: relative;
-        }
-        .pr-ticker-label {
-          flex-shrink: 0;
-          display: inline-flex;
-          align-items: center;
-          background: #E9443B;
-          color: #FFF;
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          padding: 6px 14px;
-          border-radius: 999px;
-          z-index: 2;
-        }
-        .pr-ticker-track {
-          display: flex;
-          gap: 40px;
-          will-change: transform;
-          min-width: 100%;
-          position: relative;
-          z-index: 1;
-        }
-        .pr-ticker-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.92); font-size: 13px; flex-shrink: 0; }
-        .pr-ticker-item b { color: #fff; font-weight: 700; }
-        .pr-ticker-trend { font-size: 11px; padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,0.18); color: #D3E6FF; }
-
-        /* ---- nav ---- */
-        .pr-nav {
-          display: flex;
-          border-bottom: 1px solid var(--border);
-          background: var(--surface);
-          overflow-x: auto;
-        }
-        .pr-nav-item {
-          display: flex; align-items: center; gap: 10px;
-          padding: 16px 22px;
-          font-size: 14px; font-weight: 700;
-          border-right: 1px solid var(--border);
-          cursor: pointer;
-          white-space: nowrap;
-          color: var(--text-soft);
-          transition: background 0.15s, color 0.15s;
-        }
-        .pr-nav-item:hover { background: var(--surface-soft); }
-        .pr-nav-item.is-active { color: var(--brand-blue); background: rgba(32, 150, 209, 0.08); }
-        .pr-nav-item .pr-dot { width: 8px; height: 8px; border-radius: 50%; }
-
-        /* ---- hero ---- */
-        .pr-hero {
-          padding: 48px 24px;
-          display: grid;
-          grid-template-columns: 1.1fr 0.9fr;
-          gap: 40px;
-          align-items: center;
-          border-bottom: 1px solid var(--border);
-          position: relative;
-          overflow: hidden;
-          background: radial-gradient(circle at top left, rgba(35, 169, 224, 0.18), transparent 32%),
-            radial-gradient(circle at bottom right, rgba(123, 193, 66, 0.14), transparent 28%),
-            linear-gradient(140deg, #f9fcfe 0%, #eef9f5 42%, #eef5fb 100%);
-          color: var(--text);
-        }
-        .pr-hero-eyebrow {
-          display: inline-flex; align-items: center; gap: 8px;
-          font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em;
-          text-transform: uppercase; color: var(--brand-blue);
-          margin-bottom: 16px;
-        }
-        .pr-hero h1 {
-          font-size: clamp(32px, 5vw, 52px);
-          line-height: 1.05;
-          margin: 0 0 20px;
-          font-weight: 700;
-          color: var(--text);
-        }
-        .pr-hero p { font-size: 16.5px; color: var(--text-soft); line-height: 1.7; max-width: 52ch; margin: 0 0 24px; }
-        .pr-hero-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-soft); }
-        .pr-hero-share {
-          display: flex; align-items: center; gap: 8px;
-          background: var(--brand-blue);
-          color: #fff;
-          padding: 9px 16px;
-          border-radius: 999px;
-          font-size: 13px; font-weight: 700;
-        }
-        .pr-hero-img {
-          aspect-ratio: 4/3.1;
-          border-radius: 20px;
-          background-image: url('https://media.istockphoto.com/id/1357827501/pl/zdjęcie/zróżnicowana-grupa-wolontariuszy-sprzątająca-las-z-odpadów-koncepcja-pracy-społecznej.jpg?s=1024x1024&w=is&k=20&c=zd6rZ8mrjU-Q4FYQHCIFX9SgKsA9EbphuYHtN3X1oC8=');
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
-          position: relative;
-          overflow: hidden;
-          box-shadow: 0 24px 60px rgba(34, 60, 80, 0.12);
-        }
-        .pr-hero-img::after {
-          content: '';
-          position: absolute; inset: 0;
-          background-image: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.16) 100%);
-        }
-        .pr-hero-cap {
-          position: absolute; left: 16px; bottom: 16px; right: 16px;
-          background: rgba(16, 24, 40, 0.72);
-          backdrop-filter: blur(4px);
-          color: #F8FAFC;
-          font-size: 12px;
-          padding: 10px 14px;
-          border-radius: 14px;
-        }
-
-        /* ---- filary strip ---- */
-        .pr-filary-strip {
-          display: grid; grid-template-columns: repeat(5, 1fr);
-          border-bottom: 3px solid var(--brand-blue);
-        }
-        .pr-filar-tab {
-          padding: 18px 16px;
-          border-right: 1px solid var(--border);
-          cursor: pointer;
-          transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-        }
-        .pr-filar-tab:hover { background: var(--surface-soft); transform: translateY(-1px); }
-        .pr-filar-tab:last-child { border-right: none; }
-        .pr-filar-tab .pr-ficon { width: 42px; height: 42px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: inset 0 0 0 rgba(255,255,255,0.1); color: #16586b; }
-        .pr-filar-tab .pr-ficon svg { color: #16586b; }
-        .pr-filar-tab.is-active { border-color: rgba(33, 111, 255, 0.32); }
-        .pr-filar-tab.is-active .pr-ficon { box-shadow: 0 0 0 3px rgba(33, 111, 255, 0.16); }
-        .pr-filar-tab .pr-flabel { font-size: 13px; font-weight: 700; }
-        .pr-filar-tab .pr-flead { font-size: 12px; color: var(--text-soft); margin-top: 4px; }
-
-        /* ---- section ---- */
-        .pr-section { padding: 44px 24px 60px; }
-        .pr-section-head {
-          display: flex; align-items: center; justify-content: space-between;
-          margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border);
-        }
-        .pr-section-title { display: flex; align-items: center; gap: 14px; }
-        .pr-section-title h2 { font-size: 28px; margin: 0; font-weight: 700; color: var(--text); }
-        .pr-section-desc { font-size: 14px; color: var(--text-soft); margin: 0; max-width: 52ch; }
-        .pr-more { font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 6px; color: var(--brand-blue); }
-
-        .pr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .pr-card {
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 22px;
-          overflow: hidden;
-          display: flex; flex-direction: column;
-          box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
-          cursor: pointer;
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .pr-newsletter {
-          position: relative;
-          background: radial-gradient(circle at top left, rgba(35, 169, 224, 0.22), transparent 32%),
-            radial-gradient(circle at bottom right, rgba(123, 193, 66, 0.18), transparent 28%),
-            linear-gradient(145deg, #eef9f5 0%, #d9ecf9 55%, #f4f7ff 100%);
-          padding: 42px 24px;
-          margin: 0 0 28px;
-          border-radius: 0;
-          box-shadow: 0 28px 72px rgba(15, 23, 42, 0.14);
-          border: 1px solid rgba(34, 60, 80, 0.08);
-          overflow: hidden;
-        }
-        .pr-newsletter::before,
-        .pr-newsletter::after {
-          content: '';
-          position: absolute;
-          border-radius: 50%;
-          opacity: 0.35;
-          pointer-events: none;
-        }
-        .pr-newsletter::before {
-          width: 120px;
-          height: 120px;
-          background: rgba(35, 169, 224, 0.16);
-          top: -30px;
-          right: -40px;
-        }
-        .pr-newsletter::after {
-          width: 180px;
-          height: 180px;
-          background: rgba(123, 193, 66, 0.16);
-          bottom: -40px;
-          left: -50px;
-        }
-        .pr-newsletter-head {
-          display: flex;
-          align-items: flex-start;
-          gap: 16px;
-          margin: 0 auto 16px;
-          position: relative;
-          z-index: 1;
-          max-width: 560px;
-          width: min(100%, 560px);
-        }
-        .pr-newsletter-icon {
-          width: 48px;
-          height: 48px;
-          border-radius: 16px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          background: linear-gradient(180deg, rgba(35, 169, 224, 0.18) 0%, rgba(59, 125, 35, 0.16) 100%);
-          color: #16586b;
-          box-shadow: 0 12px 24px rgba(35, 169, 224, 0.12);
-        }
-        .pr-newsletter-form {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-          margin: 18px auto 0;
-          position: relative;
-          z-index: 1;
-          max-width: 560px;
-          width: min(100%, 560px);
-        }
-        .pr-newsletter-form input {
-          width: 100%;
-          padding: 16px 18px;
-          border: 1px solid rgba(35, 169, 224, 0.28);
-          border-radius: 18px;
-          font-size: 15px;
-          color: #10212B;
-          background: linear-gradient(180deg, #ffffff 0%, #f5fbff 100%);
-          outline: none;
-          box-shadow: inset 0 1px 4px rgba(16, 33, 43, 0.08);
-        }
-        .pr-newsletter-form button {
-          width: 100%;
-          border: none;
-          border-radius: 18px;
-          padding: 16px 20px;
-          font-size: 15px;
-          font-weight: 700;
-          color: #fff;
-          background: linear-gradient(120deg, #3B7D23 0%, #23A9E0 100%);
-          cursor: pointer;
-          box-shadow: 0 14px 30px rgba(35, 115, 90, 0.18);
-          transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-        }
-        .pr-newsletter-form button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 16px 34px rgba(35, 115, 90, 0.24);
-          filter: brightness(1.03);
-        }
-        .pr-newsletter p {
-          color: var(--text);
-          opacity: 0.9;
-          line-height: 1.7;
-        }
-        .pr-card:hover { transform: translateY(-2px); box-shadow: 0 22px 50px rgba(15, 23, 42, 0.1); }
-        .pr-card-img {
-          aspect-ratio: 16/10;
-          background: linear-gradient(135deg, var(--tint, #eef4ff), rgba(0,0,0,0.04));
-          background-size: cover;
-          background-position: center;
-          position: relative;
-        }
-        .pr-card-body { padding: 22px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-        .pr-card-body h3 { font-size: 17px; line-height: 1.35; margin: 0; font-weight: 700; color: var(--text); }
-        .pr-card-body p { font-size: 14px; color: var(--text-soft); line-height: 1.65; margin: 0; flex: 1; }
-        .pr-card-foot { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--text-soft); margin-top: 12px; padding-top: 14px; border-top: 1px solid var(--border); }
-        .pr-share-count { display: flex; align-items: center; gap: 6px; font-weight: 700; }
-
-        /* ---- footer ---- */
-        .pr-footer { background: var(--brand-navy); color: #E7EDF8; padding: 44px 24px 28px; }
-        .pr-footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 34px; }
-        .pr-footer h4 { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #B9D9F0; margin: 0 0 14px; }
-        .pr-footer p, .pr-footer a { font-size: 13px; color: #E7EDF8; line-height: 1.8; }
-        .pr-footer a { display: block; text-decoration: none; opacity: 0.82; }
-        .pr-footer a:hover { opacity: 1; text-decoration: underline; }
-        .pr-sponsor-bar {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 16px;
-          padding: 18px 24px;
-          background: #fff;
-          border-bottom: 1px solid rgba(0,0,0,0.08);
-        }
-        .pr-sponsor-logo {
-          display: flex;
-          align-items: center;
-        }
-        .pr-sponsor-logo img {
-          max-height: 34px;
-          width: auto;
-          display: block;
-        }
-        .pr-sponsor-text {
-          flex: 1;
-          text-align: center;
-          font-size: 14px;
-          font-weight: 700;
-          color: #1F2937;
-        }
-        .pr-sponsor-logo--right {
-          margin-left: auto;
-        }
-        .pr-footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 18px; display: flex; justify-content: space-between; font-size: 12px; color: #B9D9F0; flex-wrap: wrap; gap: 10px; }
-
-        @media (max-width: 900px) {
-          .pr-hero { grid-template-columns: 1fr; }
-          .pr-filary-strip { grid-template-columns: repeat(3, 1fr); }
-          .pr-grid { grid-template-columns: repeat(2, 1fr); }
-          .pr-footer-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 720px) {
-          .pr-main-nav {
-            justify-content: flex-end;
-            flex-wrap: wrap;
-            padding: 8px 16px;
-          }
-          .pr-main-nav-toggle { display: inline-flex; }
-          .pr-main-nav-list {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-            border-top: 1px solid var(--border);
-            margin-top: 4px;
-            padding-top: 4px;
-          }
-          .pr-main-nav.is-open .pr-main-nav-list { display: flex; }
-          .pr-main-nav-item {
-            width: 100%;
-            border-bottom: none;
-            border-left: 3px solid transparent;
-            padding: 14px 12px;
-          }
-          .pr-main-nav-item.is-active {
-            border-left-color: var(--brand-blue);
-            border-bottom-color: transparent;
-          }
-        }
-        @media (max-width: 600px) {
-          .pr-masthead { flex-direction: column; align-items: flex-start; }
-          .pr-tagline { border-left: none; padding-left: 0; border-top: 2px solid rgba(255,255,255,0.12); padding-top: 10px; max-width: 100%; }
-          .pr-filary-strip { grid-template-columns: repeat(2, 1fr); }
-          .pr-grid { grid-template-columns: 1fr; }
-          .pr-footer-grid { grid-template-columns: 1fr; gap: 22px; }
-        }
-
-        a, button { font-family: inherit; }
-        button:focus-visible, .pr-nav-item:focus-visible, .pr-filar-tab:focus-visible, .pr-main-nav-item:focus-visible {
-          outline: 2px solid var(--rust); outline-offset: 2px;
-        }
-      `}</style>
-
-      {/* UTILITY BAR */}
-      <div className="pr-utility">
-        <div className="pr-utility-logo">
-          <img src="/logo_fundacji_warmi_i_mazur.png" alt="Logo Fundacji Warmia i Mazury" />
-          <span>Fundacja Warmia i Mazury w Europie</span>
-        </div>
-        <span className="pr-dim pr-mono">1 lipca 2026 · Wydanie cyfrowe</span>
-      </div>
-
-      {/* MAIN NAVBAR */}
-      <nav className={`pr-main-nav${navOpen ? " is-open" : ""}`} aria-label="Menu główne">
-        <button
-          type="button"
-          className="pr-main-nav-toggle"
-          aria-label={navOpen ? "Zamknij menu" : "Otwórz menu"}
-          aria-expanded={navOpen}
-          onClick={() => setNavOpen(!navOpen)}
-        >
-          {navOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-        <ul className="pr-main-nav-list">
-          {MAIN_NAV.map((item) => (
-            <li key={item.id}>
-              <a
-                href="#"
-                className={`pr-main-nav-item${activeMenu === item.id ? " is-active" : ""}`}
-                aria-current={activeMenu === item.id ? "page" : undefined}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setActiveMenu(item.id);
-                  setNavOpen(false);
-                  if (item.id === "home") {
-                    setActive("eko");
-                    setArticleView(null);
-                  }
-                }}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      {/* TOP LINE */}
-      <div className="pr-topline">
-        <div className="pr-top-block">
-          <img src="/godlo_warmi_i_mazur.png" alt="Godło Warmii i Mazur" />
-          <span>Województwo Warmińsko-Mazurskie</span>
-        </div>
-        <div className="pr-top-block" style={{ marginLeft: 'auto' }}>
-          <img src="/logo_uni_europejskiej.png" alt="Logo Unii Europejskiej" />
-          <strong>Unia Europejska</strong>
-        </div>
-      </div>
-
-      {/* ACCESSIBILITY BAR */}
-      <AccessibilityBar
-        panelOpen={panelOpen}
-        setPanelOpen={setPanelOpen}
-        largeText={largeText}
-        setLargeText={setLargeText}
-        highContrast={highContrast}
-        setHighContrast={setHighContrast}
-        grayscaleMode={grayscaleMode}
-        setGrayscaleMode={setGrayscaleMode}
-      />
-
-      {/* MASTHEAD */}
-      <Header onLogoClick={() => { setActive('eko'); onNavigate('home'); }} />
-
-      {/* TICKER — sygnaturowy element: ranking eko-sołectw na żywo */}
-      <LiveTicker tickerData={TICKER} />
-
-      {/* NAV */}
-      <nav className="pr-nav">
-        {FILARY.map((f) => (
-          <div
-            key={f.id}
-            className={`pr-nav-item ${active === f.id ? "is-active" : ""}`}
-            onClick={() => setActive(f.id)}
-          >
-            <span className="pr-dot" style={{ background: f.color }} />
-            {f.label}
-          </div>
-        ))}
-        <button onClick={() => console.log('DEBUG: KLIKNIĘTO')}>DEBUG KLIKNIĘCIE</button>
-        <button className="pr-nav-item" onClick={() => { console.log('Kliknięto: O nas'); onNavigate('o-nas'); }} style={{cursor: 'pointer', background: 'none', border: 'none', font: 'inherit', color: 'inherit'}}>O nas</button>
-        <button className="pr-nav-item" onClick={() => { console.log('Kliknięto: Kontakt'); onNavigate('kontakt'); }} style={{cursor: 'pointer', background: 'none', border: 'none', font: 'inherit', color: 'inherit'}}>Kontakt</button>
-        <button className="pr-nav-item" onClick={() => { console.log('Kliknięto: Konkurs'); onNavigate('konkurs'); }} style={{cursor: 'pointer', background: 'none', border: 'none', font: 'inherit', color: 'inherit'}}>Konkurs</button>
-        <button className="pr-nav-item" onClick={() => { console.log('Kliknięto: Archiwum'); onNavigate('archiwum'); }} style={{cursor: 'pointer', background: 'none', border: 'none', font: 'inherit', color: 'inherit'}}>Archiwum</button>
-      </nav>
-
-      {/* HERO */}
+    <Layout {...props}>
+      {/* HERO SECTION */}
       {!articleView && <HeroSection heroPost={HERO_POST} />}
 
-      {/* ARTICLE PAGE */}
+      {/* ARTICLE VIEW */}
       {articleView && (
         <section className="pr-section">
           <div className="pr-section-head">
@@ -1010,14 +204,14 @@ export default function PulsRegionuMockup({ onNavigate }) {
                 className="pr-ficon"
                 style={{ background: filarGradient(activeFilar.color), width: 34, height: 34, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}
               >
-                <activeFilar.icon size={17} color="#fff" />
+                {activeFilar.icon && <activeFilar.icon size={17} color="#fff" />}
               </div>
               <div>
                 <h2 className="pr-serif">{articleView.title}</h2>
                 <p className="pr-section-desc">{articleView.excerpt}</p>
               </div>
             </div>
-            <div className="pr-more" style={{ color: activeFilar.color }} onClick={handleBackToSection}>
+            <div className="pr-more" onClick={handleBackToSection} style={{ color: activeFilar.color, cursor: 'pointer' }}>
               Wróć do sekcji <ArrowUpRight size={14} />
             </div>
           </div>
@@ -1026,35 +220,25 @@ export default function PulsRegionuMockup({ onNavigate }) {
 
           <div style={{ maxWidth: 860, lineHeight: 1.8, color: "var(--ink-soft)" }}>
             <p>{articleView.content}</p>
-            <p>
-              Mieszkańcy, sołtysi i OSP testują teraz nowe sposoby segregacji i transportu
-              elektroodpadów. To historia, która pokazuje, jak dużo może zmienić kilka dni
-              wspólnej pracy.
-            </p>
-            <p>
-              W kolejnych tygodniach będziemy śledzić, jak gmina Bartoszyce wykorzysta
-              środki na sprzęt oraz jakie działania edukacyjne uruchomi dla lokalnych
-              szkół i organizacji społecznych.
-            </p>
           </div>
         </section>
       )}
 
-      {/* FILARY STRIP */}
+      {/* PILLAR GRID */}
       <PillarGrid
-        filary={FILARY}
-        active={active}
-        setActive={setActive}
+        filary={FILARY_DATA}
+        active={activeFilarId}
+        setActive={setActiveFilarId}
         filarGradient={filarGradient}
       />
 
-      {/* ACTIVE SECTION */}
+      {/* ACTIVE PILLAR CONTENT */}
       <ActivePillarContent
         activeFilar={activeFilar}
         articles={ARTICLES}
         handleOpenArticle={handleOpenArticle}
       />
-
+      
       {/* NEWSLETTER */}
       <section className="pr-newsletter">
         <div className="pr-newsletter-head">
@@ -1084,9 +268,6 @@ export default function PulsRegionuMockup({ onNavigate }) {
           <img src="/godlo_warmi_i_mazur_white.png" alt="Godło Warmii i Mazur" />
         </div>
       </div>
-
-      {/* FOOTER */}
-      <Footer filary={FILARY} onNavigate={onNavigate} />
-    </div>
+    </Layout>
   );
 }

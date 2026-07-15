@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 export default function PillarGrid({ filary, active, setActive, filarGradient }) {
   return (
     <div className="pr-filary-strip">
-      {filary.map((f) => {
+      {(filary || []).map((f) => {
         const Icon = f.icon;
         return (
           <div
@@ -13,7 +13,7 @@ export default function PillarGrid({ filary, active, setActive, filarGradient })
             onClick={() => setActive(f.id)}
           >
             <div className="pr-ficon" style={{ background: filarGradient(f.color) }}>
-              <Icon size={16} color="#16586b" />
+              {Icon ? <Icon size={16} color="#16586b" /> : null}
             </div>
             <div className="pr-flabel">{f.label}</div>
             <div className="pr-flead">{f.lead}</div>

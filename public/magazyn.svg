@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Warstwa_2" data-name="Warstwa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 362.84 39.3">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        font-family: Arial-Black, 'Arial Black';
+        font-size: 11px;
+        font-weight: 800;
+      }
+
+      .cls-2 {
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-4 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-5 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-6 {
+        fill: none;
+        stroke: #ffed00;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1" data-name="Layer 1">
+    <rect class="cls-6" x=".5" y=".5" width="361.84" height="38.3"/>
+    <text class="cls-1" transform="translate(103.62 16.99)"><tspan x="0" y="0">M</tspan><tspan class="cls-3" x="10.38" y="0">A</tspan><tspan x="18.74" y="0">GAZYN SAMORZĄDÓW</tspan><tspan class="cls-4" x="-60.62" y="13.2">W</tspan><tspan x="-49.8" y="13.2">OJEWÓDZTWA WARMIŃS</tspan><tspan class="cls-5" x="102.35" y="13.2">K</tspan><tspan class="cls-2" x="111.14" y="13.2">O-MAZURSKIEGO</tspan></text>
+  </g>
+</svg>

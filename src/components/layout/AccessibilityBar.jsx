@@ -1,6 +1,19 @@
 import { Accessibility, ZoomIn, Contrast, Eye } from "lucide-react";
+import { useEffect } from "react";
 
 export default function AccessibilityBar({ panelOpen, setPanelOpen, largeText, setLargeText, highContrast, setHighContrast, grayscaleMode, setGrayscaleMode }) {
+  useEffect(() => {
+    let timeout;
+    if (panelOpen) {
+      timeout = setTimeout(() => {
+        setPanelOpen(false);
+      }, 5000);
+    }
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [panelOpen, setPanelOpen]);
+
   return (
     <div className={`pr-accessibility-container ${panelOpen ? "is-open" : "is-closed"}`}>
       <button
