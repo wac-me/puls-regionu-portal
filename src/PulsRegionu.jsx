@@ -17,6 +17,13 @@ import {
   Contrast,
   Eye,
 } from "lucide-react";
+import LiveTicker from "./components/common/LiveTicker";
+import AccessibilityBar from "./components/layout/AccessibilityBar";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import HeroSection from "./components/home/HeroSection";
+import PillarGrid from "./components/home/PillarGrid";
+import ActivePillarContent from "./components/home/ActivePillarContent";
 
 /* ------------------------------------------------------------------
    PULS REGIONU — makieta portalu (homepage)
@@ -196,26 +203,8 @@ const MAIN_NAV = [
   { id: "kontakt", label: "Kontakt" },
 ];
 
-function useTickerLoop() {
-  const trackRef = useRef(null);
-  useEffect(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    let pos = 0;
-    let raf;
-    const step = () => {
-      pos -= 0.5;
-      if (Math.abs(pos) >= el.scrollWidth / 2) pos = 0;
-      el.style.transform = `translateX(${pos}px)`;
-      raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-  return trackRef;
-}
-
-export default function PulsRegionuMockup() {
+export default function PulsRegionuMockup({ onNavigate }) {
+  console.log('PulsRegionuMockup received onNavigate:', onNavigate);
   const [active, setActive] = useState("eko");
   const [activeMenu, setActiveMenu] = useState("home");
   const [navOpen, setNavOpen] = useState(false);
@@ -224,8 +213,8 @@ export default function PulsRegionuMockup() {
   const [highContrast, setHighContrast] = useState(false);
   const [grayscaleMode, setGrayscaleMode] = useState(false);
   const [panelOpen, setPanelOpen] = useState(true);
-  const tickerRef = useTickerLoop();
   const activeFilar = FILARY.find((f) => f.id === active);
+
 
   const colorToRgba = (hex, alpha) => {
     const [r, g, b] = hex.slice(1).match(/.{2}/g).map((value) => parseInt(value, 16));
@@ -243,10 +232,10 @@ export default function PulsRegionuMockup() {
 
   const handleBackToSection = () => setArticleView(null);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setPanelOpen(false), 4000);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => setPanelOpen(false), 4000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <div className={`pr-root${largeText ? " pr-large-text" : ""}${highContrast ? " pr-high-contrast" : ""}${grayscaleMode ? " pr-grayscale" : ""}`}>
@@ -972,78 +961,23 @@ export default function PulsRegionuMockup() {
         </div>
       </div>
 
-      <div className={`pr-accessibility-container ${panelOpen ? "is-open" : "is-closed"}`}>
-        <button
-          type="button"
-          className="pr-accessibility-toggle"
-          aria-label={panelOpen ? "Zamknij panel dostępności" : "Otwórz panel dostępności"}
-          onClick={() => setPanelOpen(!panelOpen)}
-        >
-          <Accessibility size={22} />
-        </button>
-        <div className="pr-accessibility-panel" aria-label="Panel dostępności">
-          <h3>Panel dostępności</h3>
-          <button
-            type="button"
-            className={largeText ? "is-active" : ""}
-            aria-pressed={largeText}
-            onClick={() => setLargeText(!largeText)}
-          >
-            <ZoomIn size={16} />
-            Powiększ tekst
-          </button>
-          <button
-            type="button"
-            className={highContrast ? "is-active" : ""}
-            aria-pressed={highContrast}
-            onClick={() => setHighContrast(!highContrast)}
-          >
-            <Contrast size={16} />
-            Wysoki kontrast
-          </button>
-          <button
-            type="button"
-            className={grayscaleMode ? "is-active" : ""}
-            aria-pressed={grayscaleMode}
-            onClick={() => setGrayscaleMode(!grayscaleMode)}
-          >
-            <Eye size={16} />
-            Skala szarości
-          </button>
-        </div>
-      </div>
+      {/* ACCESSIBILITY BAR */}
+      <AccessibilityBar
+        panelOpen={panelOpen}
+        setPanelOpen={setPanelOpen}
+        largeText={largeText}
+        setLargeText={setLargeText}
+        highContrast={highContrast}
+        setHighContrast={setHighContrast}
+        grayscaleMode={grayscaleMode}
+        setGrayscaleMode={setGrayscaleMode}
+      />
 
       {/* MASTHEAD */}
-      <header className="pr-masthead">
-        <div className="pr-logo-wrap" onClick={() => { setActive('eko'); setArticleView(null); }} style={{ cursor: 'pointer' }}>
-          <div className="pr-logo-badge">
-            <img src="/logo_puls_regionu.png" alt="Logo Puls Regionu" />
-          </div>
-          <div className="pr-tagline-wrapper">
-            <div className="pr-tagline">
-              16 lat w druku. Teraz — ogólnopolski portal regionalny o ekologii, ludziach
-              i miejscach, które warto znać.
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header onLogoClick={() => { setActive('eko'); onNavigate('home'); }} />
 
       {/* TICKER — sygnaturowy element: ranking eko-sołectw na żywo */}
-      <div className="pr-ticker">
-        <div className="pr-ticker-inner">
-          <span className="pr-ticker-label">Ranking Eko Sołectw</span>
-          <div className="pr-ticker-track pr-mono" ref={tickerRef}>
-            {[...TICKER, ...TICKER].map((t, i) => (
-              <div className="pr-ticker-item" key={i}>
-                <MapPin size={12} />
-                <b>{t.gmina}</b>
-                <span>— {t.stat}</span>
-                <span className="pr-ticker-trend">{t.trend}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <LiveTicker tickerData={TICKER} />
 
       {/* NAV */}
       <nav className="pr-nav">
@@ -1057,39 +991,15 @@ export default function PulsRegionuMockup() {
             {f.label}
           </div>
         ))}
+        <button onClick={() => console.log('DEBUG: KLIKNIĘTO')}>DEBUG KLIKNIĘCIE</button>
+        <button className="pr-nav-item" onClick={() => { console.log('Kliknięto: O nas'); onNavigate('o-nas'); }} style={{cursor: 'pointer', background: 'none', border: 'none', font: 'inherit', color: 'inherit'}}>O nas</button>
+        <button className="pr-nav-item" onClick={() => { console.log('Kliknięto: Kontakt'); onNavigate('kontakt'); }} style={{cursor: 'pointer', background: 'none', border: 'none', font: 'inherit', color: 'inherit'}}>Kontakt</button>
+        <button className="pr-nav-item" onClick={() => { console.log('Kliknięto: Konkurs'); onNavigate('konkurs'); }} style={{cursor: 'pointer', background: 'none', border: 'none', font: 'inherit', color: 'inherit'}}>Konkurs</button>
+        <button className="pr-nav-item" onClick={() => { console.log('Kliknięto: Archiwum'); onNavigate('archiwum'); }} style={{cursor: 'pointer', background: 'none', border: 'none', font: 'inherit', color: 'inherit'}}>Archiwum</button>
       </nav>
 
       {/* HERO */}
-      {!articleView && (
-        <section className="pr-hero">
-          <div>
-            <div className="pr-hero-eyebrow">
-              <Leaf size={14} />
-              Eko-Region · Historia z pierwszej strony
-            </div>
-            <h1 className="pr-serif">
-              Sołtys z Bartoszyc zebrał 8 ton elektroodpadów w jeden weekend
-            </h1>
-            <p>
-              Remondis odebrał sprzęt, gmina dołożyła transport, a sołectwo kupiło za
-              zebrane środki nowy sprzęt ratowniczy dla miejscowej OSP. To już 16. edycja
-              konkursu Eko Sołectwa — i kolejny dowód, że małe działania dają wielkie
-              efekty.
-            </p>
-            <div className="pr-hero-meta">
-              <span>Jan Kowalski, sołtys · 4 min czytania</span>
-              <span className="pr-hero-share">
-                <Share2 size={13} /> Udostępnione 340 razy
-              </span>
-            </div>
-          </div>
-          <div className="pr-hero-img">
-            <div className="pr-hero-cap">
-              Fot. archiwum sołectwa Bartoszyce — odbiór elektroodpadów, czerwiec 2026
-            </div>
-          </div>
-        </section>
-      )}
+      {!articleView && <HeroSection heroPost={HERO_POST} />}
 
       {/* ARTICLE PAGE */}
       {articleView && (
@@ -1131,79 +1041,19 @@ export default function PulsRegionuMockup() {
       )}
 
       {/* FILARY STRIP */}
-      <div className="pr-filary-strip">
-        {FILARY.map((f) => {
-          const Icon = f.icon;
-          return (
-            <div
-              key={f.id}
-              className={`pr-filar-tab ${active === f.id ? "is-active" : ""}`}
-              style={{ background: active === f.id ? f.tint : "transparent" }}
-              onClick={() => setActive(f.id)}
-            >
-              <div className="pr-ficon" style={{ background: filarGradient(f.color) }}>
-                <Icon size={16} color="#16586b" />
-              </div>
-              <div className="pr-flabel">{f.label}</div>
-              <div className="pr-flead">{f.lead}</div>
-            </div>
-          );
-        })}
-      </div>
+      <PillarGrid
+        filary={FILARY}
+        active={active}
+        setActive={setActive}
+        filarGradient={filarGradient}
+      />
 
       {/* ACTIVE SECTION */}
-      <section className="pr-section">
-        <div className="pr-section-head">
-          <div className="pr-section-title">
-            <div
-              className="pr-ficon"
-              style={{ background: activeFilar.color, width: 34, height: 34, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}
-            >
-              <activeFilar.icon size={17} color="#fff" />
-            </div>
-            <div>
-              <h2 className="pr-serif">{activeFilar.label}</h2>
-              <p className="pr-section-desc">{activeFilar.desc}</p>
-            </div>
-          </div>
-          <div className="pr-more" style={{ color: activeFilar.color }}>
-            Zobacz wszystkie <ArrowUpRight size={14} />
-          </div>
-        </div>
-
-        <div className="pr-grid">
-          {ARTICLES[active].map((a, i) => (
-            <article className="pr-card" key={i} onClick={() => handleOpenArticle(i)}>
-              <div
-                className="pr-card-img"
-                style={{
-                  "--tint": activeFilar.tint,
-                  backgroundImage:
-                    active === "eko"
-                      ? i === 0
-                        ? `url('${HERO_POST.image}')`
-                        : i === 1
-                        ? `url('${EKO_POST_IMAGES[1]}')`
-                        : i === 2
-                        ? `url('${EKO_POST_IMAGES[2]}')`
-                        : undefined
-                      : undefined,
-                }}
-              />
-              <div className="pr-card-body">
-                <h3>{a.title}</h3>
-                <p>{a.excerpt}</p>
-                <div className="pr-card-foot">
-                  <span>{a.author}</span>
-                  <span className="pr-share-count" style={{ color: activeFilar.color }}>
-                    <Share2 size={11} /> {a.shares}
-                  </span>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <ActivePillarContent
+        activeFilar={activeFilar}
+        articles={ARTICLES}
+        handleOpenArticle={handleOpenArticle}
+      />
 
       {/* NEWSLETTER */}
       <section className="pr-newsletter">
@@ -1236,42 +1086,7 @@ export default function PulsRegionuMockup() {
       </div>
 
       {/* FOOTER */}
-      <footer className="pr-footer">
-        <div className="pr-footer-grid">
-          <div>
-            <div className="pr-serif" style={{ fontSize: 22, color: "#fff", marginBottom: 10 }}>
-              Puls Regionu
-            </div>
-            <p style={{ maxWidth: "32ch" }}>
-              Wydawane przez Fundację Warmia i Mazury w Europie. Od 20 lat piszemy o
-              ludziach, którzy realnie zmieniają swój region.
-            </p>
-          </div>
-          <div>
-            <h4>Filary portalu</h4>
-            {FILARY.map((f) => (
-              <a key={f.id}>{f.label}</a>
-            ))}
-          </div>
-          <div>
-            <h4>Fundacja</h4>
-            <a>O nas</a>
-            <a>Konkurs Eko Sołectwa</a>
-            <a>Partnerzy i granty</a>
-            <a>Kontakt dla redakcji</a>
-          </div>
-          <div>
-            <h4>Dla partnerów</h4>
-            <a>Współpraca z gminami</a>
-            <a>Sponsoring sekcji</a>
-            <a>Reklama regionalna</a>
-          </div>
-        </div>
-        <div className="pr-footer-bottom">
-          <span>© 2026 Puls Regionu — Fundacja Warmia i Mazury w Europie</span>
-          <span>Partner strategiczny konkursu: Remondis</span>
-        </div>
-      </footer>
+      <Footer filary={FILARY} onNavigate={onNavigate} />
     </div>
   );
 }
