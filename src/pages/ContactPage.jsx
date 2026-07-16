@@ -3,11 +3,40 @@ import Layout from "../components/layout/Layout";
 export default function ContactPage(props) {
   return (
     <Layout {...props}>
-      <div className="pr-section">
-        <h2 className="pr-serif">Kontakt</h2>
-        <p>Masz temat dla sołtysa? Napisz do nas!</p>
-        <button onClick={() => props.onNavigate('home')}>Wróć na stronę główną</button>
-      </div>
+      <section className="pr-section">
+        <div className="pr-section-head">
+          <div className="pr-section-title">
+            <h2 className="pr-serif">Kontakt</h2>
+            <p className="pr-section-desc">
+              REDAKCJA - KONTAKT
+            </p>
+          </div>
+        </div>
+
+        <div className="pr-contact-content">
+          <div className="pr-contact-card">
+            <h3 className="pr-contact-name">Dyr. Sylwia Szkamruk</h3>
+            <div className="pr-contact-details">
+              <div className="pr-contact-item">
+                <strong>tel. kom.:</strong> 508 163 198
+              </div>
+              <div className="pr-contact-item">
+                <strong>email:</strong> interprim@tlen.pl
+              </div>
+              <div className="pr-contact-item">
+                <strong>adres:</strong> ul. Św. Wojciecha 2/23, 10-038 Olsztyn
+              </div>
+              <div className="pr-contact-item">
+                <strong>tel. stacjonarny:</strong> 89 535 48 92 i 90
+              </div>
+            </div>
+          </div>
+
+          <div className="pr-contact-cta">
+            <h3 className="pr-contact-cta-title">ZAPRASZAMY DO WSPÓŁPRACY!</h3>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }
