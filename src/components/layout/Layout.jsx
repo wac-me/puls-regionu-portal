@@ -11,7 +11,7 @@ const FILARY = [
   { id: "ziemia", label: "Ziemia i Dom", color: "#A85A2E" },
   { id: "natura", label: "Natura i Turystyka", color: "#2D6E7E" },
   { id: "rodzina", label: "Rodzina i Wspólnota", color: "#9C4A6B" },
-  { id: "techno", label: "Techno-Region", color: "#3B5A8A" },
+  { id: "techno", label: "Inwestycje w Regionie", color: "#3B5A8A" },
 ];
 
 export default function Layout({ 
@@ -38,8 +38,7 @@ export default function Layout({
       {/* UTILITY BAR */}
       <div className="pr-utility">
         <div className="pr-utility-logo">
-          <img src="/logo_fundacji_warmi_i_mazur.png" alt="Logo Fundacji Warmia i Mazury" />
-          <span>Fundacja Warmia i Mazury w Europie</span>
+          <img src="/logo_PR_male.svg" alt="Logo Puls Regionu" className="pr-utility-logo-img" />
         </div>
         <span className="pr-dim pr-mono">1 lipca 2026 · Wydanie cyfrowe</span>
       </div>
@@ -75,27 +74,29 @@ export default function Layout({
       />
 
       {/* MASTHEAD */}
-      <Header onLogoClick={() => onNavigate('home')} />
+      <Header onLogoClick={() => onNavigate('home')} activePage={activePage} />
 
       {/* TICKER */}
       <LiveTicker tickerData={TICKER} />
 
-      {/* SUBMENU (.pr-nav) - TUTAJ SĄ FILARY */}
-      <nav className="pr-nav">
-        {FILARY.map((f) => (
-          <div
-            key={f.id}
-            className={`pr-nav-item ${activeFilarId === f.id ? "is-active" : ""}`}
-            onClick={() => {
-                if (activePage !== 'home') onNavigate('home');
-                setActiveFilarId && setActiveFilarId(f.id);
-            }}
-          >
-            <span className="pr-dot" style={{ background: f.color }} />
-            {f.label}
-          </div>
-        ))}
-      </nav>
+      {/* SUBMENU (.pr-nav) - TUTAJ SĄ FILARY - TYLKO NA STRONIE STARTOWEJ */}
+      {activePage === 'home' && (
+        <nav className="pr-nav">
+          {FILARY.map((f) => (
+            <div
+              key={f.id}
+              className={`pr-nav-item ${activeFilarId === f.id ? "is-active" : ""}`}
+              onClick={() => {
+                  if (activePage !== 'home') onNavigate('home');
+                  setActiveFilarId && setActiveFilarId(f.id);
+              }}
+            >
+              <span className="pr-dot" style={{ background: f.color }} />
+              {f.label}
+            </div>
+          ))}
+        </nav>
+      )}
 
       <main>
         {children}

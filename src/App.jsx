@@ -6,12 +6,17 @@ import ArchivePage from './pages/ArchivePage';
 import { useState, useCallback } from 'react';
 
 const TICKER = [
-  { gmina: "Sołectwo Bartoszyce", stat: "8,4 t elektroodpadów", trend: "+12%" },
-  { gmina: "Sołectwo Mrągowo", stat: "156 nowych nasadzeń", trend: "+34%" },
-  { gmina: "Sołectwo Giżycko", stat: "sprzęt OSP za 12 400 zł", trend: "nowość" },
-  { gmina: "Sołectwo Ostróda", stat: "3 ogrody społeczne", trend: "+2" },
-  { gmina: "Sołectwo Kętrzyn", stat: "22,1 t elektroodpadów", trend: "+8%" },
-  { gmina: "Sołectwo Pisz", stat: "czyste jezioro Roś — akcja 140 os.", trend: "rekord" },
+  { title: "Puls Regionu 153", date: "Luty 2026", url: "http://www.warmiamazury.tv/wp-content/uploads/2026/02/Puls-153TV.pdf" },
+  { title: "Puls Regionu 152", date: "Grudzień 2024", url: "http://www.warmiamazury.tv/wp-content/uploads/2024/12/Puls-Regionu152_TV.pdf" },
+  { title: "Puls Regionu 151", date: "Grudzień 2023", url: "http://www.warmiamazury.tv/wp-content/uploads/2023/12/Puls-Regionu-151_TV.pdf" },
+  { title: "Puls Regionu 149", date: "Styczeń 2023", url: "http://www.warmiamazury.tv/wp-content/uploads/2023/01/Puls-Regionu-149TV.pdf" },
+  { title: "Puls Regionu 148", date: "Styczeń 2023", url: "http://www.warmiamazury.tv/wp-content/uploads/2023/01/Puls-Regionu-148TV.pdf" },
+  { title: "Puls Regionu 146", date: "Sierpień 2021", url: "http://www.warmiamazury.tv/wp-content/uploads/2021/08/PulsTV146.pdf" },
+  { title: "Puls Regionu 145", date: "Grudzień 2020", url: "http://www.warmiamazury.tv/wp-content/uploads/2020/12/Puls-Regionu-145TV.pdf" },
+  { title: "Puls Regionu 144", date: "Październik 2020", url: "http://www.warmiamazury.tv/wp-content/uploads/2020/10/Puls-Regionu-144-TV.pdf" },
+  { title: "Puls Regionu 143", date: "Grudzień 2019", url: "http://www.warmiamazury.tv/wp-content/uploads/2019/12/Puls-Regionu-143TV.pdf" },
+  { title: "Puls Regionu 142", date: "Październik 2019", url: "http://www.warmiamazury.tv/wp-content/uploads/2019/10/Puls-Regionu-142.pdf" },
+  { title: "Puls Regionu 141", date: "Lipiec 2019", url: "http://www.warmiamazury.tv/wp-content/uploads/2019/07/Puls-Regionu-141_TV.pdf" },
 ];
 
 export default function App() {

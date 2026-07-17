@@ -78,10 +78,15 @@
           align-items: center;
           gap: 10px;
         }
-        .pr-utility-logo img {
-          width: 28px;
-          height: auto;
-          display: block;
+        .pr-utility-logo-img {
+          display: none;
+          height: 30px;
+          width: auto;
+        }
+        @media (min-width: 601px) {
+          .pr-utility-logo-img {
+            display: block;
+          }
         }
         .pr-utility span.pr-dim {
           opacity: 1;
@@ -284,6 +289,12 @@
           }
         }
 
+        .pr-masthead-compact .pr-header-winieta {
+          max-height: 60%;
+          width: auto;
+          margin: 0 auto;
+        }
+
         .pr-logo-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; z-index: 2; }
         .pr-logo-badge {
           width: auto;
@@ -315,44 +326,63 @@
           background: linear-gradient(360deg, #EA0000 0%, #EA0000 100%);
         }
         /* ---- ticker ---- */
-        .pr-ticker {
+        .pr-ticker-wrapper {
           background: linear-gradient(90deg, #264ECD, #2280F7);
-          overflow: hidden;
-          white-space: nowrap;
           position: relative;
           box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.12);
-        }
-        .pr-ticker-inner {
           display: flex;
           align-items: center;
-          padding: 12px 24px;
-          gap: 18px;
-          position: relative;
+          padding: 10px 20px;
+          width: 100%;
         }
-        .pr-ticker-label {
+        .pr-ticker-prefix {
           flex-shrink: 0;
           display: inline-flex;
           align-items: center;
-          background: #E9443B;
-          color: #FFF;
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          padding: 6px 14px;
+          gap: 8px;
+          padding: 5px 12px;
+          background: var(--brand-blue);
           border-radius: 999px;
-          z-index: 2;
+          color: #fff;
+          font-weight: 600;
+          font-size: 12px;
+          margin-right: 15px;
+          border: 1px solid rgba(255,255,255,0.3);
+          white-space: nowrap;
+          z-index: 10;
+          position: relative;
+        }
+        .pr-ticker-track-container {
+          flex: 1;
+          overflow: hidden;
+          position: relative;
         }
         .pr-ticker-track {
           display: flex;
-          gap: 40px;
+          gap: 60px;
           will-change: transform;
-          min-width: 100%;
           position: relative;
-          z-index: 1;
+          white-space: nowrap;
         }
-        .pr-ticker-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.92); font-size: 13px; flex-shrink: 0; }
-        .pr-ticker-item b { color: #fff; font-weight: 700; }
-        .pr-ticker-trend { font-size: 11px; padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,0.18); color: #D3E6FF; }
+        .pr-ticker-item {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: rgba(255,255,255,0.92);
+          font-size: 12px;
+          flex-shrink: 0;
+          text-decoration: none;
+          transition: color 0.2s ease;
+          white-space: nowrap;
+        }
+        .pr-ticker-item:hover {
+          color: #fff;
+          text-decoration: underline;
+        }
+        .pr-ticker-item strong {
+          color: #fff;
+          font-weight: 700;
+        }
 
         /* ---- nav ---- */
         .pr-nav {
@@ -735,6 +765,27 @@
           color: var(--text);
           line-height: 1.7;
           margin: 0;
+        }
+        .pr-about-offer {
+          margin-top: 32px;
+          text-align: center;
+        }
+        .pr-about-offer-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 16px 32px;
+          background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-green) 100%);
+          color: #fff;
+          text-decoration: none;
+          border-radius: 12px;
+          font-weight: 600;
+          font-size: 16px;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .pr-about-offer-link:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(32, 150, 209, 0.3);
         }
 
         /* ---- contact page ---- */

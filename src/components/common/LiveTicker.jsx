@@ -9,23 +9,32 @@ export default function LiveTicker({ tickerData }) {
     let pos = 0;
     let raf;
     const step = () => {
-      pos -= 0.5;
+      pos -= 1;
       if (Math.abs(pos) >= el.scrollWidth / 2) pos = 0;
       el.style.transform = `translateX(${pos}px)`;
       raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [tickerData]);
 
   return (
     <div className="pr-ticker-wrapper">
-      <div className="pr-ticker-track" ref={trackRef}>
-        {[...tickerData, ...tickerData].map((item, i) => (
-          <div key={i} className="pr-ticker-item">
-            <strong>{item.gmina}</strong>: {item.stat} <span className="pr-trend">{item.trend}</span>
-          </div>
-        ))}
+      <span className="pr-ticker-prefix">Pobierz Nr. archiwalne:</span>
+      <div className="pr-ticker-track-container">
+        <div className="pr-ticker-track" ref={trackRef}>
+          {[...tickerData, ...tickerData].map((item, i) => (
+            <a
+              key={i}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pr-ticker-item"
+            >
+              <strong>{item.title}</strong> - {item.date}
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );

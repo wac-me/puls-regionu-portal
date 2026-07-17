@@ -1,4 +1,5 @@
 import Layout from "../components/layout/Layout";
+import { Download } from "lucide-react";
 
 export default function AboutPage(props) {
   return (
@@ -35,6 +36,18 @@ export default function AboutPage(props) {
             <p>
               Redakcja Pulsu Regionu Magazynu Samorządów Województwa Warmińsko-Mazurskiego XVI coroczną akcję związaną z ochroną środowiska pod nazwą EKO-SOŁECTWO, polegającą na zbiórce elektrośmieci z naszego województwa (pralki, lodówki, odkurzacze, telewizory itd.). Zbiórka trwa do końca 2026 r. Do tej pory sołectwa i OSP zebrały ponad 2 miliony kg elektrośmieci!
             </p>
+          </div>
+
+          <div className="pr-about-offer">
+            <a
+              href="/PULS_REGIONU_OFERTA.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pr-about-offer-link"
+            >
+              <Download size={20} />
+              Pobierz ofertę reklamową
+            </a>
           </div>
         </div>
       </section>

@@ -54,7 +54,7 @@ const FILARY_DATA = [
   },
   {
     id: "techno",
-    label: "Techno-Region",
+    label: "Inwestycje w Regionie",
     icon: Cpu,
     color: "#3B5A8A",
     tint: "#E4E9F3",
@@ -261,7 +261,7 @@ export default function PulsRegionuMockup(props) {
       {/* SPONSOR BAR */}
       <div className="pr-sponsor-bar">
         <div className="pr-sponsor-logo">
-          <img src="/logo_fundacji_warmi_i_mazur.png" alt="Logo Fundacji Warmia i Mazury" />
+          <img src="/logo_PR_male.svg" alt="Logo Puls Regionu" />
         </div>
         <div className="pr-sponsor-text">Fundacja Warmia i Mazury w Europie</div>
         <div className="pr-sponsor-logo pr-sponsor-logo--right">

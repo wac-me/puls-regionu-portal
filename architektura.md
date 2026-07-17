@@ -30,7 +30,7 @@ Portal ma docelowo łączyć dynamicznie zmieniające się informacje z lokalnyc
     - [ ] **O nas / O projekcie** (informacje o inicjatywie).
     - [ ] **Kontakt / Zgłoś temat** (formularz kontaktowy dla mieszkańców/sołtysów).
     - [ ] **Artykuły** (szablon pojedynczego artykułu/wpisu).
-    - [ ] **Działy/Filary** (osobne widoki dla Eko-Regionu, Techno-Regionu itd.).
+    - [ ] **Działy/Filary** (osobne widoki dla Eko-Regionu, Inwestycji w Regionie itd.).
 
 ### Faza 3: Usprawnienia UX i Dostępność (a11y)
 - [ ] Pełne uruchomienie panelu dostępności (skróty, zmiana kontrastu, zmiana wielkości czcionki).
