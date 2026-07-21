@@ -45,7 +45,7 @@ const FILARY_DATA = [
   },
   {
     id: "rodzina",
-    label: "Rodzina i Wspólnota",
+    label: "Atrakcje w Regionie",
     icon: Users2,
     color: "#9C4A6B",
     tint: "#F2E3EA",
