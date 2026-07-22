@@ -24,7 +24,7 @@ export default function ActivePillarContent({ activeFilar, articles, handleOpenA
       <div className="pr-grid">
         {(articles[activeFilar.id] || []).map((a, i) => (
           <article key={i} className="pr-card" onClick={() => handleOpenArticle(i)}>
-            <div className="pr-card-img" style={{ background: activeFilar.tint }} />
+            <div className="pr-card-img" style={{ backgroundImage: `url('${a.image}')` }} />
             <div className="pr-card-body">
               <h3>{a.title}</h3>
               <p>{a.excerpt}</p>

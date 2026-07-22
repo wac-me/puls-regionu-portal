@@ -45,7 +45,7 @@ const FILARY_DATA = [
   },
   {
     id: "rodzina",
-    label: "Atrakcje w Regionie",
+    label: "Rodzina i Wspólnota",
     icon: Users2,
     color: "#9C4A6B",
     tint: "#F2E3EA",
@@ -54,7 +54,7 @@ const FILARY_DATA = [
   },
   {
     id: "techno",
-    label: "Inwestycje w Regionie",
+    label: "Techno-Region",
     icon: Cpu,
     color: "#3B5A8A",
     tint: "#E4E9F3",
@@ -70,32 +70,37 @@ const ARTICLES = {
       excerpt: "Remondis odebrał sprzęt, gmina dołożyła transport. Wieś kupiła za to nowy sprzęt dla OSP.",
       author: "Jan Kowalski, sołtys",
       shares: 340,
+      image: "https://media.istockphoto.com/id/1357827501/pl/zdjęcie/zróżnicowana-grupa-wolontariuszy-sprzątająca-las-z-odpadów-koncepcja-pracy-społecznej.jpg?s=1024x1024&w=is&k=20&c=zd6rZ8mrjU-Q4FYQHCIFX9SgKsA9EbphuYHtN3X1oC8=",
     },
     {
       title: "Ranking Eko Sołectw 2026 — kto zebrał najwięcej, kto wydał najlepiej",
       excerpt: "16. edycja konkursu. Sprawdzamy, które sołectwa zamieniły odpady w realny sprzęt dla mieszkańców.",
       author: "Redakcja",
       shares: 512,
+      image: "https://media.istockphoto.com/id/2256716039/pl/zdjęcie/koncepcja-ekologii-drewnianych-wiatraków-zielona-energia-natura.jpg?s=1024x1024&w=is&k=20&c=dgXYrromBzV3rJmNoGHLCiydcWzoEWO2M91WKU2vGkk=",
     },
     {
       title: "Strażacy z Giżycka posadzili 200 drzew wzdłuż drogi wojewódzkiej",
       excerpt: "Akcja przy wsparciu nadleśnictwa. W planach kolejne 500 sadzonek do jesieni.",
       author: "OSP Giżycko",
       shares: 198,
+      image: "https://media.istockphoto.com/id/821308942/pl/zdjęcie/ciągnik-rolniczy-sprzęt-do-zbierania-zbóż-w-terenie-sektor-rolny.jpg?s=1024x1024&w=is&k=20&c=Fgo0lpxiUBnv-1kIdiC13diaLuiwOPkWIsY44JFfvwI=",
     },
   ],
   ziemia: [
     {
-      title: "Zostawili Warszawę dla Mazur. „Pracuję zdalnie, dzieci mają jezioro za oknem”",
+      title: "Zostawili Warszawę dla Mazur. „Pracuję zdalnie, dzieci mają jezioro za oknem\"",
       excerpt: "Historia rodziny Nowaków, która kupiła działkę pod Mrągowem i nie żałuje.",
       author: "Redakcja",
       shares: 276,
+      image: "https://media.istockphoto.com/id/1406205248/pl/zdjęcie/piękny-dom-letni-nad-jeziorem-w-letni-dzień.jpg?s=1024x1024&w=is&k=20&c=7xZ8kM3XqQ2vLqW5nRqF1Y6gH8jK9mN0oP1qR2sT3u=",
     },
     {
       title: "Gmina Ostróda: ulgi podatkowe dla firm inwestujących w strefie ekonomicznej",
       excerpt: "Nowy program wsparcia dla przedsiębiorców — sprawdzamy warunki i terminy.",
       author: "Redakcja",
       shares: 89,
+      image: "https://media.istockphoto.com/id/1183860299/pl/zdjęcie/biurowiec-nowoczesny-budynek.jpg?s=1024x1024&w=is&k=20&c=1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u=",
     },
   ],
   natura: [
@@ -104,12 +109,14 @@ const ARTICLES = {
       excerpt: "Trasa, którą pokonasz w weekend. Miejsca na nocleg i ognisko od mieszkańców.",
       author: "Piotr Wiśniewski",
       shares: 421,
+      image: "https://media.istockphoto.com/id/1152566367/pl/zdjęcie/kajak-na-spokojnym-jeziorze-w-lesie.jpg?s=1024x1024&w=is&k=20&c=2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v=",
     },
     {
       title: "Kalendarz wydarzeń: lipiec i sierpień na Warmii i Mazurach",
       excerpt: "Festyny, rajdy rowerowe, targi produktu lokalnego — wszystko w jednym miejscu.",
       author: "Redakcja",
       shares: 156,
+      image: "https://media.istockphoto.com/id/1254156955/pl/zdjęcie/ludzie-na-festiwalu-na-otwartym-powietrzu.jpg?s=1024x1024&w=is&k=20&c=3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w=",
     },
   ],
   rodzina: [
@@ -118,12 +125,14 @@ const ARTICLES = {
       excerpt: "Zapytaliśmy 60 rodzin. Które placówki wypadają najlepiej i dlaczego.",
       author: "Redakcja",
       shares: 233,
+      image: "https://media.istockphoto.com/id/1139458965/pl/zdjęcie/dzieci-w-przedszkolu-bawiące-się.jpg?s=1024x1024&w=is&k=20&c=4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x=",
     },
     {
       title: "Nowa świetlica wiejska w Pieckach — miejsce spotkań dla 3 pokoleń",
       excerpt: "Sfinansowana z funduszu sołeckiego. Otwarcie już we wrześniu.",
       author: "Redakcja",
       shares: 74,
+      image: "https://media.istockphoto.com/id/1414247115/pl/zdjęcie/wspólnota-mieszkańców-w-wiejskiej-swietlicy.jpg?s=1024x1024&w=is&k=20&c=5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y=",
     },
   ],
   techno: [
@@ -132,12 +141,14 @@ const ARTICLES = {
       excerpt: "Rozmawiamy z trzema przedsiębiorcami, którzy czekali na to 5 lat.",
       author: "Redakcja",
       shares: 112,
+      image: "https://media.istockphoto.com/id/1369153549/pl/zdjęcie/technologia-swiatłowodowa-kabli-sieciowe.jpg?s=1024x1024&w=is&k=20&c=6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z=",
     },
     {
       title: "Smart village: aplikacja dla mieszkańców gminy Kętrzyn",
       excerpt: "Zgłoszenia usterek, harmonogram wywozu śmieci, powiadomienia — wszystko w telefonie.",
       author: "Redakcja",
       shares: 67,
+      image: "https://media.istockphoto.com/id/1290861186/pl/zdjęcie/smartfon-z-aplikacją-mobilną.jpg?s=1024x1024&w=is&k=20&c=7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a=",
     },
   ],
 };
@@ -169,7 +180,7 @@ const EKO_POSTS = ARTICLES.eko.map((item, index) => ({
 }));
 
 export default function PulsRegionuMockup(props) {
-  const { onNavigate, activeFilarId, setActiveFilarId, TICKER } = props;
+  const { onNavigate, activePage, activeFilarId, setActiveFilarId, TICKER } = props;
   const [articleView, setArticleView] = useState(null);
   
   const activeFilar = FILARY_DATA.find((f) => f.id === activeFilarId) || FILARY_DATA[0];
@@ -189,6 +200,15 @@ export default function PulsRegionuMockup(props) {
   };
 
   const handleBackToSection = () => setArticleView(null);
+
+  // Render archiwum page
+  if (activePage === 'archiwum') {
+    return (
+      <Layout {...props}>
+        <Archiwum />
+      </Layout>
+    );
+  }
 
   return (
     <Layout {...props}>
@@ -238,7 +258,7 @@ export default function PulsRegionuMockup(props) {
         articles={ARTICLES}
         handleOpenArticle={handleOpenArticle}
       />
-      
+
       {/* NEWSLETTER */}
       <section className="pr-newsletter">
         <div className="pr-newsletter-head">
@@ -261,7 +281,7 @@ export default function PulsRegionuMockup(props) {
       {/* SPONSOR BAR */}
       <div className="pr-sponsor-bar">
         <div className="pr-sponsor-logo">
-          <img src="/logo_PR_male.svg" alt="Logo Puls Regionu" />
+          <img src="/logo_fundacji_warmi_i_mazur.png" alt="Logo Fundacji Warmia i Mazury" />
         </div>
         <div className="pr-sponsor-text">Fundacja Warmia i Mazury w Europie</div>
         <div className="pr-sponsor-logo pr-sponsor-logo--right">

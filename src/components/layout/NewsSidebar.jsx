@@ -7,6 +7,15 @@ const NEWS_ITEMS = [
   { id: 'news-6', label: 'Szlak kajakowy przez 5 jezior — przewodnik od lokalnego sternika', category: 'Natura i Turystyka' },
 ];
 
+const ARCHIVE_ITEMS = [
+  { url: "http://www.warmiamazury.tv/wp-content/uploads/2026/02/Puls-153TV.pdf", title: "Puls Regionu 153", date: "Luty 2026" },
+  { url: "http://www.warmiamazury.tv/wp-content/uploads/2024/12/Puls-Regionu152_TV.pdf", title: "Puls Regionu 152", date: "Grudzień 2024" },
+  { url: "http://www.warmiamazury.tv/wp-content/uploads/2023/12/Puls-Regionu-151_TV.pdf", title: "Puls Regionu 151", date: "Grudzień 2023" },
+  { url: "http://www.warmiamazury.tv/wp-content/uploads/2023/01/Puls-Regionu-149TV.pdf", title: "Puls Regionu 149", date: "Styczeń 2023" },
+  { url: "http://www.warmiamazury.tv/wp-content/uploads/2023/01/Puls-Regionu-148TV.pdf", title: "Puls Regionu 148", date: "Styczeń 2023" },
+  { url: "http://www.warmiamazury.tv/wp-content/uploads/2021/08/PulsTV146.pdf", title: "Puls Regionu 146", date: "Sierpień 2021" },
+];
+
 export default function NewsSidebar() {
   return (
     <aside className="pr-news-sidebar">
@@ -22,7 +31,20 @@ export default function NewsSidebar() {
           ))}
         </ul>
       </div>
-      
+
+      <div className="pr-sidebar-section">
+        <h3 className="pr-sidebar-title pr-serif">Archiwum</h3>
+        <ul className="pr-sidebar-list">
+          {ARCHIVE_ITEMS.map((item, index) => (
+            <li key={index}>
+              <a href={item.url} target="_blank" rel="noopener noreferrer" className="pr-sidebar-link">
+                {item.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className="pr-sidebar-section pr-sidebar-promo">
         <h4 className="pr-sidebar-title pr-serif">Wydanie drukowane</h4>
         <p className="pr-sidebar-text">Sprawdź gdzie kupisz najnowszy numer Pulsu Regionu.</p>

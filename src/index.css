@@ -505,9 +505,7 @@
           border-bottom: 1px solid var(--border);
           position: relative;
           overflow: hidden;
-          background: radial-gradient(circle at top left, rgba(35, 169, 224, 0.18), transparent 32%),
-            radial-gradient(circle at bottom right, rgba(123, 193, 66, 0.14), transparent 28%),
-            linear-gradient(140deg, #f9fcfe 0%, #eef9f5 42%, #eef5fb 100%);
+          background: #F6F8FB;
           color: var(--text);
         }
         .pr-hero-eyebrow {
@@ -603,37 +601,13 @@
         }
         .pr-newsletter {
           position: relative;
-          background: radial-gradient(circle at top left, rgba(35, 169, 224, 0.22), transparent 32%),
-            radial-gradient(circle at bottom right, rgba(123, 193, 66, 0.18), transparent 28%),
-            linear-gradient(145deg, #eef9f5 0%, #d9ecf9 55%, #f4f7ff 100%);
+          background: #F6F8FB;
           padding: 42px 24px;
           margin: 0 0 28px;
           border-radius: 0;
           box-shadow: 0 28px 72px rgba(15, 23, 42, 0.14);
           border: 1px solid rgba(34, 60, 80, 0.08);
           overflow: hidden;
-        }
-        .pr-newsletter::before,
-        .pr-newsletter::after {
-          content: '';
-          position: absolute;
-          border-radius: 50%;
-          opacity: 0.35;
-          pointer-events: none;
-        }
-        .pr-newsletter::before {
-          width: 120px;
-          height: 120px;
-          background: rgba(35, 169, 224, 0.16);
-          top: -30px;
-          right: -40px;
-        }
-        .pr-newsletter::after {
-          width: 180px;
-          height: 180px;
-          background: rgba(123, 193, 66, 0.16);
-          bottom: -40px;
-          left: -50px;
         }
         .pr-newsletter-head {
           display: flex;
