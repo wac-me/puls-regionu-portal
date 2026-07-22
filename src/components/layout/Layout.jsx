@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import Header from "./Header";
 import LiveTicker from "../common/LiveTicker";
 import AccessibilityBar from "./AccessibilityBar";
@@ -61,6 +61,7 @@ export default function Layout({
           <li><button className={`pr-main-nav-item${activePage === 'konkurs' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('konkurs'); }}>Konkurs</button></li>
           <li><button className={`pr-main-nav-item${activePage === 'archiwum' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('archiwum'); }}>Archiwum</button></li>
           <li><button className={`pr-main-nav-item${activePage === 'kontakt' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('kontakt'); }}>Kontakt</button></li>
+          <li><button className="pr-main-nav-item" disabled aria-label="Szukaj"><Search size={20} /></button></li>
         </ul>
       </nav>
 
