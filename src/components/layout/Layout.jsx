@@ -4,6 +4,7 @@ import Header from "./Header";
 import LiveTicker from "../common/LiveTicker";
 import AccessibilityBar from "./AccessibilityBar";
 import Footer from "./Footer";
+import NewsSidebar from "./NewsSidebar";
 
 // Statyczna lista filarów (Eko, Ziemia, Natura, Rodzina, Techno)
 const FILARY = [
@@ -99,7 +100,12 @@ export default function Layout({
       )}
 
       <main>
-        {children}
+        <div className="pr-layout-container">
+          <NewsSidebar />
+          <div className="pr-main-content">
+            {children}
+          </div>
+        </div>
       </main>
 
       {/* FOOTER */}
