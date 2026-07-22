@@ -1,10 +1,10 @@
 const NEWS_ITEMS = [
-  { id: 'eko-1', label: 'Nowe projekty ochrony przyrody w regionie', category: 'Eko-region' },
-  { id: 'eko-2', label: 'Eko-turystyka staje się trendem', category: 'Eko-region' },
-  { id: 'dom-1', label: 'Trendy w budownictwie jednorodzinnym', category: 'Ziemia i Dom' },
-  { id: 'dom-2', label: 'Jak zadbać o ogród w tym sezonie?', category: 'Ziemia i Dom' },
-  { id: 'inwest-1', label: 'Nowa strefa ekonomiczna powstaje pod miastem', category: 'Inwestycje w Regionie' },
-  { id: 'inwest-2', label: 'Wsparcie dla lokalnych przedsiębiorców', category: 'Inwestycje w Regionie' },
+  { id: 'news-1', label: 'Sołtys z Bartoszyc zebrał 8 ton elektroodpadów w jeden weekend', category: 'Eko-region' },
+  { id: 'news-2', label: 'Ranking Eko Sołectw 2026 — kto zebrał najwięcej?', category: 'Eko-region' },
+  { id: 'news-3', label: 'Zostawili Warszawę dla Mazur. „Pracuję zdalnie, dzieci mają jezioro za oknem”', category: 'Ziemia i Dom' },
+  { id: 'news-4', label: 'Strażacy z Giżycka posadzili 200 drzew wzdłuż drogi wojewódzkiej', category: 'Natura i Turystyka' },
+  { id: 'news-5', label: 'Gmina Ostróda: ulgi podatkowe dla firm inwestujących w strefie', category: 'Inwestycje w Regionie' },
+  { id: 'news-6', label: 'Szlak kajakowy przez 5 jezior — przewodnik od lokalnego sternika', category: 'Natura i Turystyka' },
 ];
 
 export default function NewsSidebar() {
