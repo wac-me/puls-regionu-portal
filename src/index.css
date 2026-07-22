@@ -641,11 +641,10 @@
         }
         .pr-newsletter {
           position: relative;
-          background: #F6F8FB;
+          background: #F1F3F6;
           padding: 42px 24px;
           margin: 0 0 28px;
           border-radius: 0;
-          box-shadow: 0 28px 72px rgba(15, 23, 42, 0.14);
           border: 1px solid rgba(34, 60, 80, 0.08);
           overflow: hidden;
         }
