@@ -1,7 +1,7 @@
-import { Accessibility, ZoomIn, Contrast, Eye } from "lucide-react";
+import { Accessibility, ZoomIn, Contrast, Eye, Layout } from "lucide-react";
 import { useEffect } from "react";
 
-export default function AccessibilityBar({ panelOpen, setPanelOpen, largeText, setLargeText, highContrast, setHighContrast, grayscaleMode, setGrayscaleMode }) {
+export default function AccessibilityBar({ panelOpen, setPanelOpen, largeText, setLargeText, highContrast, setHighContrast, grayscaleMode, setGrayscaleMode, layoutTheme, setLayoutTheme }) {
   useEffect(() => {
     let timeout;
     if (panelOpen) {
@@ -13,6 +13,14 @@ export default function AccessibilityBar({ panelOpen, setPanelOpen, largeText, s
       if (timeout) clearTimeout(timeout);
     };
   }, [panelOpen, setPanelOpen]);
+
+  const layoutThemes = ['default', 'layout1', 'layout2'];
+
+  const cycleLayoutTheme = () => {
+    const currentIndex = layoutThemes.indexOf(layoutTheme);
+    const nextIndex = (currentIndex + 1) % layoutThemes.length;
+    setLayoutTheme(layoutThemes[nextIndex]);
+  };
 
   return (
     <div className={`pr-accessibility-container ${panelOpen ? "is-open" : "is-closed"}`}>
@@ -52,6 +60,15 @@ export default function AccessibilityBar({ panelOpen, setPanelOpen, largeText, s
         >
           <Eye size={16} />
           Skala szarości
+        </button>
+        <button
+          type="button"
+          className={layoutTheme !== 'default' ? "is-active" : ""}
+          aria-pressed={layoutTheme !== 'default'}
+          onClick={cycleLayoutTheme}
+        >
+          <Layout size={16} />
+          Layout: {layoutTheme === 'default' ? 'Domyślny' : layoutTheme === 'layout1' ? 'Klasyczny' : 'Nowoczesny'}
         </button>
       </div>
     </div>

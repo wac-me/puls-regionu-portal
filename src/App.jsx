@@ -28,6 +28,7 @@ export default function App() {
   const [largeText, setLargeText] = useState(false);
   const [highContrast, setHighContrast] = useState(false);
   const [grayscaleMode, setGrayscaleMode] = useState(false);
+  const [layoutTheme, setLayoutTheme] = useState('default');
 
   const navigateTo = useCallback((page) => {
     setCurrentPage(page);
@@ -43,7 +44,8 @@ export default function App() {
     panelOpen, setPanelOpen,
     largeText, setLargeText,
     highContrast, setHighContrast,
-    grayscaleMode, setGrayscaleMode
+    grayscaleMode, setGrayscaleMode,
+    layoutTheme, setLayoutTheme
   };
 
   const renderContent = () => {

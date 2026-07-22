@@ -15,26 +15,28 @@ const FILARY = [
   { id: "techno", label: "Inwestycje w Regionie", color: "#3B5A8A" },
 ];
 
-export default function Layout({ 
-  children, 
-  onNavigate, 
-  activePage, 
-  TICKER, 
-  panelOpen, 
-  setPanelOpen, 
-  largeText, 
-  setLargeText, 
-  highContrast, 
-  setHighContrast, 
-  grayscaleMode, 
+export default function Layout({
+  children,
+  onNavigate,
+  activePage,
+  TICKER,
+  panelOpen,
+  setPanelOpen,
+  largeText,
+  setLargeText,
+  highContrast,
+  setHighContrast,
+  grayscaleMode,
   setGrayscaleMode,
+  layoutTheme,
+  setLayoutTheme,
   activeFilarId,
   setActiveFilarId
 }) {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <div className={`pr-root${largeText ? " pr-large-text" : ""}${highContrast ? " pr-high-contrast" : ""}${grayscaleMode ? " pr-grayscale" : ""}`}>
+    <div className={`pr-root${largeText ? " pr-large-text" : ""}${highContrast ? " pr-high-contrast" : ""}${grayscaleMode ? " pr-grayscale" : ""} pr-layout-${layoutTheme}`}>
       
       {/* UTILITY BAR */}
       <div className="pr-utility">
@@ -72,6 +74,8 @@ export default function Layout({
         setHighContrast={setHighContrast}
         grayscaleMode={grayscaleMode}
         setGrayscaleMode={setGrayscaleMode}
+        layoutTheme={layoutTheme}
+        setLayoutTheme={setLayoutTheme}
       />
 
       {/* MASTHEAD */}

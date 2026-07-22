@@ -266,6 +266,46 @@
         }
         .pr-root.pr-grayscale { filter: grayscale(100%); }
 
+        /* ---- color themes ---- */
+        .pr-root.pr-color-warm {
+          --brand-blue: #E85D04;
+          --brand-green: #F48C06;
+        }
+        .pr-root.pr-color-dark {
+          --brand-blue: #4A90E2;
+          --brand-green: #50E3C2;
+          background: #1a1a2e;
+          color: #eee;
+        }
+        .pr-root.pr-color-dark .pr-utility,
+        .pr-root.pr-color-dark .pr-main-nav,
+        .pr-root.pr-color-dark .pr-masthead {
+          background: #16213e;
+          color: #eee;
+        }
+        .pr-root.pr-color-dark .pr-hero {
+          background: #1a1a2e;
+        }
+        .pr-root.pr-color-dark .pr-newsletter {
+          background: #1a1a2e;
+        }
+        .pr-root.pr-color-pastel {
+          --brand-blue: #A8D8EA;
+          --brand-green: #AA96DA;
+        }
+
+        /* ---- font themes ---- */
+        .pr-root.pr-font-readable {
+          font-family: 'Verdana', 'Geneva', sans-serif;
+          letter-spacing: 0.02em;
+        }
+        .pr-root.pr-font-serif {
+          font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .pr-root.pr-font-mono {
+          font-family: 'Courier New', 'Monaco', monospace;
+        }
+
         /* ---- masthead ---- */
         .pr-masthead {
           padding: 0;
