@@ -1059,14 +1059,18 @@
         .pr-contact-item svg {
           color: var(--brand-blue);
         }
-        .pr-contest-poster {
-          text-align: center;
+        .pr-contest-posters {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          flex-wrap: wrap;
+          margin-top: 32px;
         }
         .pr-contest-poster-link {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          padding: 16px 32px;
+          padding: 16px 24px;
           background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-green) 100%);
           color: #fff;
           text-decoration: none;
@@ -1074,10 +1078,22 @@
           font-weight: 600;
           font-size: 16px;
           transition: transform 0.2s ease, box-shadow 0.2s ease;
+          white-space: nowrap;
         }
         .pr-contest-poster-link:hover {
           transform: translateY(-2px);
           box-shadow: 0 8px 20px rgba(32, 150, 209, 0.3);
+        }
+        @media (max-width: 600px) {
+          .pr-contest-posters {
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+          }
+          .pr-contest-poster-link {
+            width: 100%;
+            justify-content: center;
+          }
         }
 
         @media (max-width: 900px) {
