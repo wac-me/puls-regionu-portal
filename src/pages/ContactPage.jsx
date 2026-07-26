@@ -10,7 +10,8 @@ export default function ContactPage(props) {
             <p className="pr-section-desc">
               REDAKCJA - KONTAKT<br />
               PULS REGIONU MAGAZYN SAMORZĄDÓW WOJEWÓDZTWA WARMIŃSKO-MAZURSKIEGO<br />
-              wydawany od 1999 r.
+              wydawany od 1999 r.<br />
+              Fundacja "WARMIA I MAZURY W EUROPIE" JEST WYDAWCĄ gazety PULS REGIONU od 27 lat
             </p>
           </div>
         </div>
