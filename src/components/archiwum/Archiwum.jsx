@@ -78,10 +78,10 @@ export default function Archiwum() {
             <div>
               <span className="pr-serif" style={{fontSize: '2rem'}}>ARCHIWUM</span>
               <span style={{color: '#007BFF', margin: '0 0.3rem', fontSize: '2rem'}}>|</span>
-              <span style={{fontSize: '1rem', fontWeight: 300, color: '#555'}}>Wszystkie numery "Puls Regionu"</span>
+              <span className="pr-serif" style={{fontSize: '1rem', color: '#555', textAlign: 'left'}}>Wszystkie numery "Puls Regionu"</span>
             </div>
             <div style={{marginLeft: 'calc(2rem + 0.3rem)'}}>
-              <span style={{fontSize: '1rem', fontWeight: 300, color: '#555'}}>dostępne do pobrania w formacie PDF</span>
+              <span className="pr-serif" style={{fontSize: '1rem', color: '#555', textAlign: 'left'}}>dostępne do pobrania w formacie PDF</span>
             </div>
           </div>
         </div>
