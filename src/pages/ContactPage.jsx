@@ -11,10 +11,10 @@ export default function ContactPage(props) {
                 <div>
                   <span className="pr-serif" style={{fontSize: '2rem'}}>KONTAKT</span>
                   <span style={{color: '#007BFF', margin: '0 0.3rem', fontSize: '2rem'}}>|</span>
-                  <span className="pr-serif" style={{fontSize: '1rem', color: '#555', textAlign: 'left'}}>Puls Regionu - Magazyn Samorządów</span>
+                  <span className="pr-serif" style={{fontSize: '1.25rem', color: '#555', textAlign: 'left'}}>Puls Regionu - Magazyn Samorządów</span>
                 </div>
                 <div style={{marginLeft: 'calc(2rem + 0.3rem)'}}>
-                  <span className="pr-serif" style={{fontSize: '1rem', color: '#555', textAlign: 'left'}}>Województwa Warmińsko-Mazurskiego</span>
+                  <span className="pr-serif" style={{fontSize: '1.25rem', color: '#555', textAlign: 'left'}}>Województwa Warmińsko-Mazurskiego</span>
                 </div>
               </div>
             </div>
