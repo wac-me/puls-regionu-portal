@@ -47,7 +47,7 @@ export default function ContestPage(props) {
           </p>
         </div>
 
-        <div className="pr-contest-contact">
+        <div className="pr-contest-contact" style={{marginBottom: '60px'}}>
           <h2 className="pr-contest-contact-title">KONTAKT</h2>
           <div className="pr-contact-grid">
             <div className="pr-contact-person">
@@ -81,10 +81,10 @@ export default function ContestPage(props) {
           </div>
         </div>
 
-        <div style={{textAlign: 'center', marginBottom: '16px'}}>
-          <h3 className="pr-serif">Pobierz Plakaty na Konkurs!</h3>
+        <div style={{textAlign: 'center', margin: '40px 0 24px 0'}}>
+          <h3 className="pr-serif" style={{color: '#7BC142', fontSize: '1.8rem'}}>Pobierz Plakaty na Konkurs!</h3>
         </div>
-        <div className="pr-contest-posters">
+        <div className="pr-contest-posters" style={{marginTop: '0'}}>
           <a
             href="/plakat-eko-solectwo.pdf"
             target="_blank"
