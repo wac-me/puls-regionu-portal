@@ -8,7 +8,9 @@ export default function ContactPage(props) {
           <div className="pr-section-title">
             <h2 className="pr-serif">Kontakt</h2>
             <p className="pr-section-desc">
-              REDAKCJA - KONTAKT
+              REDAKCJA - KONTAKT<br />
+              PULS REGIONU MAGAZYN SAMORZĄDÓW WOJEWÓDZTWA WARMIŃSKO-MAZURSKIEGO<br />
+              wydawany od 1999 r.
             </p>
           </div>
         </div>
