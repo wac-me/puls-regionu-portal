@@ -1,5 +1,5 @@
 Terminal.app
-    ↓
+
 tmux
     ├── Aider | oupenrouter
     ├── Claude Code //wdrazany
