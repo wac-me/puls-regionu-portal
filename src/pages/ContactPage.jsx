@@ -6,13 +6,7 @@ export default function ContactPage(props) {
       <section className="pr-section">
         <div className="pr-section-head">
           <div className="pr-section-title">
-            <h2 className="pr-serif">Kontakt</h2>
-            <p className="pr-section-desc">
-              REDAKCJA - KONTAKT<br />
-              PULS REGIONU MAGAZYN SAMORZĄDÓW WOJEWÓDZTWA WARMIŃSKO-MAZURSKIEGO<br />
-              wydawany od 1999 r.<br />
-              Fundacja "WARMIA I MAZURY W EUROPIE" JEST WYDAWCĄ gazety PULS REGIONU od 27 lat
-            </p>
+            <h2 className="pr-serif">Kontakt | REDAKCJA - PULS REGIONU MAGAZYN SAMORZĄDÓW WOJEWÓDZTWA WARMIŃSKO-MAZURSKIEGO</h2>
           </div>
         </div>
 
@@ -22,9 +16,6 @@ export default function ContactPage(props) {
             <div className="pr-contact-details">
               <div className="pr-contact-item">
                 <strong>tel. kom.:</strong> 508 163 198
-              </div>
-              <div className="pr-contact-item">
-                <strong>tel.:</strong> 89 535 48 90, 89 535 48 92
               </div>
               <div className="pr-contact-item">
                 <strong>email:</strong> interprim@tlen.pl
@@ -44,10 +35,36 @@ export default function ContactPage(props) {
             </div>
           </div>
 
-          <div className="pr-contact-cta">
-            <h3 className="pr-contact-cta-title">ZAPRASZAMY DO WSPÓŁPRACY!</h3>
-            <div className="pr-contact-item">
-              <strong>Strona internetowa:</strong> <a href="https://www.warmiamazury.tv/pulsregionu" target="_blank" rel="noopener noreferrer">www.warmiamazury.tv/pulsregionu</a>
+          <div className="pr-contact-card">
+            <h3 className="pr-contact-name">PULS REGIONU</h3>
+            <div className="pr-contact-details">
+              <div className="pr-contact-item">
+                MAGAZYN SAMORZĄDÓW WOJEWÓDZTWA WARMIŃSKO-MAZURSKIEGO
+              </div>
+              <div className="pr-contact-item">
+                wydawany od 1999 r.
+              </div>
+              <div className="pr-contact-item">
+                <strong>tel.:</strong> 89 535 48 90, 89 535 48 92
+              </div>
+              <div className="pr-contact-item">
+                <strong>www:</strong> <a href="https://www.warmiamazury.tv/pulsregionu" target="_blank" rel="noopener noreferrer">warmiamazury.tv/pulsregionu</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="pr-contact-card">
+            <h3 className="pr-contact-name">WYDAWCA</h3>
+            <div className="pr-contact-details">
+              <div className="pr-contact-item">
+                Fundacja "WARMIA I MAZURY W EUROPIE"
+              </div>
+              <div className="pr-contact-item">
+                wydawca gazety PULS REGIONU od 27 lat
+              </div>
+              <div className="pr-contact-item">
+                <strong>adres:</strong> ul. Św. Wojciecha 2/23, 10-038 Olsztyn
+              </div>
             </div>
           </div>
         </div>
