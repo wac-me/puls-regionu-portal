@@ -2,13 +2,13 @@
 
 
     ├── Terminal.app
-    ├── tmux
-        ├── Aider / Claude Code === oupenrouter key
-    ├── npm run dev
-    └── Git
+        ├── tmux
+            ├── Aider / Claude Code === oupenrouter key
+            ├── npm run dev
+            └── Git
 
 edytor
 
-      ├── sublimetex 
+      ├── sublimetex / zed
 
 
