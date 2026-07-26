@@ -74,10 +74,16 @@ export default function Archiwum() {
     <section className="pr-section">
       <div className="pr-section-head">
         <div className="pr-section-title">
-          <h2 className="pr-serif">Archiwum wydań</h2>
-          <p className="pr-section-desc">
-            Wszystkie numery "Puls Regionu" dostępne do pobrania w formacie PDF.
-          </p>
+          <div style={{display: 'flex', flexDirection: 'column'}}>
+            <div>
+              <span className="pr-serif" style={{fontSize: '2rem'}}>ARCHIWUM</span>
+              <span style={{color: '#007BFF', margin: '0 0.3rem', fontSize: '2rem'}}>|</span>
+              <span style={{fontSize: '1rem', fontWeight: 300, color: '#555'}}>Wszystkie numery "Puls Regionu"</span>
+            </div>
+            <div style={{marginLeft: 'calc(2rem + 0.3rem)'}}>
+              <span style={{fontSize: '1rem', fontWeight: 300, color: '#555'}}>dostępne do pobrania w formacie PDF</span>
+            </div>
+          </div>
         </div>
       </div>
 
