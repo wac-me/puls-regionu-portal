@@ -26,6 +26,18 @@ export default function ContactPage(props) {
             </div>
           </div>
 
+          <div className="pr-contact-card">
+            <h3 className="pr-contact-name">JOLANTA GROCHOWSKA</h3>
+            <div className="pr-contact-details">
+              <div className="pr-contact-item">
+                <strong>tel. kom.:</strong> 502 153 565 i 504 748 929
+              </div>
+              <div className="pr-contact-item">
+                <strong>email:</strong> interprim2021@gmail.com
+              </div>
+            </div>
+          </div>
+
           <div className="pr-contact-cta">
             <h3 className="pr-contact-cta-title">ZAPRASZAMY DO WSPÓŁPRACY!</h3>
           </div>
