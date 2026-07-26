@@ -10,3 +10,5 @@ tmux
 
 edytor
       ├── sublimetext 
+
+
