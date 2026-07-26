@@ -56,11 +56,11 @@ export default function Layout({
           {navOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
         <ul className="pr-main-nav-list">
-          <li><button className={`pr-main-nav-item${activePage === 'home' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('home'); }}>Home</button></li>
-          <li><button className={`pr-main-nav-item${activePage === 'o-nas' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('o-nas'); }}>O nas</button></li>
-          <li><button className={`pr-main-nav-item${activePage === 'konkurs' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('konkurs'); }}>Konkurs</button></li>
-          <li><button className={`pr-main-nav-item${activePage === 'archiwum' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('archiwum'); }}>Archiwum</button></li>
-          <li><button className={`pr-main-nav-item${activePage === 'kontakt' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('kontakt'); }}>Kontakt</button></li>
+          <li><button className={`pr-main-nav-item${activePage === 'home' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('home'); }}>HOME</button></li>
+          <li><button className={`pr-main-nav-item${activePage === 'o-nas' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('o-nas'); }}>O NAS</button></li>
+          <li><button className={`pr-main-nav-item${activePage === 'konkurs' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('konkurs'); }}>KONKURS</button></li>
+          <li><button className={`pr-main-nav-item${activePage === 'archiwum' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('archiwum'); }}>ARCHIWUM</button></li>
+          <li><button className={`pr-main-nav-item${activePage === 'kontakt' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('kontakt'); }}>KONTAKT</button></li>
           <li><button className="pr-main-nav-item" disabled aria-label="Szukaj"><Search size={20} /></button></li>
         </ul>
       </nav>
