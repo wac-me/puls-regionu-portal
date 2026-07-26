@@ -20,7 +20,7 @@ export default function NewsSidebar() {
   return (
     <aside className="pr-news-sidebar">
       <div className="pr-sidebar-section">
-        <h3 className="pr-sidebar-title pr-serif">News</h3>
+        <h3 className="pr-sidebar-title pr-serif">Aktualności</h3>
         <ul className="pr-sidebar-list">
           {NEWS_ITEMS.map((item) => (
             <li key={item.id}>

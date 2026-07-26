@@ -5,8 +5,8 @@ export default function AboutPage(props) {
   return (
     <Layout {...props}>
       <section className="pr-section">
-        <div className="pr-section-head">
-          <div className="pr-section-title">
+        <div className="pr-section-head" style={{marginBottom: '6rem'}}>
+          <div className="pr-section-title" style={{paddingBottom: '3rem'}}>
             <div style={{display: 'flex', flexDirection: 'column'}}>
               <div>
                 <span className="pr-serif" style={{fontSize: '2rem'}}>O NAS</span>

@@ -7,7 +7,7 @@ export default function Footer({ filary, onNavigate }) {
             Puls Regionu
           </div>
           <p style={{ maxWidth: "32ch" }}>
-            Wydawane przez Fundację Warmia i Mazury w Europie. Od 20 lat piszemy o
+            Wydawane przez Fundację Warmia i Mazury w Europie. Od 27 lat piszemy o
             ludziach, którzy realnie zmieniają swój region.
           </p>
         </div>
