@@ -278,16 +278,7 @@ export default function PulsRegionuMockup(props) {
         </div>
       </section>
 
-      {/* SPONSOR BAR */}
-      <div className="pr-sponsor-bar">
-        <div className="pr-sponsor-logo">
-          <img src="/logo_fundacji_warmi_i_mazur.png" alt="Logo Fundacji Warmia i Mazury" />
-        </div>
-        <div className="pr-sponsor-text">Fundacja Warmia i Mazury w Europie</div>
-        <div className="pr-sponsor-logo pr-sponsor-logo--right">
-          <img src="/godlo_warmi_i_mazur_white.png" alt="Godło Warmii i Mazur" />
-        </div>
-      </div>
+      
     </Layout>
   );
 }
