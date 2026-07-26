@@ -9,6 +9,6 @@
 
 edytor
 
-      ├── sublimetex / zed
-
+      ├── edytor
+             ├── sublimetex / zed
 
