@@ -81,7 +81,7 @@ export default function ContestPage(props) {
           </div>
         </div>
 
-        <div className="pr-contest-poster">
+        <div className="pr-contest-posters">
           <a
             href="/plakat-eko-solectwo.pdf"
             target="_blank"
@@ -89,7 +89,16 @@ export default function ContestPage(props) {
             className="pr-contest-poster-link"
           >
             <Download size={20} />
-            Pobierz plakat konkursu
+            Konkurs Eko Sołectw
+          </a>
+          <a
+            href="/Plakat_XVI_Konkus.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pr-contest-poster-link"
+          >
+            <Download size={20} />
+            Plakat XVI Konkurs
           </a>
         </div>
       </section>
