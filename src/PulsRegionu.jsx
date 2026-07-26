@@ -18,7 +18,7 @@ import Layout from "./components/layout/Layout";
 const FILARY_DATA = [
   {
     id: "eko",
-    label: "Eko-Region",
+    label: "EKO-REGION",
     icon: Leaf,
     color: "#3E7A4F",
     tint: "#EAF1E4",
@@ -27,7 +27,7 @@ const FILARY_DATA = [
   },
   {
     id: "ziemia",
-    label: "Ziemia i Dom",
+    label: "ZIEMIA I DOM",
     icon: Home,
     color: "#A85A2E",
     tint: "#F3E7DA",
@@ -36,7 +36,7 @@ const FILARY_DATA = [
   },
   {
     id: "natura",
-    label: "Natura i Turystyka",
+    label: "NATURA I TURYSTYKA",
     icon: Mountain,
     color: "#2D6E7E",
     tint: "#E2EEF1",
@@ -45,7 +45,7 @@ const FILARY_DATA = [
   },
   {
     id: "rodzina",
-    label: "Rodzina i Wspólnota",
+    label: "RODZINA I WSPÓLNOTA",
     icon: Users2,
     color: "#9C4A6B",
     tint: "#F2E3EA",
@@ -54,7 +54,7 @@ const FILARY_DATA = [
   },
   {
     id: "techno",
-    label: "Techno-Region",
+    label: "TECHNO-REGION",
     icon: Cpu,
     color: "#3B5A8A",
     tint: "#E4E9F3",
