@@ -21,6 +21,9 @@ export default function ContactPage(props) {
                 <strong>tel. kom.:</strong> 508 163 198
               </div>
               <div className="pr-contact-item">
+                <strong>tel.:</strong> 89 535 48 90, 89 535 48 92
+              </div>
+              <div className="pr-contact-item">
                 <strong>email:</strong> interprim@tlen.pl
               </div>
             </div>
