@@ -15,19 +15,13 @@ export default function ContactPage(props) {
 
         <div className="pr-contact-content">
           <div className="pr-contact-card">
-            <h3 className="pr-contact-name">Dyr. Sylwia Szkamruk</h3>
+            <h3 className="pr-contact-name">DYR. SYLWIA SZKAMRUK</h3>
             <div className="pr-contact-details">
               <div className="pr-contact-item">
                 <strong>tel. kom.:</strong> 508 163 198
               </div>
               <div className="pr-contact-item">
                 <strong>email:</strong> interprim@tlen.pl
-              </div>
-              <div className="pr-contact-item">
-                <strong>adres:</strong> ul. Św. Wojciecha 2/23, 10-038 Olsztyn
-              </div>
-              <div className="pr-contact-item">
-                <strong>tel. stacjonarny:</strong> 89 535 48 92 i 90
               </div>
             </div>
           </div>
