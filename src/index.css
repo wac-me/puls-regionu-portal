@@ -1059,12 +1059,17 @@
         .pr-contact-item svg {
           color: var(--brand-blue);
         }
+        .pr-contest-header h3 {
+          color: var(--brand-green);
+          font-size: 1.5rem;
+          margin-bottom: 1.5rem;
+        }
         .pr-contest-posters {
           display: flex;
           justify-content: center;
           gap: 20px;
           flex-wrap: wrap;
-          margin-top: 32px;
+          margin: 32px 0 60px 0;
         }
         .pr-contest-poster-link {
           display: inline-flex;
