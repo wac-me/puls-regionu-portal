@@ -6,8 +6,10 @@ export default function ContactPage(props) {
       <section className="pr-section">
         <div className="pr-section-head">
           <div className="pr-section-title">
-            <h2 style={{fontWeight: 300, color: '#555'}}>
-              <span className="pr-serif" style={{color: '#000'}}>KONTAKT</span> | Puls Regionu - Magazyn Samorządów Województwa Warmińsko-Mazurskiego
+            <h2 style={{fontWeight: 300, color: '#555', fontSize: '1.1rem'}}>
+              <span className="pr-serif" style={{color: '#000'}}>KONTAKT</span> 
+              <span style={{color: '#007BFF', margin: '0 0.5rem'}}>|</span> 
+              Puls Regionu - Magazyn Samorządów Województwa Warmińsko-Mazurskiego
             </h2>
           </div>
         </div>
