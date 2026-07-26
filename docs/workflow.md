@@ -1,14 +1,13 @@
-Terminal.app
+#workflow
 
-tmux
 
-    ├── Aider | oupenrouter
-    
-    ├── Claude Code //wdrazany
+    ├── Terminal.app
+    ├── tmux
+    ├── Aider / Claude Code === oupenrouter key
     ├── npm run dev
     └── Git
 
 edytor
-      ├── sublimetext 
+      ├── sublimetex 
 
 
