@@ -81,11 +81,14 @@ export default function ContestPage(props) {
           </div>
         </div>
 
+        <div style={{textAlign: 'center', marginBottom: '16px'}}>
+          <h3 className="pr-serif">Pobierz Plakaty na Konkurs!</h3>
+        </div>
         <div className="pr-contest-posters">
           <a
             href="/plakat-eko-solectwo.pdf"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow"
             className="pr-contest-poster-link"
           >
             <Download size={20} />
@@ -94,7 +97,7 @@ export default function ContestPage(props) {
           <a
             href="/Plakat_XVI_Konkus.pdf"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow"
             className="pr-contest-poster-link"
           >
             <Download size={20} />
