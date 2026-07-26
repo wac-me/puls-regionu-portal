@@ -45,6 +45,9 @@ export default function ContactPage(props) {
 
           <div className="pr-contact-cta">
             <h3 className="pr-contact-cta-title">ZAPRASZAMY DO WSPÓŁPRACY!</h3>
+            <div className="pr-contact-item">
+              <strong>Strona internetowa:</strong> <a href="https://www.warmiamazury.tv/pulsregionu" target="_blank" rel="noopener noreferrer">www.warmiamazury.tv/pulsregionu</a>
+            </div>
           </div>
         </div>
       </section>
