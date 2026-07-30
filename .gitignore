@@ -6,21 +6,26 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
 node_modules
 dist
 dist-ssr
 *.local
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-.aider*
+
 .env
+
+# Aider — commituj konfigurację, ignoruj historię/cache
+.aider.chat.history.md
+.aider.input.history
+.aider.tags.cache.v4/
+!.aider.conf.yml
+
+# Claude Code — commituj settings.json (zespołowe), ignoruj settings.local.json (osobiste)
+.claude/settings.local.json

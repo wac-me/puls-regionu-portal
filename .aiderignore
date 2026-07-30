@@ -1,0 +1,40 @@
+# --- Zależności ---
+node_modules/
+
+# --- Build / output ---
+dist/
+
+# --- Cache aidera (nie trzeba tego w kontekście modelu) ---
+.aider.tags.cache.v4/
+.aider.chat.history.md
+.aider.input.history
+
+# --- Sekrety / środowisko ---
+.env
+.env.*
+!.env.example
+
+# --- Lockfile (duży, model go nie potrzebuje w kontekście) ---
+package-lock.json
+
+# --- Media / assety statyczne ---
+public/**/*.jpg
+public/**/*.jpeg
+public/**/*.png
+public/**/*.gif
+public/**/*.webp
+public/**/*.svg
+public/**/*.ico
+*.mp4
+*.mp3
+*.pdf
+*.zip
+
+# --- Git / IDE / system ---
+.git/
+.DS_Store
+
+# --- Bazy danych lokalne (jeśli występują) ---
+*.sqlite
+*.sqlite3
+*.db
