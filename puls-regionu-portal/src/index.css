@@ -1,3 +1,11 @@
+/* About page specific text handling */
+.pr-about-content p {
+  word-spacing: -0.2ch;
+  orphans: 2;
+  widows: 2;
+  hyphens: none;
+}
+
 /* Polish text wrapping - conjunctions handling */
 [lang="pl"] {
   hyphens: auto;
@@ -33,6 +41,12 @@
 [lang="pl"] .pr-section-desc,
 [lang="pl"] .pr-sidebar-text {
   word-spacing: -0.2ch;
+}
+
+/* Non-breaking spaces for about page */
+.pr-about-content :not(:has(> *))::before {
+  content: " w\00A0 i\00A0 z\00A0 a\00A0 o\00A0 u\00A0 do\00A0 na\00A0 po\00A0 za\00A0 ze\00A0 we\00A0";
+  display: none;
 }
 
 /* Non-breaking spaces for common Polish conjunctions */
