@@ -1,8 +1,10 @@
 export const SPOJNIKI = [
-  'w', 'i', 'z', 'a', 'o', 'u', 
+  'w', 'i', 'z', 'a', 'o', 'u',
   'do', 'na', 'po', 'za', 'ze', 'we',
-  'W', 'I', 'Z', 'A', 'O', 'U',
-  'Do', 'Na', 'Po', 'Za', 'Ze', 'We'
+  'ku', 'od', 'do', 'na', 'po', 'za',
+  'bez', 'dla', 'przy', 'pod', 'nad',
+  'przed', 'między', 'ponad', 'spod',
+  'sprzed', 'wśród', 'wbrew', 'wzdłuż'
 ];
 
 export const replaceSpojniki = (text) => {
@@ -26,6 +28,11 @@ export const replaceSpojniki = (text) => {
   let result = text.replace(pattern, (match, p1, p2) => {
     // Skip if the match is a number or if p2 is undefined
     if (typeof p2 !== 'string' || (!isNaN(p2) && p2.trim() !== '')) {
+      return match;
+    }
+    // Skip if next character is punctuation
+    const nextChar = match[match.length - 1];
+    if (/[.,!?;:]/.test(nextChar)) {
       return match;
     }
     return `${p1}${p2}\u00A0`;

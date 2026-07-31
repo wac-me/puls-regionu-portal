@@ -32,9 +32,11 @@ export default function ActivePillarContent({ activeFilar, articles, handleOpenA
                 className="pr-text-content" 
                 dangerouslySetInnerHTML={{ __html: replaceSpojniki(a.excerpt) }}
                 style={{
-                  textAlign: 'left',
-                  wordSpacing: 'normal',
-                  hyphens: 'auto'
+                  textAlign: 'justify',
+                  wordSpacing: '-0.05em',
+                  hyphens: 'auto',
+                  textJustify: 'inter-word',
+                  lineHeight: '1.5'
                 }}
               />
               <div className="pr-card-foot">
