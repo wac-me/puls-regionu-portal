@@ -1,0 +1,37 @@
+/* Polish text wrapping - conjunctions handling */
+[lang="pl"] {
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 2; /* min 6, before 3, after 2 */
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-last: always;
+  hyphenate-character: "\2010";
+}
+
+/* Prevent single-letter conjunctions at line end */
+[lang="pl"] p,
+[lang="pl"] .pr-section-desc,
+[lang="pl"] .pr-sidebar-text {
+  text-align: justify;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Non-breaking spaces for common Polish conjunctions */
+[lang="pl"] :not(:has(> *))::before {
+  content: " w\00A0 i\00A0 z\00A0 a\00A0 o\00A0 u\00A0 do\00A0 na\00A0 po\00A0 za\00A0 ze\00A0 we\00A0";
+  display: none;
+}
+
+/* Better typography for Polish */
+[lang="pl"] {
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures contextual;
+  font-feature-settings: "kern", "liga", "clig", "calt";
+  hanging-punctuation: first allow-end last;
+}
+
+/* Special cases for Polish quotes and dashes */
+[lang="pl"] q {
+  quotes: "„" "”" "«" "»";
+}
