@@ -36,7 +36,7 @@ export default function Layout({
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <div className={`pr-root${largeText ? " pr-large-text" : ""}${highContrast ? " pr-high-contrast" : ""}${grayscaleMode ? " pr-grayscale" : ""} pr-layout-${layoutTheme}`}>
+    <div className={`pr-root${largeText ? " pr-large-text" : ""}${highContrast ? " pr-high-contrast" : ""}${grayscaleMode ? " pr-grayscale" : ""} pr-layout-${layoutTheme}`} lang="pl">
       
       {/* UTILITY BAR */}
       <div className="pr-utility">

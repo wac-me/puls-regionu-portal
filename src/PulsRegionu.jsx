@@ -238,7 +238,14 @@ export default function PulsRegionuMockup(props) {
 
           <div className="pr-card-img" style={{ backgroundImage: `url('${articleView.image}')`, marginBottom: 24 }} />
 
-          <div style={{ maxWidth: 860, lineHeight: 1.8, color: "var(--ink-soft)" }}>
+          <div style={{ 
+            maxWidth: 860, 
+            lineHeight: 1.8, 
+            color: "var(--ink-soft)",
+            textAlign: 'justify',
+            hyphens: 'auto',
+            wordBreak: 'break-word'
+          }}>
             <p>{articleView.content}</p>
           </div>
         </section>
