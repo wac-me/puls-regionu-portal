@@ -15,3 +15,5 @@ editor-model: openrouter/deepseek/deepseek-chat
 architect: false
 cache-prompts: true
 map-tokens: 1024
+
+gitignore: false
