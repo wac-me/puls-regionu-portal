@@ -16,7 +16,7 @@ export const replaceSpojniki = (text) => {
     'w', 'z', 'i', 'a', 'o', 'u', 'do', 'na', 'po', 'za', 'ze', 'we'
   ];
 
-  // Create a regex pattern that matches whole words only
+  // Create a regex pattern that matches only Polish conjunctions
   const pattern = new RegExp(
     `(^|\\s|>)(?:${ALL_SPOJNIKI.join('|')})(?=$|\\s|[.,!?;:])`,
     'gi'
@@ -24,6 +24,10 @@ export const replaceSpojniki = (text) => {
 
   // Replace matches with non-breaking spaces
   let result = text.replace(pattern, (match, p1, p2) => {
+    // Skip if the match is a number
+    if (!isNaN(p2.trim())) {
+      return match;
+    }
     return `${p1}${p2}\u00A0`;
   });
 
