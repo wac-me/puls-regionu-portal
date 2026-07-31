@@ -1,4 +1,5 @@
 import { Leaf, Share2 } from "lucide-react";
+import { replaceSpojniki } from "../../utils/textFormat";
 
 export default function HeroSection({ heroPost }) {
   return (
@@ -8,12 +9,8 @@ export default function HeroSection({ heroPost }) {
           <Leaf size={14} />
           Eko-Region · Historia z pierwszej strony
         </div>
-        <h1 className="pr-serif">
-          {heroPost.title}
-        </h1>
-        <p>
-          {heroPost.content}
-        </p>
+        <h1 className="pr-serif pr-text-content" dangerouslySetInnerHTML={{ __html: replaceSpojniki(heroPost.title) }} />
+        <p className="pr-text-content" dangerouslySetInnerHTML={{ __html: replaceSpojniki(heroPost.content) }} />
         <div className="pr-hero-meta">
           <span>{heroPost.author} · 4 min czytania</span>
           <span className="pr-hero-share">
