@@ -95,7 +95,7 @@ export default function ContestPage(props) {
             Konkurs Eko Sołectw
           </a>
           <a
-            href="/Plakat_XVI_Konkus.pdf"
+            href="/Plakat_XVI_Konkurs.pdf"
             target="_blank"
             rel="noopener noreferrer nofollow"
             className="pr-contest-poster-link"
