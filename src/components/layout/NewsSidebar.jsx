@@ -52,7 +52,12 @@ export default function NewsSidebar() {
           <img 
             src={herbWojew} 
             alt="Herb Województwa Warmińsko-Mazurskiego" 
-            style={{ width: '60px', height: 'auto', display: 'block', margin: '0 auto' }}
+            style={{ 
+              width: '120px', 
+              height: 'auto', 
+              display: 'block', 
+              margin: '0 auto 16px auto' 
+            }}
           />
         </div>
         <h4 className="pr-sidebar-title pr-serif" style={{ textAlign: 'center' }}>PULS REGIONU</h4>
