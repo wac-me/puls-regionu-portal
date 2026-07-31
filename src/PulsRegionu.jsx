@@ -54,12 +54,12 @@ const FILARY_DATA = [
   },
   {
     id: "techno",
-    label: "TECHNO-REGION",
+    label: "INWESTYCJE W REGIONIE",
     icon: Cpu,
     color: "#3B5A8A",
     tint: "#E4E9F3",
-    lead: "Innowacje i technologia",
-    desc: "Praca zdalna, światłowód, smart villages — cyfrowa wieś w praktyce.",
+    lead: "Rozwój i infrastruktura",
+    desc: "Nowe inwestycje, projekty unijne, rozwój lokalnej infrastruktury.",
   },
 ];
 
@@ -137,18 +137,18 @@ const ARTICLES = {
   ],
   techno: [
     {
-      title: "Światłowód dotarł do Piecek. Co to zmienia dla lokalnych firm",
-      excerpt: "Rozmawiamy z trzema przedsiębiorcami, którzy czekali na to 5 lat.",
+      title: "Nowa strefa ekonomiczna w Olsztynie - 500 miejsc pracy",
+      excerpt: "Inwestycja za 200 mln zł. Kto i kiedy może składać wnioski o działki.",
       author: "Redakcja",
-      shares: 112,
-      image: "https://media.istockphoto.com/id/1369153549/pl/zdjęcie/technologia-swiatłowodowa-kabli-sieciowe.jpg?s=1024x1024&w=is&k=20&c=6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z=",
+      shares: 215,
+      image: "https://media.istockphoto.com/id/1183860299/pl/zdjęcie/biurowiec-nowoczesny-budynek.jpg?s=1024x1024&w=is&k=20&c=1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u=",
     },
     {
-      title: "Smart village: aplikacja dla mieszkańców gminy Kętrzyn",
-      excerpt: "Zgłoszenia usterek, harmonogram wywozu śmieci, powiadomienia — wszystko w telefonie.",
+      title: "Remont drogi wojewódzkiej nr 527 - harmonogram i objazdy",
+      excerpt: "Prace potrwają do września 2026. Sprawdzamy szczegóły inwestycji.",
       author: "Redakcja",
-      shares: 67,
-      image: "https://media.istockphoto.com/id/1290861186/pl/zdjęcie/smartfon-z-aplikacją-mobilną.jpg?s=1024x1024&w=is&k=20&c=7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a=",
+      shares: 98,
+      image: "https://media.istockphoto.com/id/1285301614/pl/zdjęcie/budowa-drogi-z-robotnikami-budowlanymi.jpg?s=1024x1024&w=is&k=20&c=2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v=",
     },
   ],
 };
