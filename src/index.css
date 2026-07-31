@@ -1147,19 +1147,22 @@
           outline: 2px solid var(--rust); outline-offset: 2px;
         }
       
-/* Text formatting for polish language */
+/* Text formatting - left aligned */
 .pr-text-content {
+  text-align: left;
+  text-justify: initial;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: normal;
+  line-height: 1.5;
+}
+
+/* Special cases where justification might be needed */
+.pr-justified-text {
   text-align: justify;
-  text-justify: inter-word;
-  word-spacing: -0.15em;
   hyphens: auto;
-  hyphenate-limit-chars: 6 3 2;
-  hyphenate-limit-lines: 2;
-  orphans: 2;
-  widows: 2;
-  line-break: strict;
-  overflow-wrap: break-word;
-  word-break: keep-all;
+  word-spacing: -0.1em;
 }
 
 .pr-text-content::after {

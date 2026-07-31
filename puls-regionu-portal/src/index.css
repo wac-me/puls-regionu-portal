@@ -7,13 +7,19 @@
   hyphenate-character: "\2010";
 }
 
-/* Prevent single-letter conjunctions at line end */
+/* Base text alignment */
+[lang="pl"] {
+  text-align: left;
+}
+
 [lang="pl"] p,
 [lang="pl"] .pr-section-desc,
-[lang="pl"] .pr-sidebar-text {
-  text-align: justify;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+[lang="pl"] .pr-sidebar-text,
+[lang="pl"] .pr-card-body {
+  text-align: left;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: normal;
 }
 
 /* Force non-breaking for Polish conjunctions */
