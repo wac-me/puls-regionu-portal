@@ -35,7 +35,9 @@ export const replaceSpojniki = (text) => {
   result = result
     .replace(/(\s)([a-z]{1,2})(\s)/gi, '$1$2\u00A0') // 1-2 letter words
     .replace(/([a-z])\s([a-z]{1,2})\s/gi, '$1\u00A0$2\u00A0') // word sequences
-    .replace(/(\s)([iwzaou])(\s)/gi, '$1$2\u00A0'); // most common conjunctions
+    .replace(/(\s)([iwzaou])(\s)/gi, '$1$2\u00A0') // most common conjunctions
+    .replace(/\s+/g, ' ') // Normalize multiple spaces
+    .replace(/\u00A0{2,}/g, '\u00A0'); // Normalize multiple non-breaking spaces
 
   return result;
 };
