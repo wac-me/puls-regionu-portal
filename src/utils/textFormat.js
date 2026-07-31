@@ -16,13 +16,18 @@ export const replaceSpojniki = (text) => {
     'w', 'z', 'i', 'a', 'o', 'u', 'do', 'na', 'po', 'za', 'ze', 'we'
   ];
 
-  // Main replacement
-  let result = text.replace(
-    new RegExp(`(^|\\s|>)([${ALL_SPOJNIKI.join('|')}])(?=\\s|$|[.,!?])`, 'gi'),
-    '$1$2\u00A0' // &nbsp;
+  // Create a regex pattern that matches whole words only
+  const pattern = new RegExp(
+    `(^|\\s|>)(?:${ALL_SPOJNIKI.join('|')})(?=$|\\s|[.,!?;:])`,
+    'gi'
   );
 
-  // Special cases
+  // Replace matches with non-breaking spaces
+  let result = text.replace(pattern, (match, p1, p2) => {
+    return `${p1}${p2}\u00A0`;
+  });
+
+  // Handle HTML entities and special cases
   result = result
     .replace(/(\s)([a-z]{1,2})(\s)/gi, '$1$2\u00A0') // 1-2 letter words
     .replace(/([a-z])\s([a-z]{1,2})\s/gi, '$1\u00A0$2\u00A0') // word sequences
