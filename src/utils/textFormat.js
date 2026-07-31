@@ -6,7 +6,7 @@ export const SPOJNIKI = [
 ];
 
 export const replaceSpojniki = (text) => {
-  if (!text) return '';
+  if (!text || typeof text !== 'string') return '';
 
   // Expanded list of Polish conjunctions and prepositions
   const ALL_SPOJNIKI = [
@@ -24,8 +24,8 @@ export const replaceSpojniki = (text) => {
 
   // Replace matches with non-breaking spaces
   let result = text.replace(pattern, (match, p1, p2) => {
-    // Skip if the match is a number
-    if (!isNaN(p2.trim())) {
+    // Skip if the match is a number or if p2 is undefined
+    if (typeof p2 !== 'string' || (!isNaN(p2) && p2.trim() !== '')) {
       return match;
     }
     return `${p1}${p2}\u00A0`;
