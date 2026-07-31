@@ -8,9 +8,9 @@ import NewsSidebar from "./NewsSidebar";
 
 // Statyczna lista filarów (Eko, Ziemia, Natura, Rodzina, Techno)
 const FILARY = [
-  { id: "eko", label: "Eko-Region", color: "#3E7A4F" },
-  { id: "ziemia", label: "Ziemia i Dom", color: "#A85A2E" },
-  { id: "natura", label: "Natura i Turystyka", color: "#2D6E7E" },
+  { id: "eko", label: "EKO-REGION", color: "#3E7A4F" },
+  { id: "ziemia", label: "ZIEMIA I DOM", color: "#A85A2E" },
+  { id: "natura", label: "NATURA I TURYSTYKA", color: "#2D6E7E" },
   { id: "rodzina", label: "ATRAKCJE W REGIONIE", color: "#9C4A6B" },
   { id: "techno", label: "INWESTYCJE W REGIONIE", color: "#3B5A8A" },
 ];
