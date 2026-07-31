@@ -1,13 +1,17 @@
-
+# ============================================
+# EKONOMICZNY (domyślny)
+# ============================================
 model: openrouter/deepseek/deepseek-chat
 weak-model: openrouter/meta-llama/llama-3.1-8b-instruct:free
-editor-model: openrouter/anthropic/claude-3.5-sonnet
-architect: false
-map-tokens: 1024
+editor-model: openrouter/deepseek/deepseek-chat
 
+# ============================================
+# MOCNY (odkomentuj te 3 linie, zakomentuj powyższe 3)
+# ============================================
 # model: openrouter/deepseek/deepseek-chat
-# weak-model: openrouter/openrouter/free
-# architect: /model openrouter/anthropic/claude-3.5-sonnet
+# weak-model: openrouter/meta-llama/llama-3.1-8b-instruct:free
+# editor-model: openrouter/anthropic/claude-3.5-sonnet
 
-# map-tokens: 1024
-
+architect: false
+cache-prompts: true
+map-tokens: 1024

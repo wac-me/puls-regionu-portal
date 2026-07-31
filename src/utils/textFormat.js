@@ -1,7 +1,7 @@
 export const SPOJNIKI = [
   'w', 'i', 'z', 'a', 'o', 'u',
   'do', 'na', 'po', 'za', 'ze', 'we',
-  'ku', 'od', 'do', 'na', 'po', 'za',
+  'ku', 'od',
   'bez', 'dla', 'przy', 'pod', 'nad',
   'przed', 'między', 'ponad', 'spod',
   'sprzed', 'wśród', 'wbrew', 'wzdłuż'
@@ -14,37 +14,18 @@ export const replaceSpojniki = (text) => {
   const ALL_SPOJNIKI = [
     ...SPOJNIKI,
     'ale', 'czy', 'gdy', 'gdyż', 'iż', 'niż', 'oraz', 'ponieważ',
-    'więc', 'zatem', 'lecz', 'jednak', 'toteż', 'więc', 'zawsze',
-    'w', 'z', 'i', 'a', 'o', 'u', 'do', 'na', 'po', 'za', 'ze', 'we'
+    'więc', 'zatem', 'lecz', 'jednak', 'toteż', 'zawsze'
   ];
 
-  // Create a regex pattern that matches only Polish conjunctions
+  // Lookbehind for the preceding boundary (instead of a capture group) so
+  // it isn't consumed by the match — otherwise two conjunctions in a row
+  // ("przed i po remoncie") would only match the first one, since the
+  // second would no longer have a boundary in front of it. The trailing
+  // whitespace IS consumed, since it's what gets replaced by the nbsp.
   const pattern = new RegExp(
-    `(^|\\s|>)(?:${ALL_SPOJNIKI.join('|')})(?=$|\\s|[.,!?;:])`,
+    `(?<=^|\\s|>)(${ALL_SPOJNIKI.join('|')})\\s`,
     'gi'
   );
 
-  // Replace matches with non-breaking spaces
-  let result = text.replace(pattern, (match, p1, p2) => {
-    // Skip if the match is a number or if p2 is undefined
-    if (typeof p2 !== 'string' || (!isNaN(p2) && p2.trim() !== '')) {
-      return match;
-    }
-    // Skip if next character is punctuation
-    const nextChar = match[match.length - 1];
-    if (/[.,!?;:]/.test(nextChar)) {
-      return match;
-    }
-    return `${p1}${p2}\u00A0`;
-  });
-
-  // Handle HTML entities and special cases
-  result = result
-    .replace(/(\s)([a-z]{1,2})(\s)/gi, '$1$2\u00A0') // 1-2 letter words
-    .replace(/([a-z])\s([a-z]{1,2})\s/gi, '$1\u00A0$2\u00A0') // word sequences
-    .replace(/(\s)([iwzaou])(\s)/gi, '$1$2\u00A0') // most common conjunctions
-    .replace(/\s+/g, ' ') // Normalize multiple spaces
-    .replace(/\u00A0{2,}/g, '\u00A0'); // Normalize multiple non-breaking spaces
-
-  return result;
+  return text.replace(pattern, (match, p1) => `${p1}\xa0`);
 };
