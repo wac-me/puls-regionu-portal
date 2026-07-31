@@ -842,20 +842,25 @@
           margin: 0 0 32px 0;
         }
         .pr-about-list li {
-          padding: 12px 0;
+          padding: 12px 0 12px 24px;
           border-bottom: 1px solid var(--border);
           color: var(--text);
-          line-height: 1.6;
+          line-height: 1.7;
           position: relative;
-          padding-left: 24px;
+          text-align: left;
+          hyphens: auto;
+          word-spacing: -0.1ch;
+          orphans: 3;
+          widows: 3;
         }
         .pr-about-list li::before {
           content: "•";
           position: absolute;
-          left: 0;
+          left: 8px;
           color: var(--brand-blue);
           font-weight: 700;
           font-size: 18px;
+          line-height: 1.7;
         }
         .pr-about-list li:last-child {
           border-bottom: none;
