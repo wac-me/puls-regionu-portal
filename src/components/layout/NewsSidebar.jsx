@@ -16,7 +16,7 @@ const ARCHIVE_ITEMS = [
   { url: "http://www.warmiamazury.tv/wp-content/uploads/2021/08/PulsTV146.pdf", title: "Puls Regionu 146", date: "Sierpień 2021" },
 ];
 
-import herbWojew from './herb_Wojew.png';
+import herbWojew from '/herb_Wojew.png';
 
 export default function NewsSidebar() {
   return (
