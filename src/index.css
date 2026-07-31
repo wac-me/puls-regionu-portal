@@ -1151,12 +1151,21 @@
 .pr-text-content {
   text-align: justify;
   text-justify: inter-word;
-  word-spacing: -0.2ch;
+  word-spacing: -0.15em;
   hyphens: auto;
   hyphenate-limit-chars: 6 3 2;
   hyphenate-limit-lines: 2;
-  orphans: 3;
-  widows: 3;
+  orphans: 2;
+  widows: 2;
+  line-break: strict;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.pr-text-content::after {
+  content: '';
+  display: inline-block;
+  width: 100%;
 }
 
 .pr-text-content .spojnik {

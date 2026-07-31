@@ -27,7 +27,14 @@ export default function ActivePillarContent({ activeFilar, articles, handleOpenA
             <div className="pr-card-img" style={{ backgroundImage: `url('${a.image}')` }} />
             <div className="pr-card-body">
               <h3>{a.title}</h3>
-              <p>{a.excerpt}</p>
+              <p 
+                className="pr-text-content" 
+                dangerouslySetInnerHTML={{ __html: replaceSpojniki(a.excerpt) }}
+                style={{
+                  textAlign: 'justify',
+                  wordSpacing: '-0.15em'
+                }}
+              />
               <div className="pr-card-foot">
                 <span>{a.author}</span>
                 <span className="pr-share-count" style={{ color: activeFilar.color }}>

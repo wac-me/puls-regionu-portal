@@ -7,19 +7,26 @@ export const SPOJNIKI = [
 
 export const replaceSpojniki = (text) => {
   if (!text) return '';
-  
-  // Replace common polish prepositions
-  let result = text
-    .replace(
-      new RegExp(`(^|\\s)(${SPOJNIKI.join('|')})(\\s|$)`, 'g'),
-      (match, p1, p2, p3) => `${p1}<span class="spojnik">${p2}</span>${p3 === ' ' ? '\u00A0' : p3}`
-    );
-    
-  // Replace single letter words
-  result = result.replace(
-    /\s([a-zA-Z])\s/g,
-    ' <span class="spojnik">$1</span>\u00A0'
+
+  // Expanded list of Polish conjunctions and prepositions
+  const ALL_SPOJNIKI = [
+    ...SPOJNIKI,
+    'ale', 'czy', 'gdy', 'gdyż', 'iż', 'niż', 'oraz', 'ponieważ',
+    'więc', 'zatem', 'lecz', 'jednak', 'toteż', 'więc', 'zawsze',
+    'w', 'z', 'i', 'a', 'o', 'u', 'do', 'na', 'po', 'za', 'ze', 'we'
+  ];
+
+  // Main replacement
+  let result = text.replace(
+    new RegExp(`(^|\\s|>)([${ALL_SPOJNIKI.join('|')}])(?=\\s|$|[.,!?])`, 'gi'),
+    '$1$2\u00A0' // &nbsp;
   );
-  
+
+  // Special cases
+  result = result
+    .replace(/(\s)([a-z]{1,2})(\s)/gi, '$1$2\u00A0') // 1-2 letter words
+    .replace(/([a-z])\s([a-z]{1,2})\s/gi, '$1\u00A0$2\u00A0') // word sequences
+    .replace(/(\s)([iwzaou])(\s)/gi, '$1$2\u00A0'); // most common conjunctions
+
   return result;
 };
