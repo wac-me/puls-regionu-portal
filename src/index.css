@@ -1158,6 +1158,11 @@
   line-height: 1.5;
 }
 
+.pr-card-body .pr-text-content {
+  margin: 8px 0;
+  color: var(--text-soft);
+}
+
 /* Special cases where justification might be needed */
 .pr-justified-text {
   text-align: justify;
