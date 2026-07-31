@@ -48,15 +48,15 @@ export default function NewsSidebar() {
       </div>
 
       <div className="pr-sidebar-section pr-sidebar-promo">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '12px' }}>
           <img 
             src={herbWojew} 
             alt="Herb Województwa Warmińsko-Mazurskiego" 
-            style={{ width: '60px', height: 'auto' }}
+            style={{ width: '60px', height: 'auto', display: 'block', margin: '0 auto' }}
           />
-          <h4 className="pr-sidebar-title pr-serif">PULS REGIONU</h4>
         </div>
-        <p className="pr-sidebar-text">Tytuł z prawem używania HERBU Województwa Warmińsko-Mazurskiego</p>
+        <h4 className="pr-sidebar-title pr-serif" style={{ textAlign: 'center' }}>PULS REGIONU</h4>
+        <p className="pr-sidebar-text" style={{ textAlign: 'center' }}>Tytuł z prawem używania HERBU Województwa Warmińsko-Mazurskiego</p>
       </div>
     </aside>
   );
