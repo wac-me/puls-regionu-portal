@@ -16,10 +16,31 @@
   overflow-wrap: break-word;
 }
 
+/* Force non-breaking for Polish conjunctions */
+[lang="pl"] {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Special handling for single-letter words */
+[lang="pl"] p,
+[lang="pl"] .pr-section-desc,
+[lang="pl"] .pr-sidebar-text {
+  word-spacing: -0.2ch;
+}
+
 /* Non-breaking spaces for common Polish conjunctions */
 [lang="pl"] :not(:has(> *))::before {
   content: " w\00A0 i\00A0 z\00A0 a\00A0 o\00A0 u\00A0 do\00A0 na\00A0 po\00A0 za\00A0 ze\00A0 we\00A0";
   display: none;
+}
+
+/* Prevent orphans (single words at line end) */
+[lang="pl"] p,
+[lang="pl"] .pr-section-desc,
+[lang="pl"] .pr-sidebar-text {
+  orphans: 3;
+  widows: 3;
 }
 
 /* Better typography for Polish */

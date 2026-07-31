@@ -247,7 +247,10 @@ export default function PulsRegionuMockup(props) {
             wordBreak: 'break-word',
             textJustify: 'inter-word',
             hyphenateLimitChars: '6 3 2',
-            hyphenateLimitLines: 2
+            hyphenateLimitLines: 2,
+            wordSpacing: '-0.2ch',
+            orphans: 3,
+            widows: 3
           }}>
             <p>{articleView.content}</p>
           </div>
