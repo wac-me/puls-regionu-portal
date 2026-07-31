@@ -1,9 +1,11 @@
 /* About page specific text handling */
 .pr-about-content p {
   word-spacing: -0.2ch;
-  orphans: 2;
-  widows: 2;
-  hyphens: none;
+  orphans: 3;
+  widows: 3;
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 2;
+  line-height: 1.6;
 }
 
 /* Polish text wrapping - conjunctions handling */

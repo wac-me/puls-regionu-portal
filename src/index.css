@@ -833,6 +833,8 @@
           font-weight: 700;
           color: var(--text);
           margin: 0 0 16px 0;
+          orphans: 3;
+          widows: 3;
         }
         .pr-about-list {
           list-style: none;
