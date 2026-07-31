@@ -3,7 +3,7 @@ const NEWS_ITEMS = [
   { id: 'news-2', label: 'Ranking Eko Sołectw 2026 — kto zebrał najwięcej?', category: 'Eko-region' },
   { id: 'news-3', label: 'Zostawili Warszawę dla Mazur. „Pracuję zdalnie, dzieci mają jezioro za oknem”', category: 'Ziemia i Dom' },
   { id: 'news-4', label: 'Strażacy z Giżycka posadzili 200 drzew wzdłuż drogi wojewódzkiej', category: 'Natura i Turystyka' },
-  { id: 'news-5', label: 'Gmina Ostróda: ulgi podatkowe dla firm inwestujących w strefie', category: 'Inwestycje w Regionie' },
+  { id: 'news-5', label: 'Weekend z folklorem - przegląd zespołów ludowych w Olsztynie', category: 'Atrakcje w Regionie' },
   { id: 'news-6', label: 'Szlak kajakowy przez 5 jezior — przewodnik od lokalnego sternika', category: 'Natura i Turystyka' },
 ];
 

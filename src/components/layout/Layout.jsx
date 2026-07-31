@@ -11,7 +11,7 @@ const FILARY = [
   { id: "eko", label: "Eko-Region", color: "#3E7A4F" },
   { id: "ziemia", label: "Ziemia i Dom", color: "#A85A2E" },
   { id: "natura", label: "Natura i Turystyka", color: "#2D6E7E" },
-  { id: "rodzina", label: "Atrakcje w Regionie", color: "#9C4A6B" },
+  { id: "rodzina", label: "ATRAKCJE W REGIONIE", color: "#9C4A6B" },
   { id: "techno", label: "Inwestycje w Regionie", color: "#3B5A8A" },
 ];
 
