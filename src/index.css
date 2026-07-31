@@ -1168,11 +1168,6 @@
   width: 100%;
 }
 
-.pr-text-content .spojnik {
-  white-space: nowrap;
-  display: inline-block;
-}
-
 .pr-hero .pr-text-content {
   word-spacing: -0.1ch;
 }
