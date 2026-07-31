@@ -16,6 +16,8 @@ const ARCHIVE_ITEMS = [
   { url: "http://www.warmiamazury.tv/wp-content/uploads/2021/08/PulsTV146.pdf", title: "Puls Regionu 146", date: "Sierpień 2021" },
 ];
 
+import herbWojew from './herb_Wojew.png';
+
 export default function NewsSidebar() {
   return (
     <aside className="pr-news-sidebar">
@@ -46,9 +48,15 @@ export default function NewsSidebar() {
       </div>
 
       <div className="pr-sidebar-section pr-sidebar-promo">
-        <h4 className="pr-sidebar-title pr-serif">Wydanie drukowane</h4>
-        <p className="pr-sidebar-text">Sprawdź gdzie kupisz najnowszy numer Pulsu Regionu.</p>
-        <button className="pr-sidebar-btn">Znajdź punkt</button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+          <img 
+            src={herbWojew} 
+            alt="Herb Województwa Warmińsko-Mazurskiego" 
+            style={{ width: '60px', height: 'auto' }}
+          />
+          <h4 className="pr-sidebar-title pr-serif">PULS REGIONU</h4>
+        </div>
+        <p className="pr-sidebar-text">Tytuł z prawem używania HERBU Województwa Warmińsko-Mazurskiego</p>
       </div>
     </aside>
   );
