@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { replaceSpojniki } from '../../utils/textFormat';
 
 export default function ActivePillarContent({ activeFilar, articles, handleOpenArticle }) {
   const Icon = activeFilar.icon;
