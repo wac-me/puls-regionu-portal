@@ -20,7 +20,7 @@ const PDF_FILES = [
     number: 151
   },
   {
-    url: "/Puls Regionu #150.pdf",
+    url: "Puls-Regionu-150.pdf",
     title: "Puls Regionu 150",
     date: "Czerwiec 2023",
     number: 150
