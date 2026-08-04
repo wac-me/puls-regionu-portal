@@ -20,6 +20,12 @@ const PDF_FILES = [
     number: 151
   },
   {
+    url: "/Puls Regionu #150.pdf",
+    title: "Puls Regionu 150",
+    date: "Czerwiec 2023",
+    number: 150
+  },
+  {
     url: "http://www.warmiamazury.tv/wp-content/uploads/2023/01/Puls-Regionu-149TV.pdf",
     title: "Puls Regionu 149",
     date: "Styczeń 2023",
