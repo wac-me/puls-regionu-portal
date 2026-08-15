@@ -330,9 +330,19 @@
         }
 
         .pr-masthead-compact .pr-header-winieta {
-          max-height: 220px;
+          max-height: 275px;
           width: auto;
           margin: 0 auto;
+        }
+
+        @media (max-width: 767px) {
+          .pr-masthead-compact .pr-header-winieta {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: none;
+            margin: 0 auto;
+          }
         }
 
         .pr-logo-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; z-index: 2; }
