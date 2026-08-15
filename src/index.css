@@ -1128,9 +1128,18 @@
           .pr-main-nav {
             justify-content: flex-end;
             flex-wrap: wrap;
-            padding: 8px 16px;
+            padding: 0 12px;
           }
-          .pr-main-nav-toggle { display: inline-flex; }
+          .pr-main-nav-toggle {
+            display: inline-flex;
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+          }
+          .pr-main-nav-toggle svg {
+            stroke-width: 2.75;
+          }
           .pr-main-nav-list {
             display: none;
             flex-direction: column;
