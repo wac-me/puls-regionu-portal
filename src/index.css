@@ -182,7 +182,7 @@
         }
         .pr-accessibility-toggle {
           position: absolute;
-          top: 14px;
+          top: calc(50vh - 155px);
           left: -52px;
           width: 46px;
           height: 46px;
