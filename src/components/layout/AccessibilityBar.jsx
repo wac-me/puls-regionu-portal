@@ -1,18 +1,36 @@
 import { Accessibility, ZoomIn, Contrast, Eye, Layout } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function AccessibilityBar({ panelOpen, setPanelOpen, largeText, setLargeText, highContrast, setHighContrast, grayscaleMode, setGrayscaleMode, layoutTheme, setLayoutTheme }) {
+  const [autoHideEnabled, setAutoHideEnabled] = useState(true);
+  const [isMobile, setIsMobile] = useState(() => window.matchMedia('(max-width: 720px)').matches);
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia('(max-width: 720px)');
+    const updateMobileState = (event) => setIsMobile(event.matches);
+
+    mobileQuery.addEventListener('change', updateMobileState);
+    return () => mobileQuery.removeEventListener('change', updateMobileState);
+  }, []);
+
   useEffect(() => {
     let timeout;
-    if (panelOpen) {
+    if (panelOpen && autoHideEnabled) {
       timeout = setTimeout(() => {
         setPanelOpen(false);
-      }, 5000);
+      }, isMobile ? 2000 : 5000);
     }
     return () => {
       if (timeout) clearTimeout(timeout);
     };
-  }, [panelOpen, setPanelOpen]);
+  }, [autoHideEnabled, isMobile, panelOpen, setPanelOpen]);
+
+  const togglePanel = () => {
+    if (!panelOpen) {
+      setAutoHideEnabled(false);
+    }
+    setPanelOpen(!panelOpen);
+  };
 
   const layoutThemes = ['default', 'layout1', 'layout2'];
 
@@ -28,7 +46,7 @@ export default function AccessibilityBar({ panelOpen, setPanelOpen, largeText, s
         type="button"
         className="pr-accessibility-toggle"
         aria-label={panelOpen ? "Zamknij panel dostępności" : "Otwórz panel dostępności"}
-        onClick={() => setPanelOpen(!panelOpen)}
+        onClick={togglePanel}
       >
         <Accessibility size={22} />
       </button>
