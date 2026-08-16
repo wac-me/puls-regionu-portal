@@ -57,11 +57,15 @@ export default function Layout({
         <button
           type="button"
           className="pr-main-nav-toggle"
+          aria-label={navOpen ? "Zamknij menu główne" : "Otwórz menu główne"}
+          aria-expanded={navOpen}
+          aria-controls="pr-main-nav-list"
           onClick={() => setNavOpen(!navOpen)}
         >
+          <span className="pr-main-nav-label" aria-hidden="true">MENU</span>
           {navOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
-        <ul className="pr-main-nav-list">
+        <ul id="pr-main-nav-list" className="pr-main-nav-list">
           <li><button className={`pr-main-nav-item${activePage === 'home' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('home'); }}>HOME</button></li>
           <li><button className={`pr-main-nav-item${activePage === 'o-nas' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('o-nas'); }}>O NAS</button></li>
           <li><button className={`pr-main-nav-item${activePage === 'konkurs' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('konkurs'); }}>KONKURS</button></li>
