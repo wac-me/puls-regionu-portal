@@ -1,7 +1,7 @@
-import { Accessibility, ZoomIn, Contrast, Eye, Layout } from "lucide-react";
+import { Accessibility, ZoomIn, Contrast, Eye } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export default function AccessibilityBar({ panelOpen, setPanelOpen, largeText, setLargeText, highContrast, setHighContrast, grayscaleMode, setGrayscaleMode, layoutTheme, setLayoutTheme }) {
+export default function AccessibilityBar({ panelOpen, setPanelOpen, largeText, setLargeText, highContrast, setHighContrast, grayscaleMode, setGrayscaleMode }) {
   const [autoHideEnabled, setAutoHideEnabled] = useState(true);
   const [isMobile, setIsMobile] = useState(() => window.matchMedia('(max-width: 720px)').matches);
 
@@ -30,14 +30,6 @@ export default function AccessibilityBar({ panelOpen, setPanelOpen, largeText, s
       setAutoHideEnabled(false);
     }
     setPanelOpen(!panelOpen);
-  };
-
-  const layoutThemes = ['default', 'layout1', 'layout2'];
-
-  const cycleLayoutTheme = () => {
-    const currentIndex = layoutThemes.indexOf(layoutTheme);
-    const nextIndex = (currentIndex + 1) % layoutThemes.length;
-    setLayoutTheme(layoutThemes[nextIndex]);
   };
 
   return (
@@ -78,15 +70,6 @@ export default function AccessibilityBar({ panelOpen, setPanelOpen, largeText, s
         >
           <Eye size={16} />
           Skala szarości
-        </button>
-        <button
-          type="button"
-          className={layoutTheme !== 'default' ? "is-active" : ""}
-          aria-pressed={layoutTheme !== 'default'}
-          onClick={cycleLayoutTheme}
-        >
-          <Layout size={16} />
-          Layout: {layoutTheme === 'default' ? 'Domyślny' : layoutTheme === 'layout1' ? 'Klasyczny' : 'Nowoczesny'}
         </button>
       </div>
     </div>

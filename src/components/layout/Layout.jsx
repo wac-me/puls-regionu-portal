@@ -28,8 +28,6 @@ export default function Layout({
   setHighContrast,
   grayscaleMode,
   setGrayscaleMode,
-  layoutTheme,
-  setLayoutTheme,
   activeFilarId,
   setActiveFilarId
 }) {
@@ -37,7 +35,7 @@ export default function Layout({
 
   return (
     <div 
-      className={`pr-root${largeText ? " pr-large-text" : ""}${highContrast ? " pr-high-contrast" : ""}${grayscaleMode ? " pr-grayscale" : ""} pr-layout-${layoutTheme}`} 
+      className={`pr-root${largeText ? " pr-large-text" : ""}${highContrast ? " pr-high-contrast" : ""}${grayscaleMode ? " pr-grayscale" : ""}`}
       lang="pl"
       style={{
         '--spojniki': '"w", "i", "z", "a", "o", "u", "do", "na", "po", "za", "ze", "we"'
@@ -85,8 +83,6 @@ export default function Layout({
         setHighContrast={setHighContrast}
         grayscaleMode={grayscaleMode}
         setGrayscaleMode={setGrayscaleMode}
-        layoutTheme={layoutTheme}
-        setLayoutTheme={setLayoutTheme}
       />
 
       {/* MASTHEAD */}
