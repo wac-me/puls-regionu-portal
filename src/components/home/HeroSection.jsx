@@ -1,8 +1,8 @@
-import { Share2 } from "lucide-react";
+import { ArrowUpRight, Share2 } from "lucide-react";
 import ArticleImage from "../common/ArticleImage";
 import { replaceSpojniki } from "../../utils/textFormat";
 
-export default function HeroSection({ heroPost, activeFilar }) {
+export default function HeroSection({ heroPost, activeFilar, onOpenArticle }) {
   const Icon = activeFilar.icon;
 
   return (
@@ -14,6 +14,14 @@ export default function HeroSection({ heroPost, activeFilar }) {
         </div>
         <h1 className="pr-serif pr-text-content" dangerouslySetInnerHTML={{ __html: replaceSpojniki(heroPost.title) }} />
         <p className="pr-text-content" dangerouslySetInnerHTML={{ __html: replaceSpojniki(heroPost.excerpt) }} />
+        <button
+          type="button"
+          className="pr-hero-cta"
+          aria-label={`Czytaj artykuł: ${heroPost.title}`}
+          onClick={onOpenArticle}
+        >
+          Czytaj artykuł <ArrowUpRight size={16} aria-hidden="true" />
+        </button>
         <div className="pr-hero-meta">
           <span>{heroPost.author} · 4 min czytania</span>
           <span className="pr-hero-share">

@@ -246,6 +246,7 @@ export default function PulsRegionuMockup(props) {
         <HeroSection
           heroPost={activeHeroPost}
           activeFilar={activeFilar}
+          onOpenArticle={() => handleOpenArticle(0)}
         />
       )}
 
