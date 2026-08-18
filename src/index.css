@@ -598,27 +598,10 @@
         .pr-hero-img {
           aspect-ratio: 4/3.1;
           border-radius: 20px;
-          background-image: url('https://media.istockphoto.com/id/1357827501/pl/zdjęcie/zróżnicowana-grupa-wolontariuszy-sprzątająca-las-z-odpadów-koncepcja-pracy-społecznej.jpg?s=1024x1024&w=is&k=20&c=zd6rZ8mrjU-Q4FYQHCIFX9SgKsA9EbphuYHtN3X1oC8=');
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
+          background: var(--surface-soft);
           position: relative;
           overflow: hidden;
           box-shadow: 0 24px 60px rgba(34, 60, 80, 0.12);
-        }
-        .pr-hero-img::after {
-          content: '';
-          position: absolute; inset: 0;
-          background-image: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.16) 100%);
-        }
-        .pr-hero-cap {
-          position: absolute; left: 16px; bottom: 16px; right: 16px;
-          background: rgba(16, 24, 40, 0.72);
-          backdrop-filter: blur(4px);
-          color: #F8FAFC;
-          font-size: 12px;
-          padding: 10px 14px;
-          border-radius: 14px;
         }
 
         /* ---- filary strip ---- */

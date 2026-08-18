@@ -194,6 +194,7 @@ export default function PulsRegionuMockup(props) {
 
   const articleView = ARTICLE_LOOKUP[selectedArticleId] || null;
   const activeFilar = FILARY_DATA.find((f) => f.id === activeFilarId) || FILARY_DATA[0];
+  const activeHeroPost = ARTICLES[activeFilar.id]?.[0] || HERO_POST;
 
   const colorToRgba = (hex, alpha) => {
     const [r, g, b] = hex.slice(1).match(/.{2}/g).map((value) => parseInt(value, 16));
@@ -241,7 +242,12 @@ export default function PulsRegionuMockup(props) {
   return (
     <Layout {...props} setActiveFilarId={handleSelectFilar}>
       {/* HERO SECTION */}
-      {!articleView && <HeroSection heroPost={HERO_POST} />}
+      {!articleView && (
+        <HeroSection
+          heroPost={activeHeroPost}
+          activeFilar={activeFilar}
+        />
+      )}
 
       {/* ARTICLE VIEW */}
       {articleView && (
