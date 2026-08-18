@@ -12,6 +12,7 @@ import {
 import HeroSection from "./components/home/HeroSection";
 import PillarGrid from "./components/home/PillarGrid";
 import ActivePillarContent from "./components/home/ActivePillarContent";
+import MobileNewsPanel from "./components/home/MobileNewsPanel";
 import ArticleImage from "./components/common/ArticleImage";
 import Layout from "./components/layout/Layout";
 
@@ -184,6 +185,7 @@ const ARTICLE_LOOKUP = Object.fromEntries(
 export default function PulsRegionuMockup(props) {
   const {
     onNavigate,
+    onOpenArticle,
     activePage,
     activeFilarId,
     setActiveFilarId,
@@ -241,6 +243,14 @@ export default function PulsRegionuMockup(props) {
 
   return (
     <Layout {...props} setActiveFilarId={handleSelectFilar}>
+      {!articleView && (
+        <MobileNewsPanel
+          selectedArticleId={selectedArticleId}
+          onOpenArticle={onOpenArticle}
+          onNavigate={onNavigate}
+        />
+      )}
+
       {/* HERO SECTION */}
       {!articleView && (
         <HeroSection

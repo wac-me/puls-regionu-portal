@@ -1,11 +1,3 @@
-const NEWS_ITEMS = [
-  { articleId: 'eko-bartoszyce-elektroodpady', filarId: 'eko', label: 'Sołtys z Bartoszyc zebrał 8 ton elektroodpadów w jeden weekend' },
-  { articleId: 'eko-ranking-2026', filarId: 'eko', label: 'Ranking Eko Sołectw 2026 — kto zebrał najwięcej?' },
-  { articleId: 'ziemia-mazury-praca-zdalna', filarId: 'ziemia', label: 'Zostawili Warszawę dla Mazur. „Pracuję zdalnie, dzieci mają jezioro za oknem”' },
-  { articleId: 'eko-strazacy-gizycko', filarId: 'eko', label: 'Strażacy z Giżycka posadzili 200 drzew wzdłuż drogi wojewódzkiej' },
-  { articleId: 'atrakcje-folklor-olsztyn', filarId: 'rodzina', label: 'Weekend z folklorem - przegląd zespołów ludowych w Olsztynie' },
-  { articleId: 'natura-szlak-kajakowy', filarId: 'natura', label: 'Szlak kajakowy przez 5 jezior — przewodnik od lokalnego sternika' },
-];
 
 const ARCHIVE_ITEMS = [
   { url: "http://www.warmiamazury.tv/wp-content/uploads/2026/02/Puls-153TV.pdf", title: "Puls Regionu 153", date: "Luty 2026" },
@@ -18,6 +10,7 @@ const ARCHIVE_ITEMS = [
   { url: "http://www.warmiamazury.tv/wp-content/uploads/2021/08/PulsTV146.pdf", title: "Puls Regionu 146", date: "Sierpień 2021" },
 ];
 
+import NewsList from '../common/NewsList';
 import herbWojew from '/herb_Wojew.png';
 
 export default function NewsSidebar({ selectedArticleId, onOpenArticle }) {
@@ -25,20 +18,10 @@ export default function NewsSidebar({ selectedArticleId, onOpenArticle }) {
     <aside className="pr-news-sidebar" aria-labelledby="pr-sidebar-news-title">
       <div className="pr-sidebar-section">
         <h3 id="pr-sidebar-news-title" className="pr-sidebar-title pr-serif">Aktualności</h3>
-        <ul className="pr-sidebar-list">
-          {NEWS_ITEMS.map((item) => (
-            <li key={item.articleId}>
-              <button
-                type="button"
-                className={`pr-sidebar-link${selectedArticleId === item.articleId ? ' is-active' : ''}`}
-                aria-current={selectedArticleId === item.articleId ? 'page' : undefined}
-                onClick={() => onOpenArticle?.(item.filarId, item.articleId)}
-              >
-                {item.label}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <NewsList
+          selectedArticleId={selectedArticleId}
+          onOpenArticle={onOpenArticle}
+        />
       </div>
 
       <div className="pr-sidebar-section">

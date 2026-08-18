@@ -114,10 +114,12 @@ export default function Layout({
 
       <main>
         <div className="pr-layout-container">
-          <NewsSidebar
-            selectedArticleId={selectedArticleId}
-            onOpenArticle={onOpenArticle}
-          />
+          {activePage === 'home' && !selectedArticleId && (
+            <NewsSidebar
+              selectedArticleId={selectedArticleId}
+              onOpenArticle={onOpenArticle}
+            />
+          )}
           <div className="pr-main-content">
             {children}
           </div>
