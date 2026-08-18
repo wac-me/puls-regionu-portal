@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import ArticleImage from "../common/ArticleImage";
 import { replaceSpojniki } from '../../utils/textFormat';
 
 export default function ActivePillarContent({ activeFilar, articles, handleOpenArticle }) {
@@ -24,8 +25,8 @@ export default function ActivePillarContent({ activeFilar, articles, handleOpenA
       </div>
       <div className="pr-grid">
         {(articles[activeFilar.id] || []).map((a, i) => (
-          <article key={i} className="pr-card" onClick={() => handleOpenArticle(i)}>
-            <div className="pr-card-img" style={{ backgroundImage: `url('${a.image}')` }} />
+          <article key={a.id} className="pr-card" onClick={() => handleOpenArticle(i)}>
+            <ArticleImage src={a.image} className="pr-card-img" />
             <div className="pr-card-body">
               <h3>{a.title}</h3>
               <p 

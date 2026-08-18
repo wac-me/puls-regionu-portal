@@ -12,6 +12,7 @@ import {
 import HeroSection from "./components/home/HeroSection";
 import PillarGrid from "./components/home/PillarGrid";
 import ActivePillarContent from "./components/home/ActivePillarContent";
+import ArticleImage from "./components/common/ArticleImage";
 import Layout from "./components/layout/Layout";
 
 // --- DANE (FILARY, ARTICLES, etc.) ---
@@ -66,22 +67,28 @@ const FILARY_DATA = [
 const ARTICLES = {
   eko: [
     {
+      id: "eko-bartoszyce-elektroodpady",
       title: "Sołtys z Bartoszyc zebrał 8 ton elektroodpadów w jeden weekend",
       excerpt: "Remondis odebrał sprzęt, gmina dołożyła transport. Wieś kupiła za to nowy sprzęt dla OSP.",
+      content: `Remondis odebrał sprzęt, gmina dołożyła transport, a sołectwo przeznaczyło uzyskane środki na nowy sprzęt ratowniczy dla miejscowej OSP. Zbiórka pokazała, że wspólna organizacja mieszkańców może przynieść jednocześnie korzyści środowiskowe i realne wsparcie lokalnej społeczności.\n\nW materiale przyglądamy się organizacji zbiórki elektroodpadów, zaangażowaniu mieszkańców oraz temu, jak podobne działania mogą zostać przeprowadzone w innych miejscowościach regionu.`,
       author: "Jan Kowalski, sołtys",
       shares: 340,
       image: "https://media.istockphoto.com/id/1357827501/pl/zdjęcie/zróżnicowana-grupa-wolontariuszy-sprzątająca-las-z-odpadów-koncepcja-pracy-społecznej.jpg?s=1024x1024&w=is&k=20&c=zd6rZ8mrjU-Q4FYQHCIFX9SgKsA9EbphuYHtN3X1oC8=",
     },
     {
+      id: "eko-ranking-2026",
       title: "Ranking Eko Sołectw 2026 — kto zebrał najwięcej, kto wydał najlepiej",
       excerpt: "16. edycja konkursu. Sprawdzamy, które sołectwa zamieniły odpady w realny sprzęt dla mieszkańców.",
+      content: `W rankingu Eko Sołectw 2026 skupiamy się na sprawdzonych praktykach: sposobach promowania selektywnej zbiórki, organizacji lokalnych akcji oraz wykorzystaniu ich efektów z myślą o mieszkańcach. Zestawienie pokazuje różne podejścia uczestników szesnastej edycji konkursu.\n\nMateriał jest krótkim przeglądem działań wyróżniających się sołectw i punktem wyjścia do poznania ich doświadczeń oraz planów na kolejne lokalne inicjatywy.`,
       author: "Redakcja",
       shares: 512,
       image: "https://media.istockphoto.com/id/2256716039/pl/zdjęcie/koncepcja-ekologii-drewnianych-wiatraków-zielona-energia-natura.jpg?s=1024x1024&w=is&k=20&c=dgXYrromBzV3rJmNoGHLCiydcWzoEWO2M91WKU2vGkk=",
     },
     {
+      id: "eko-strazacy-gizycko",
       title: "Strażacy z Giżycka posadzili 200 drzew wzdłuż drogi wojewódzkiej",
       excerpt: "Akcja przy wsparciu nadleśnictwa. W planach kolejne 500 sadzonek do jesieni.",
+      content: `Strażacy z Giżycka włączyli się w akcję sadzenia 200 drzew wzdłuż drogi wojewódzkiej. Działanie przeprowadzono przy wsparciu nadleśnictwa, a inicjatywa ma być kontynuowana poprzez posadzenie kolejnych sadzonek.\n\nW artykule opisujemy założenia akcji, rolę lokalnych partnerów i znaczenie wspólnych działań na rzecz zieleni oraz otoczenia dróg w regionie.`,
       author: "OSP Giżycko",
       shares: 198,
       image: "https://media.istockphoto.com/id/821308942/pl/zdjęcie/ciągnik-rolniczy-sprzęt-do-zbierania-zbóż-w-terenie-sektor-rolny.jpg?s=1024x1024&w=is&k=20&c=Fgo0lpxiUBnv-1kIdiC13diaLuiwOPkWIsY44JFfvwI=",
@@ -89,95 +96,87 @@ const ARTICLES = {
   ],
   ziemia: [
     {
-      title: "Zostawili Warszawę dla Mazur. „Pracuję zdalnie, dzieci mają jezioro za oknem\"",
+      id: "ziemia-mazury-praca-zdalna",
+      title: "Zostawili Warszawę dla Mazur. „Pracuję zdalnie, dzieci mają jezioro za oknem”",
       excerpt: "Historia rodziny Nowaków, która kupiła działkę pod Mrągowem i nie żałuje.",
+      content: `Rodzina Nowaków zdecydowała się zamienić życie w Warszawie na codzienność w pobliżu Mrągowa. Możliwość pracy zdalnej ułatwiła przeprowadzkę, a bliskość jezior i spokojniejsze otoczenie stały się ważną częścią nowego sposobu życia.\n\nMateriał przedstawia motywacje stojące za tą decyzją oraz najważniejsze kwestie, które warto rozważyć przed przeprowadzką z dużego miasta na Warmię i Mazury.`,
       author: "Redakcja",
       shares: 276,
-      image: "https://media.istockphoto.com/id/1406205248/pl/zdjęcie/piękny-dom-letni-nad-jeziorem-w-letni-dzień.jpg?s=1024x1024&w=is&k=20&c=7xZ8kM3XqQ2vLqW5nRqF1Y6gH8jK9mN0oP1qR2sT3u=",
+      image: "",
     },
     {
+      id: "ziemia-ulgi-ostroda",
       title: "Gmina Ostróda: ulgi podatkowe dla firm inwestujących w strefie ekonomicznej",
       excerpt: "Nowy program wsparcia dla przedsiębiorców — sprawdzamy warunki i terminy.",
+      content: `Gmina Ostróda przygotowała program wsparcia skierowany do firm planujących inwestycje w strefie ekonomicznej. Jednym z jego elementów są ulgi podatkowe, które mają ułatwić przedsiębiorcom rozpoczęcie lub rozwinięcie działalności.\n\nW zajawce porządkujemy najważniejsze informacje o założeniach programu, warunkach udziału oraz terminach, na które powinni zwrócić uwagę zainteresowani przedsiębiorcy.`,
       author: "Redakcja",
       shares: 89,
-      image: "https://media.istockphoto.com/id/1183860299/pl/zdjęcie/biurowiec-nowoczesny-budynek.jpg?s=1024x1024&w=is&k=20&c=1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u=",
+      image: "",
     },
   ],
   natura: [
     {
+      id: "natura-szlak-kajakowy",
       title: "Szlak kajakowy przez 5 jezior — przewodnik od lokalnego sternika",
       excerpt: "Trasa, którą pokonasz w weekend. Miejsca na nocleg i ognisko od mieszkańców.",
+      content: `Trasa przez pięć mazurskich jezior została przedstawiona jako propozycja weekendowej wyprawy dla osób, które chcą połączyć aktywny wypoczynek ze spokojnym poznawaniem regionu. Materiał wskazuje najważniejsze etapy szlaku oraz możliwości odpoczynku i noclegu.\n\nW artykule zbieramy podstawowe informacje o przygotowaniu do spływu, planowaniu trasy i bezpiecznym korzystaniu z mazurskich akwenów.`,
       author: "Piotr Wiśniewski",
       shares: 421,
-      image: "https://media.istockphoto.com/id/1152566367/pl/zdjęcie/kajak-na-spokojnym-jeziorze-w-lesie.jpg?s=1024x1024&w=is&k=20&c=2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v=",
+      image: "",
     },
     {
+      id: "natura-kalendarz-wydarzen",
       title: "Kalendarz wydarzeń: lipiec i sierpień na Warmii i Mazurach",
       excerpt: "Festyny, rajdy rowerowe, targi produktu lokalnego — wszystko w jednym miejscu.",
+      content: `Lipiec i sierpień to w regionie czas festynów, rajdów rowerowych i spotkań poświęconych lokalnym produktom. Zestawienie porządkuje różne propozycje spędzania wolnego czasu na Warmii i Mazurach.\n\nMateriał ma pomóc mieszkańcom i turystom w zaplanowaniu letnich weekendów oraz wyborze wydarzeń dopasowanych do różnych zainteresowań.`,
       author: "Redakcja",
       shares: 156,
-      image: "https://media.istockphoto.com/id/1254156955/pl/zdjęcie/ludzie-na-festiwalu-na-otwartym-powietrzu.jpg?s=1024x1024&w=is&k=20&c=3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w=",
+      image: "",
     },
   ],
   rodzina: [
     {
+      id: "atrakcje-folklor-olsztyn",
       title: "Weekend z folklorem - przegląd zespołów ludowych w Olsztynie",
       excerpt: "Tradycyjne tańce, muzyka i rękodzieło - program na cały weekend.",
+      content: `Olsztyński weekend z folklorem ma połączyć występy zespołów ludowych, tradycyjną muzykę, taniec i prezentacje rękodzieła. Program został pomyślany jako propozycja dla mieszkańców regionu oraz osób odwiedzających miasto.\n\nW materiale przedstawiamy charakter wydarzenia i podpowiadamy, na jakie elementy programu warto zwrócić uwagę podczas planowania udziału w przeglądzie.`,
       author: "Redakcja",
       shares: 189,
-      image: "https://media.istockphoto.com/id/1254156955/pl/zdjęcie/ludzie-na-festiwalu-na-otwartym-powietrzu.jpg?s=1024x1024&w=is&k=20&c=3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w=",
+      image: "",
     },
     {
+      id: "atrakcje-muzeum-frombork",
       title: "Nowe muzeum w Fromborku - interaktywna wystawa o Mikołaju Koperniku",
       excerpt: "Multimedialna ekspozycja otwarta codziennie od 10 do 18.",
+      content: `Nowa wystawa we Fromborku wykorzystuje multimedia i elementy interaktywne do opowiedzenia o Mikołaju Koperniku. Ekspozycja została przygotowana z myślą o osobach w różnym wieku i ma zachęcać do samodzielnego odkrywania prezentowanych zagadnień.\n\nArtykuł przybliża charakter wystawy, jej edukacyjne założenia oraz podstawowe informacje potrzebne przed zaplanowaniem wizyty.`,
       author: "Redakcja",
       shares: 112,
-      image: "https://media.istockphoto.com/id/1322277517/pl/zdjęcie/widok-z-bliska-na-dłonie-dziecka-dotykającego-interaktywnego-ekranu-w-muzeum-nauki.jpg?s=1024x1024&w=is&k=20&c=4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x=",
+      image: "",
     },
   ],
   techno: [
     {
+      id: "inwestycje-strefa-olsztyn",
       title: "Nowa strefa ekonomiczna w Olsztynie - 500 miejsc pracy",
       excerpt: "Inwestycja za 200 mln zł. Kto i kiedy może składać wnioski o działki.",
+      content: `Planowana strefa ekonomiczna w Olsztynie ma stworzyć przestrzeń dla nowych inwestycji i miejsc pracy. Projekt zakłada nakłady w wysokości 200 mln zł oraz udostępnienie działek zainteresowanym podmiotom.\n\nW materiale zbieramy podstawowe informacje o założeniach inwestycji i kwestiach, które powinny sprawdzić firmy zainteresowane udziałem w projekcie.`,
       author: "Redakcja",
       shares: 215,
-      image: "https://media.istockphoto.com/id/1183860299/pl/zdjęcie/biurowiec-nowoczesny-budynek.jpg?s=1024x1024&w=is&k=20&c=1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u=",
+      image: "",
     },
     {
+      id: "inwestycje-droga-527",
       title: "Remont drogi wojewódzkiej nr 527 - harmonogram i objazdy",
       excerpt: "Prace potrwają do września 2026. Sprawdzamy szczegóły inwestycji.",
+      content: `Remont drogi wojewódzkiej nr 527 ma potrwać do września 2026 roku. Prowadzone prace będą wpływać na organizację ruchu, dlatego kierowcy powinni zwracać uwagę na aktualne oznakowanie i informacje o objazdach.\n\nW artykule porządkujemy najważniejsze informacje dotyczące harmonogramu, możliwych utrudnień i zmian istotnych dla mieszkańców oraz osób podróżujących tą trasą.`,
       author: "Redakcja",
       shares: 98,
-      image: "https://media.istockphoto.com/id/1285301614/pl/zdjęcie/budowa-drogi-z-robotnikami-budowlanymi.jpg?s=1024x1024&w=is&k=20&c=2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v=",
+      image: "",
     },
   ],
 };
 
-const HERO_POST_CONTENT = `Remondis odebrał sprzęt, gmina dołożyła transport, a sołectwo kupiło za to nowy sprzęt ratowniczy dla miejscowej OSP. To już 16. edycja konkursu Eko Sołectwa — i kolejny dowód, że małe działania dają wielkie efekty. W artykule przyglądamy się organizacji zbiórki, pracy wolontariuszy i planom na przyszłość.`;
-
-const HERO_POST = {
-  ...ARTICLES.eko[0],
-  content: HERO_POST_CONTENT,
-  image: "https://media.istockphoto.com/id/1357827501/pl/zdjęcie/zróżnicowana-grupa-wolontariuszy-sprzątająca-las-z-odpadów-koncepcja-pracy-społecznej.jpg?s=1024x1024&w=is&k=20&c=zd6rZ8mrjU-Q4FYQHCIFX9SgKsA9EbphuYHtN3X1oC8=",
-};
-
-const EKO_POST_IMAGES = [
-  HERO_POST.image,
-  "https://media.istockphoto.com/id/2256716039/pl/zdjęcie/koncepcja-ekologii-drewnianych-wiatraków-zielona-energia-natura.jpg?s=1024x1024&w=is&k=20&c=dgXYrromBzV3rJmNoGHLCiydcWzoEWO2M91WKU2vGkk=",
-  "https://media.istockphoto.com/id/821308942/pl/zdjęcie/ciągnik-rolniczy-sprzęt-do-zbierania-zbóż-w-terenie-sektor-rolny.jpg?s=1024x1024&w=is&k=20&c=Fgo0lpxiUBnv-1kIdiC13diaLuiwOPkWIsY44JFfvwI=",
-];
-
-const EKO_POST_CONTENTS = [
-  HERO_POST_CONTENT,
-  `W rankingu Eko Sołectw 2026 skupiamy się na sprawdzonych praktykach: jak gminy promują selektywną zbiórkę, w jaki sposób inwestują w edukację ekologiczną oraz które sołectwa wyróżniają się realnymi efektami. Przedstawiamy historie zwycięzców i ich plany na kolejny rok.`,
-  `Strażacy z Giżycka odbyli akcję sadzenia 200 drzew wzdłuż drogi wojewódzkiej. Opisujemy organizację wydarzenia, wsparcie leśnictwa oraz kolejne etapy programu, który ma poprawić bezpieczeństwo i jakość powietrza w regionie.`,
-];
-
-const EKO_POSTS = ARTICLES.eko.map((item, index) => ({
-  ...item,
-  content: EKO_POST_CONTENTS[index] || "",
-  image: EKO_POST_IMAGES[index] || "",
-}));
+const HERO_POST = ARTICLES.eko[0];
 
 export default function PulsRegionuMockup(props) {
   const { onNavigate, activePage, activeFilarId, setActiveFilarId, TICKER } = props;
@@ -194,9 +193,22 @@ export default function PulsRegionuMockup(props) {
     `linear-gradient(180deg, ${colorToRgba(hex, 0.18)} 0%, ${colorToRgba(hex, 0.08)} 100%)`;
 
   const handleOpenArticle = (index) => {
-    if (activeFilarId === "eko") {
-      setArticleView(EKO_POSTS[index] || HERO_POST);
-    }
+    const article = ARTICLES[activeFilarId]?.[index];
+
+    if (!article) return;
+
+    setArticleView(article);
+    requestAnimationFrame(() => {
+      document.querySelector(".pr-article-view")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  };
+
+  const handleSelectFilar = (filarId) => {
+    setArticleView(null);
+    setActiveFilarId(filarId);
   };
 
   const handleBackToSection = () => setArticleView(null);
@@ -211,13 +223,13 @@ export default function PulsRegionuMockup(props) {
   }
 
   return (
-    <Layout {...props}>
+    <Layout {...props} setActiveFilarId={handleSelectFilar}>
       {/* HERO SECTION */}
       {!articleView && <HeroSection heroPost={HERO_POST} />}
 
       {/* ARTICLE VIEW */}
       {articleView && (
-        <section className="pr-section">
+        <section className="pr-section pr-article-view">
           <div className="pr-section-head">
             <div className="pr-section-title">
               <div
@@ -236,7 +248,11 @@ export default function PulsRegionuMockup(props) {
             </div>
           </div>
 
-          <div className="pr-card-img" style={{ backgroundImage: `url('${articleView.image}')`, marginBottom: 24 }} />
+          <ArticleImage
+            src={articleView.image}
+            className="pr-card-img pr-article-detail-image"
+            loading="eager"
+          />
 
           <div style={{ 
             maxWidth: 860, 
@@ -252,7 +268,9 @@ export default function PulsRegionuMockup(props) {
             orphans: 3,
             widows: 3
           }}>
-            <p>{articleView.content}</p>
+            {articleView.content.split("\n\n").map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
         </section>
       )}
@@ -261,7 +279,7 @@ export default function PulsRegionuMockup(props) {
       <PillarGrid
         filary={FILARY_DATA}
         active={activeFilarId}
-        setActive={setActiveFilarId}
+        setActive={handleSelectFilar}
         filarGradient={filarGradient}
       />
 
