@@ -47,6 +47,24 @@ export default function ContestPage(props) {
           </p>
         </div>
 
+        <section className="pr-contest-history" aria-labelledby="pr-contest-history-title">
+          <h2 id="pr-contest-history-title" className="pr-contest-history-title">
+            Z HISTORII KONKURSU
+          </h2>
+          <figure className="pr-contest-history-figure">
+            <img
+              src="/IX_konkurs.png"
+              alt="Wręczenie dyplomu podczas IX Konkursu Eko-Sołectwo"
+              className="pr-contest-history-image"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption className="pr-contest-history-caption">
+              IX Konkurs „Eko-Sołectwo”. Organizator: Puls Regionu. Prowadząca: Sylwia Szkamruk. Ponad milion kilogramów elektrośmieci zebranych przez dziewięć lat konkursu!
+            </figcaption>
+          </figure>
+        </section>
+
         <div className="pr-contest-contact" style={{marginBottom: '60px'}}>
           <h2 className="pr-contest-contact-title">KONTAKT</h2>
           <div className="pr-contact-grid">
