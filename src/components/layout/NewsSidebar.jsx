@@ -14,7 +14,7 @@ const ARCHIVE_ITEMS = [
   { url: "Puls-Regionu-150.pdf", title: "Puls Regionu 150", date: "Czerwiec 2023" },
   { url: "http://www.warmiamazury.tv/wp-content/uploads/2023/01/Puls-Regionu-149TV.pdf", title: "Puls Regionu 149", date: "Styczeń 2023" },
   { url: "http://www.warmiamazury.tv/wp-content/uploads/2023/01/Puls-Regionu-148TV.pdf", title: "Puls Regionu 148", date: "Styczeń 2023" },
-  { url: "Puls-Regionu-147.pdf", title: "Puls Regionu 147", date: "Czerwiec 2023" },
+  { url: "Puls-Regionu-147.pdf", title: "Puls Regionu 147", date: "Październik 2021 r." },
   { url: "http://www.warmiamazury.tv/wp-content/uploads/2021/08/PulsTV146.pdf", title: "Puls Regionu 146", date: "Sierpień 2021" },
 ];
 
