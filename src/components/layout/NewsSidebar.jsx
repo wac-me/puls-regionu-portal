@@ -1,10 +1,10 @@
 const NEWS_ITEMS = [
-  { id: 'news-1', label: 'Sołtys z Bartoszyc zebrał 8 ton elektroodpadów w jeden weekend', category: 'EKO-REGION' },
-  { id: 'news-2', label: 'Ranking Eko Sołectw 2026 — kto zebrał najwięcej?', category: 'EKO-REGION' },
-  { id: 'news-3', label: 'Zostawili Warszawę dla Mazur. „Pracuję zdalnie, dzieci mają jezioro za oknem”', category: 'ZIEMIA I DOM' },
-  { id: 'news-4', label: 'Strażacy z Giżycka posadzili 200 drzew wzdłuż drogi wojewódzkiej', category: 'NATURA I TURYSTYKA' },
-  { id: 'news-5', label: 'Weekend z folklorem - przegląd zespołów ludowych w Olsztynie', category: 'Atrakcje w Regionie' },
-  { id: 'news-6', label: 'Szlak kajakowy przez 5 jezior — przewodnik od lokalnego sternika', category: 'Natura i Turystyka' },
+  { articleId: 'eko-bartoszyce-elektroodpady', filarId: 'eko', label: 'Sołtys z Bartoszyc zebrał 8 ton elektroodpadów w jeden weekend' },
+  { articleId: 'eko-ranking-2026', filarId: 'eko', label: 'Ranking Eko Sołectw 2026 — kto zebrał najwięcej?' },
+  { articleId: 'ziemia-mazury-praca-zdalna', filarId: 'ziemia', label: 'Zostawili Warszawę dla Mazur. „Pracuję zdalnie, dzieci mają jezioro za oknem”' },
+  { articleId: 'eko-strazacy-gizycko', filarId: 'eko', label: 'Strażacy z Giżycka posadzili 200 drzew wzdłuż drogi wojewódzkiej' },
+  { articleId: 'atrakcje-folklor-olsztyn', filarId: 'rodzina', label: 'Weekend z folklorem - przegląd zespołów ludowych w Olsztynie' },
+  { articleId: 'natura-szlak-kajakowy', filarId: 'natura', label: 'Szlak kajakowy przez 5 jezior — przewodnik od lokalnego sternika' },
 ];
 
 const ARCHIVE_ITEMS = [
@@ -20,17 +20,22 @@ const ARCHIVE_ITEMS = [
 
 import herbWojew from '/herb_Wojew.png';
 
-export default function NewsSidebar() {
+export default function NewsSidebar({ selectedArticleId, onOpenArticle }) {
   return (
-    <aside className="pr-news-sidebar">
+    <aside className="pr-news-sidebar" aria-labelledby="pr-sidebar-news-title">
       <div className="pr-sidebar-section">
-        <h3 className="pr-sidebar-title pr-serif">Aktualności</h3>
+        <h3 id="pr-sidebar-news-title" className="pr-sidebar-title pr-serif">Aktualności</h3>
         <ul className="pr-sidebar-list">
           {NEWS_ITEMS.map((item) => (
-            <li key={item.id}>
-              <a href={`#${item.id}`} className="pr-sidebar-link">
+            <li key={item.articleId}>
+              <button
+                type="button"
+                className={`pr-sidebar-link${selectedArticleId === item.articleId ? ' is-active' : ''}`}
+                aria-current={selectedArticleId === item.articleId ? 'page' : undefined}
+                onClick={() => onOpenArticle?.(item.filarId, item.articleId)}
+              >
                 {item.label}
-              </a>
+              </button>
             </li>
           ))}
         </ul>

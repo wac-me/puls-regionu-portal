@@ -29,7 +29,9 @@ export default function Layout({
   grayscaleMode,
   setGrayscaleMode,
   activeFilarId,
-  setActiveFilarId
+  setActiveFilarId,
+  selectedArticleId,
+  onOpenArticle
 }) {
   const [navOpen, setNavOpen] = useState(false);
 
@@ -112,7 +114,10 @@ export default function Layout({
 
       <main>
         <div className="pr-layout-container">
-          <NewsSidebar />
+          <NewsSidebar
+            selectedArticleId={selectedArticleId}
+            onOpenArticle={onOpenArticle}
+          />
           <div className="pr-main-content">
             {children}
           </div>

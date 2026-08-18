@@ -479,18 +479,29 @@
 
         .pr-sidebar-link {
           display: block;
+          width: 100%;
           padding: 10px 0;
           color: var(--text);
+          background: transparent;
+          text-align: left;
           text-decoration: none;
           font-size: 14px;
           font-weight: 600;
+          border: 0;
           border-bottom: 1px solid var(--border);
+          cursor: pointer;
           transition: color 0.2s ease, padding-left 0.2s ease;
         }
 
-        .pr-sidebar-link:hover {
+        .pr-sidebar-link:hover,
+        .pr-sidebar-link.is-active {
           color: var(--brand-blue);
           padding-left: 8px;
+        }
+
+        .pr-sidebar-link:focus-visible {
+          outline: 3px solid var(--brand-yellow);
+          outline-offset: 2px;
         }
 
         .pr-sidebar-promo {

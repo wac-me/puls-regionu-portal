@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import {
   Leaf,
   Home,
@@ -177,11 +177,22 @@ const ARTICLES = {
 };
 
 const HERO_POST = ARTICLES.eko[0];
+const ARTICLE_LOOKUP = Object.fromEntries(
+  Object.values(ARTICLES).flat().map((article) => [article.id, article])
+);
 
 export default function PulsRegionuMockup(props) {
-  const { onNavigate, activePage, activeFilarId, setActiveFilarId, TICKER } = props;
-  const [articleView, setArticleView] = useState(null);
-  
+  const {
+    onNavigate,
+    activePage,
+    activeFilarId,
+    setActiveFilarId,
+    selectedArticleId,
+    setSelectedArticleId,
+    TICKER
+  } = props;
+
+  const articleView = ARTICLE_LOOKUP[selectedArticleId] || null;
   const activeFilar = FILARY_DATA.find((f) => f.id === activeFilarId) || FILARY_DATA[0];
 
   const colorToRgba = (hex, alpha) => {
@@ -192,26 +203,31 @@ export default function PulsRegionuMockup(props) {
   const filarGradient = (hex) =>
     `linear-gradient(180deg, ${colorToRgba(hex, 0.18)} 0%, ${colorToRgba(hex, 0.08)} 100%)`;
 
-  const handleOpenArticle = (index) => {
-    const article = ARTICLES[activeFilarId]?.[index];
+  useEffect(() => {
+    if (!articleView) return undefined;
 
-    if (!article) return;
-
-    setArticleView(article);
-    requestAnimationFrame(() => {
+    const frameId = requestAnimationFrame(() => {
       document.querySelector(".pr-article-view")?.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
     });
+
+    return () => cancelAnimationFrame(frameId);
+  }, [articleView]);
+
+  const handleOpenArticle = (index) => {
+    const article = ARTICLES[activeFilarId]?.[index];
+
+    if (article) setSelectedArticleId(article.id);
   };
 
   const handleSelectFilar = (filarId) => {
-    setArticleView(null);
+    setSelectedArticleId(null);
     setActiveFilarId(filarId);
   };
 
-  const handleBackToSection = () => setArticleView(null);
+  const handleBackToSection = () => setSelectedArticleId(null);
 
   // Render archiwum page
   if (activePage === 'archiwum') {

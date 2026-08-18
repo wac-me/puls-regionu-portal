@@ -22,6 +22,7 @@ const TICKER = [
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [activeFilarId, setActiveFilarId] = useState('eko');
+  const [selectedArticleId, setSelectedArticleId] = useState(null);
   
   // Stan dla panelu dostępności
   const [panelOpen, setPanelOpen] = useState(true);
@@ -30,8 +31,15 @@ export default function App() {
   const [grayscaleMode, setGrayscaleMode] = useState(false);
 
   const navigateTo = useCallback((page) => {
+    setSelectedArticleId(null);
     setCurrentPage(page);
     window.scrollTo(0, 0);
+  }, []);
+
+  const openArticle = useCallback((filarId, articleId) => {
+    setActiveFilarId(filarId);
+    setSelectedArticleId(articleId);
+    setCurrentPage('home');
   }, []);
 
   const layoutProps = {
@@ -39,6 +47,9 @@ export default function App() {
     activePage: currentPage,
     activeFilarId,
     setActiveFilarId,
+    selectedArticleId,
+    setSelectedArticleId,
+    onOpenArticle: openArticle,
     TICKER,
     panelOpen, setPanelOpen,
     largeText, setLargeText,
