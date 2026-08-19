@@ -1,34 +1,98 @@
-# Puls Regionu â project state
+# Puls Regionu — stan projektu
 
-Last context update: 2026-08-13
+Ostatnia aktualizacja: 2026-08-19
 
-## Current setup
+## Środowisko
 
-- Local repository: `/Users/wac/Projects/puls-regionu-portal`
-- Stack: Vite + React
-- Production: `https://puls-regionu.vercel.app/`
-- The project has been developed with Git, Aider, tmux and local editors.
+- Repozytorium lokalne: `/Users/wac/Projects/puls-regionu-portal`
+- Stack: Vite, React 19, JavaScript, CSS
+- Deployment: Vercel (`https://puls-regionu.vercel.app/`)
+- Główny branch: `main`
+- Ostatni commit zakończonego etapu: `5b9507b` (`Poszerz nagłówki sekcji filarów`)
 
-## Header artwork work completed
+## Ważne assety nagłówka
 
-- The masthead uses `/puls-regionu-winieta.svg` in `Header.jsx`.
-- The Illustrator export was reduced from roughly 515 kB to roughly 68â70 kB.
-- The optimized SVG references `puls-regionu-winieta-1.png` instead of embedding the PNG as Base64.
-- Both the SVG and linked PNG must remain in `public/`.
-- The header height was adjusted with pixel-based limits; percentage-based sizing did not behave reliably.
-- The assets were confirmed accessible by direct URL locally and on Vercel.
+- `src/components/layout/Header.jsx` korzysta obecnie z `/puls-regionu-winieta.png`.
+- Aktywny raster znajduje się w `public/puls-regionu-winieta.png` i ma wymiary `723 × 280px`.
+- `public/puls-regionu-winieta.svg` ma obecnie `0 B` i nie jest używany przez `Header.jsx`.
+- W repozytorium nie ma pliku `public/puls-regionu-winieta-1.png`, wymienianego w starszej dokumentacji.
+- Jest to rozbieżność między aktualnym kodem i starszymi instrukcjami; nie należy usuwać ani zmieniać nazw assetów bez osobnego uzgodnienia, aktualizacji instrukcji i testu wdrożenia.
+- Po zmianach nagłówka należy sprawdzać pełną widoczną winietę oraz jej bezpośredni publiczny URL.
 
-## Known visual concern
+## Zakończony etap: filary, artykuły i aktualności
 
-The artwork previously displayed an unwanted small blue logo near its right edge in one rendering. When changing the header or SVG, inspect the complete visible artwork rather than assuming it is a CSS crop issue.
+### Artykuły i filary
 
-## Recommended start for the next session
+- Wszystkie filary otwierają artykuły za pomocą stabilnych identyfikatorów.
+- Artykuły mają krótkie treści, zajawki, autorów i metadane udostępnień.
+- Brakujące obrazy korzystają z komponentu `ArticleImage` i placeholdera „Zdjęcie w przygotowaniu”.
+- Nie są wykonywane żądania do nieistniejących obrazów, które wcześniej zwracały HTTP 400.
+- Kliknięcie filaru ustawia aktywny dział i zamyka wcześniej otwarty artykuł.
 
-1. Run `git status --short` and inspect recent commits.
-2. Read `Header.jsx`, the relevant header styles in `src/index.css`, and both masthead assets.
-3. Start the dev server and reproduce the current page at desktop and iPhone SE widths.
-4. Ask for the exact next visual or functional goal before modifying unrelated parts.
+### Hero filarów
 
-## First Codex prompt
+- Hero pokazuje pierwszy artykuł aktywnego filaru.
+- CTA „Czytaj artykuł” otwiera właściwy artykuł.
+- CTA jest stonowane, granatowe i nie korzysta z gradientu.
+- Maksymalny rozmiar `h1` wynosi `44px`, z responsywnym minimum `32px`.
+- W układzie dwukolumnowym górna krawędź zdjęcia jest wyrównana z górną linią `h1`.
+- Poniżej `900px` hero przechodzi w naturalny układ jednokolumnowy.
 
-> Read `AGENTS.md` and `docs/project-state.md`, inspect the repository and Git status, and run the project locally. Do not edit anything yet. Summarize the current structure, identify any mismatch between these notes and the code, and propose one next step.
+### Sidebar i Aktualności
+
+- Desktopowy sidebar jest widoczny tylko na HOME bez otwartego artykułu.
+- Sidebar nie występuje w artykułach ani na podstronach: O nas, Konkurs, Archiwum i Kontakt.
+- Desktopowa i mobilna lista aktualności korzystają ze wspólnego komponentu `NewsList`.
+- Na ekranach poniżej `1100px` Aktualności są domyślnie zwiniętym panelem `<details>/<summary>`.
+- Mobilny panel znajduje się bezpośrednio pod belką filarów, przed hero.
+- Panel zawiera sześć aktualności oraz CTA „Przejdź do archiwum”.
+- Panel nie występuje po otwarciu artykułu ani na podstronach.
+- Hover linków sidebara ma subtelne przesunięcie `3px`, granatowy kolor i delikatne tło.
+- Efekt hover działa tylko na urządzeniach obsługujących hover.
+- Archiwum ma spokojniejszą hierarchię wizualną niż Aktualności.
+
+### Nagłówki sekcji filarów
+
+- `.pr-section-title` zajmuje `75%` szerokości `.pr-section-head` na większych ekranach.
+- Opis sekcji może wykorzystywać do `72ch` i mieści się w jednej linii przy typowych szerokościach desktopowych.
+- Link „Zobacz wszystkie” nie jest ściskany.
+- Poniżej `600px` nagłówek sekcji przechodzi w bezpieczny układ pionowy.
+
+## Kluczowe pliki
+
+- Stan strony, aktywnego filaru i artykułu: `src/App.jsx`
+- Dane artykułów i główna kompozycja HOME: `src/PulsRegionu.jsx`
+- Layout i warunkowy sidebar: `src/components/layout/Layout.jsx`
+- Desktopowy sidebar: `src/components/layout/NewsSidebar.jsx`
+- Wspólna lista newsów: `src/components/common/NewsList.jsx`
+- Mobilny panel Aktualności: `src/components/home/MobileNewsPanel.jsx`
+- Hero: `src/components/home/HeroSection.jsx`
+- Obraz lub placeholder: `src/components/common/ArticleImage.jsx`
+- Style globalne i responsywne: `src/index.css`
+
+## Walidacja zakończonego etapu
+
+- `npm run build` przechodzi.
+- `npm run lint` kończy się bez błędów i z 4 wcześniejszymi ostrzeżeniami.
+- Sprawdzono widoki desktopowe oraz szerokości `1024px`, `375px` i `320px`.
+- Potwierdzono brak poziomego overflow w testowanych widokach HOME.
+- Potwierdzono otwieranie aktualności, ukrywanie panelu w artykule i przejście do Archiwum.
+
+## Znane kwestie techniczne
+
+Lint zgłasza 4 wcześniejsze ostrzeżenia, niezwiązane bezpośrednio z zakończonym etapem:
+
+1. nieużywany import `ArrowUpRight` w `src/components/home/PillarGrid.jsx`,
+2. nieużywana zmienna `TICKER` w `src/PulsRegionu.jsx`,
+3. niezdefiniowany komponent `Archiwum` w nieużywanej gałęzi `src/PulsRegionu.jsx`,
+4. wyrażenie `setActiveFilarId && setActiveFilarId(...)` w `src/components/layout/Layout.jsx`.
+
+Nie należy usuwać znaczącej logiki tylko po to, aby wyciszyć te ostrzeżenia. Można je uporządkować w osobnym, małym zadaniu.
+
+## Zalecany start kolejnej sesji
+
+1. Uruchomić `git status --short` i przejrzeć ostatnie commity.
+2. Przeczytać `AGENTS.md`, ten dokument i `docs/todo.md`.
+3. Uruchomić `npm run lint`, `npm run build` oraz lokalny serwer Vite.
+4. Sprawdzić HOME na desktopie i przy szerokości iPhone SE.
+5. Uzgodnić kolejny cel przed zmianą architektury lub dodaniem zależności.
