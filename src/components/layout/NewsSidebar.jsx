@@ -24,7 +24,7 @@ export default function NewsSidebar({ selectedArticleId, onOpenArticle }) {
         />
       </div>
 
-      <div className="pr-sidebar-section">
+      <div className="pr-sidebar-section pr-sidebar-archive">
         <h3 className="pr-sidebar-title pr-serif">Archiwum</h3>
         <ul className="pr-sidebar-list">
           {ARCHIVE_ITEMS.map((item, index) => (

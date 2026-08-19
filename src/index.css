@@ -493,6 +493,14 @@
           transition: color 0.15s ease, background-color 0.15s ease, padding-left 0.15s ease, box-shadow 0.15s ease;
         }
 
+        .pr-sidebar-archive .pr-sidebar-link {
+          padding-top: 8px;
+          padding-bottom: 8px;
+          color: var(--text-soft);
+          font-size: 13px;
+          font-weight: 500;
+        }
+
         .pr-sidebar-link.is-active {
           color: var(--brand-navy);
           background-color: rgba(15, 71, 111, 0.08);
