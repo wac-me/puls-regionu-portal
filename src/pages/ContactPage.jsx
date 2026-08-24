@@ -4,11 +4,11 @@ export default function ContactPage(props) {
   return (
     <Layout {...props}>
       <section className="pr-section">
-        <div className="pr-section-head pr-contact-section-head">
-          <div className="pr-section-title pr-contact-section-title">
-            <h1 className="pr-serif pr-contact-page-title">KONTAKT</h1>
-            <span className="pr-contact-page-separator" aria-hidden="true">|</span>
-            <p className="pr-serif pr-contact-page-subtitle">
+        <div className="pr-section-head pr-page-section-head">
+          <div className="pr-section-title pr-page-section-title">
+            <h1 className="pr-serif pr-page-title">KONTAKT</h1>
+            <span className="pr-page-separator" aria-hidden="true">|</span>
+            <p className="pr-serif pr-page-subtitle">
               Puls Regionu - Magazyn Samorządów Województwa Warmińsko-Mazurskiego
             </p>
           </div>

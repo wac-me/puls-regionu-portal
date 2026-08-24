@@ -1043,28 +1043,28 @@
           box-shadow: 0 6px 16px rgba(15, 71, 111, 0.2);
         }
 
-        /* ---- contact page ---- */
-        .pr-contact-section-head {
+        /* ---- shared page headings ---- */
+        .pr-page-section-head {
           margin-bottom: 6rem;
         }
-        .pr-contact-section-title {
+        .pr-page-section-title {
           flex: 0 1 100%;
           width: 100%;
           max-width: 100%;
           align-items: baseline;
           padding-bottom: 3rem;
         }
-        .pr-contact-page-title {
+        .pr-page-title {
           margin: 0;
           font-size: 2rem;
           line-height: 1.2;
         }
-        .pr-contact-page-separator {
+        .pr-page-separator {
           color: #007BFF;
           font-size: 2rem;
           line-height: 1;
         }
-        .pr-contact-page-subtitle {
+        .pr-page-subtitle {
           margin: 0;
           color: #555;
           font-size: 1.25rem;
@@ -1073,21 +1073,23 @@
           white-space: nowrap;
         }
         @media (max-width: 900px) {
-          .pr-contact-section-head {
+          .pr-page-section-head {
             margin-bottom: 4rem;
           }
-          .pr-contact-section-title {
+          .pr-page-section-title {
             flex-wrap: wrap;
             padding-bottom: 2rem;
           }
-          .pr-contact-page-separator {
+          .pr-page-separator {
             display: none;
           }
-          .pr-contact-page-subtitle {
+          .pr-page-subtitle {
             flex-basis: 100%;
             white-space: normal;
           }
         }
+
+        /* ---- contact page ---- */
         .pr-contact-content {
           max-width: 700px;
         }

@@ -5,18 +5,13 @@ export default function AboutPage(props) {
   return (
     <Layout {...props}>
       <section className="pr-section">
-        <div className="pr-section-head" style={{marginBottom: '6rem'}}>
-          <div className="pr-section-title" style={{paddingBottom: '3rem'}}>
-            <div style={{display: 'flex', flexDirection: 'column'}}>
-              <div>
-                <span className="pr-serif" style={{fontSize: '2rem'}}>O NAS</span>
-                <span style={{color: '#007BFF', margin: '0 0.3rem', fontSize: '2rem'}}>|</span>
-                <span className="pr-serif" style={{fontSize: '1.25rem', color: '#555', textAlign: 'left'}}>Puls Regionu - Magazyn Samorządów</span>
-              </div>
-              <div style={{marginLeft: 'calc(2rem + 0.3rem)'}}>
-                <span className="pr-serif" style={{fontSize: '1.25rem', color: '#555', textAlign: 'left'}}>Województwa Warmińsko-Mazurskiego</span>
-              </div>
-            </div>
+        <div className="pr-section-head pr-page-section-head">
+          <div className="pr-section-title pr-page-section-title">
+            <h1 className="pr-serif pr-page-title">O NAS</h1>
+            <span className="pr-page-separator" aria-hidden="true">|</span>
+            <p className="pr-serif pr-page-subtitle">
+              Puls Regionu - Magazyn Samorządów Województwa Warmińsko-Mazurskiego
+            </p>
           </div>
         </div>
 
