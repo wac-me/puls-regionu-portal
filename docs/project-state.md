@@ -6,9 +6,9 @@ Ostatnia aktualizacja: 2026-08-19
 
 - Repozytorium lokalne: `/Users/wac/Projects/puls-regionu-portal`
 - Stack: Vite, React 19, JavaScript, CSS
-- Deployment: Vercel (`https://puls-regionu.vercel.app/`)
+- Deployment: Vercel (`https://puls-regionu.vercel.app/`) lub statyczny `dist/` na serwerze współdzielonym
 - Główny branch: `main`
-- Ostatni commit zakończonego etapu: `5b9507b` (`Poszerz nagłówki sekcji filarów`)
+- Punkt odniesienia aktualnego UI: `a7ddb15` (`Ujednolić nagłówki podstron`)
 
 ## Ważne assety nagłówka
 
@@ -16,7 +16,7 @@ Ostatnia aktualizacja: 2026-08-19
 - Aktywny raster znajduje się w `public/puls-regionu-winieta.png` i ma wymiary `723 × 280px`.
 - `public/puls-regionu-winieta.svg` ma obecnie `0 B` i nie jest używany przez `Header.jsx`.
 - W repozytorium nie ma pliku `public/puls-regionu-winieta-1.png`, wymienianego w starszej dokumentacji.
-- Jest to rozbieżność między aktualnym kodem i starszymi instrukcjami; nie należy usuwać ani zmieniać nazw assetów bez osobnego uzgodnienia, aktualizacji instrukcji i testu wdrożenia.
+- Pusty SVG pozostaje plikiem legacy; nie należy go usuwać ani zmieniać nazw assetów bez osobnego uzgodnienia i testu wdrożenia.
 - Po zmianach nagłówka należy sprawdzać pełną widoczną winietę oraz jej bezpośredni publiczny URL.
 
 ## Zakończony etap: filary, artykuły i aktualności
@@ -58,6 +58,20 @@ Ostatnia aktualizacja: 2026-08-19
 - Link „Zobacz wszystkie” nie jest ściskany.
 - Poniżej `600px` nagłówek sekcji przechodzi w bezpieczny układ pionowy.
 
+## Ostatnie uzupełnienia UI
+
+- Winieta rośnie płynnie od `275px` do `340px` na dużych ekranach i zachowuje proporcje na mobile.
+- Strona Konkurs zawiera aktualne hasło o ponad 2 milionach kilogramów oraz rozszerzone dane wymagane przy zgłoszeniu.
+- O nas, Archiwum i Kontakt korzystają ze wspólnych, responsywnych nagłówków `pr-page-*`.
+- Dawny newsletter został zastąpiony CTA „Napisz do nas”, które prowadzi do strony Kontakt.
+
+## Kierunek CMS i hostingu
+
+- Wybór CMS pozostaje otwarty: WordPress/PHP, własne API PHP lub inne rozwiązanie.
+- Frontend ma korzystać z warstwy danych niezależnej od dostawcy CMS.
+- Wspierane mają pozostać dwa warianty: Vercel oraz statyczny build na serwerze współdzielonym.
+- Przed CMS potrzebne są modele danych, `contentRepository`, routing URL i decyzja SEO.
+
 ## Kluczowe pliki
 
 - Stan strony, aktywnego filaru i artykułu: `src/App.jsx`
@@ -92,7 +106,7 @@ Nie należy usuwać znaczącej logiki tylko po to, aby wyciszyć te ostrzeżenia
 ## Zalecany start kolejnej sesji
 
 1. Uruchomić `git status --short` i przejrzeć ostatnie commity.
-2. Przeczytać `AGENTS.md`, ten dokument i `docs/todo.md`.
+2. Przeczytać `README.md`, `AGENTS.md`, `architektura.md`, ten dokument i `docs/todo.md`.
 3. Uruchomić `npm run lint`, `npm run build` oraz lokalny serwer Vite.
 4. Sprawdzić HOME na desktopie i przy szerokości iPhone SE.
 5. Uzgodnić kolejny cel przed zmianą architektury lub dodaniem zależności.

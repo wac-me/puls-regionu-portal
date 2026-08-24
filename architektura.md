@@ -1,81 +1,120 @@
-# Puls Regionu — Dokumentacja Architektury i Roadmapa
+# Puls Regionu — architektura i kierunek rozwoju
 
-Niniejszy dokument przedstawia założenia techniczne, planowaną strukturę komponentów oraz mapę drogową rozwoju portalu **Puls Regionu**. 
+Ostatnia aktualizacja: 2026-08-19
 
----
+## 1. Stan obecny
 
-## 1. Wizja i Założenia Technologiczne
+Portal jest responsywnym frontendem React 19 + Vite 8. Aplikacja działa jako statyczne SPA i może być wdrażana na Vercel albo jako zawartość `dist/` na serwerze współdzielonym.
 
-Portal ma docelowo łączyć dynamicznie zmieniające się informacje z lokalnych społeczności (sołectwa, OSP, mieszkańcy) z nowoczesnym i szybkim interfejsem użytkownika.
+Obecnie:
 
-### Główne założenia:
-*   **Etap Obecny (Projektowy):** Statyczna makieta w React 19 + Vite. Szybkie ładowanie, łatwe modyfikacje wizualne, brak bazy danych.
-*   **Docelowa Architektura:** **Headless WordPress + React SPA**.
-    *   **CMS:** WordPress na osobnym adresie (np. `panel.pulsregionu.pl`) jako panel redakcyjny i repozytorium treści.
-    *   **Frontend:** React SPA (Vite) pobierający dane przez **WordPress REST API** (lub WPGraphQL) bezpośrednio w przeglądarce klienta (Client-Side Rendering).
-    *   **Hosting:** Tradycyjny serwer współdzielony. Statycznie zbudowany folder `/dist` jest wrzucany na FTP, co minimalizuje koszty i wymagania serwerowe.
+- treści są zapisane lokalnie w komponentach,
+- nawigacja działa przez React state,
+- nie ma bazy danych, API ani panelu redakcyjnego,
+- nie ma trwałych URL-i podstron i artykułów,
+- build produkcyjny jest statyczny.
 
----
+## 2. Zasada docelowej architektury
 
-## 2. Mapa Drogowa (Roadmap)
+Frontend powinien pozostać niezależny od konkretnego CMS. Komponenty React nie powinny wiedzieć, czy dane pochodzą z WordPressa, własnego API PHP czy innej usługi.
 
-### Faza 1: Porządki i Refaktoryzacja (Obecnie)
-- [ ] Utworzenie i zatwierdzenie roadmapy (`architektura.md`).
-- [ ] Podział gigantycznego pliku `PulsRegionu.jsx` na mniejsze, reużywalne komponenty.
-- [ ] Stworzenie spójnego katalogu na komponenty: `src/components/`.
+Docelowy przepływ:
 
-### Faza 2: Nawigacja i Nowe Podstrony
-- [ ] Wdrożenie routingu (lekkie przełączanie stanów w React lub dodanie `react-router-dom`).
-- [ ] Przygotowanie makiet kolejnych podstron z menu:
-    - [ ] **O nas / O projekcie** (informacje o inicjatywie).
-    - [ ] **Kontakt / Zgłoś temat** (formularz kontaktowy dla mieszkańców/sołtysów).
-    - [ ] **Artykuły** (szablon pojedynczego artykułu/wpisu).
-    - [ ] **Działy/Filary** (osobne widoki dla Eko-Regionu, Inwestycji w Regionie itd.).
+```text
+Panel redakcyjny CMS
+        ↓
+Publiczne API opublikowanych treści
+        ↓
+Warstwa danych frontendu
+        ↓
+React/Vite
+        ↓
+Vercel lub serwer współdzielony
+```
 
-### Faza 3: Usprawnienia UX i Dostępność (a11y)
-- [ ] Pełne uruchomienie panelu dostępności (skróty, zmiana kontrastu, zmiana wielkości czcionki).
-- [ ] Optymalizacja responsywności na urządzeniach mobilnych.
-- [ ] Dodanie animacji przejść między podstronami.
+Frontend powinien korzystać z jednego interfejsu, np.:
 
-### Faza 4: Przygotowanie pod Headless CMS
-- [ ] Wydzielenie danych mockowych do osobnych plików JSON (np. `src/mocks/articles.json`).
-- [ ] Stworzenie warstwy usługowej (Service Layer) w JS (np. `src/services/api.js`), która początkowo zwraca dane lokalne, a w przyszłości będzie odpytywać API WordPressa.
+```js
+contentRepository.getArticles()
+contentRepository.getArticleBySlug(slug)
+contentRepository.getPillars()
+contentRepository.getArchiveIssues()
+contentRepository.getPage(slug)
+contentRepository.getSiteSettings()
+```
 
-### Faza 5: Integracja z WordPress i Wdrożenie
-- [ ] Instalacja i konfiguracja WordPressa na subdomenie.
-- [ ] Konfiguracja Custom Post Types (np. dla sołectw, statystyk tickera, artykułów).
-- [ ] Podmiana warstwy API w React na rzeczywiste WordPress REST API.
-- [ ] Finalny build produkcyjny i wdrożenie na serwer współdzielony.
+Pierwsza implementacja może zwracać dane lokalne. Później będzie można podmienić adapter bez przebudowy komponentów.
 
----
+## 3. Model treści
 
-## 3. Planowany Podział na Komponenty (Refaktoryzacja `PulsRegionu.jsx`)
+Minimalne typy danych przygotowywane pod CMS:
 
-Aby ułatwić rozwój kodu, podzielimy plik `PulsRegionu.jsx` na następujące elementy:
+- **Article** — tytuł, slug, zajawka, treść, autor, data, obraz, alt, filar i status publikacji,
+- **Pillar** — nazwa, slug, opis, kolor i kolejność,
+- **ArchiveIssue** — numer, data, plik PDF i opcjonalna miniatura,
+- **Page** — treści O nas, Konkurs i Kontakt,
+- **SiteSettings** — dane kontaktowe, CTA, metadane SEO i ustawienia portalu.
 
-### Komponenty Globalne (Katalog `src/components/layout/`):
-1.  **Header.jsx** – Nawigacja, logo, przyciski społecznościowe.
-2.  **Footer.jsx** – Stopka redakcyjna, linki, prawa autorskie.
-3.  **AccessibilityBar.jsx** – Panel ułatwień dostępu (powiększanie tekstu, kontrast, czytelna czcionka).
+Lista Aktualności powinna docelowo wynikać z najnowszych lub ręcznie przypiętych artykułów, zamiast mieć osobną kopię danych.
 
-### Komponenty Wspólne (Katalog `src/components/common/`):
-1.  **ArticleCard.jsx** – Karta artykułu (używana na stronie głównej oraz w działach).
-2.  **LiveTicker.jsx** – Pasek z aktualnymi informacjami z sołectw ("pasek giełdowy").
+## 4. CMS — decyzja otwarta
 
-### Komponenty Strony Głównej (Katalog `src/components/home/`):
-1.  **HeroSection.jsx** – Główny baner powitalny z wyszukiwarką lub hasłem przewodnim.
-2.  **PillarGrid.jsx** – Interaktywna siatka pięciu filarów (Eko, Ziemia, Natura, Rodzina, Techno).
-3.  **ActivePillarContent.jsx** – Sekcja wyświetlająca artykuły i detale wybranego obecnie filaru.
-4.  **Newsletter.jsx** – Formularz zapisu na newsletter lub dołączenia do społeczności.
-5.  **Partners.jsx** – Logotypy fundacji, partnerów, samorządów.
+Rozważane warianty:
 
----
+### WordPress/PHP na serwerze współdzielonym
 
-## 4. Przyszłe Wyzwania i Rozwiązania
+Najbardziej pragmatyczny wariant, jeśli potrzebne są gotowe role redakcyjne, media, wersjonowanie i REST API.
 
-*   **SEO (Search Engine Optimization):**
-    *   *Problem:* React SPA renderuje treść po stronie klienta, co utrudnia indeksowanie przez niektóre roboty wyszukiwarek.
-    *   *Rozwiązanie:* W przyszłości można użyć **Vite Prerender Plugin** (`vite-plugin-prerender`) do wygenerowania statycznych plików HTML podczas builda dla najważniejszych podstron, lub przejść na generator statyczny (**Astro**), zachowując komponenty Reacta.
-*   **Caching danych z WordPressa:**
-    *   *Problem:* Częste odpytywanie WordPress API przez każdego użytkownika może obciążyć tanie serwery współdzielone.
-    *   *Rozwiązanie:* Implementacja lokalnego cache (np. w `localStorage` lub pamięci sesji), a po stronie WordPressa wtyczka do cache'owania API (np. WP REST Cache) lub generowanie statyczne (SSG).
+### Własne API/CMS PHP
+
+Możliwe na hostingu współdzielonym, ale wymaga samodzielnego utrzymania logowania, uprawnień, uploadu, bezpieczeństwa, backupów i edytora treści. Ma sens tylko przy bardzo małym zakresie panelu.
+
+### Inny Headless CMS
+
+Dopuszczalny, jeśli spełni wymagania kosztowe, hostingowe i eksportu danych. CMS wymagający stałego procesu Node zwykle nie będzie działał na typowym hostingu współdzielonym bez VPS lub usługi zewnętrznej.
+
+Wybór CMS powinien nastąpić po małym proof of concept API.
+
+## 5. Hosting
+
+### Vercel + zewnętrzny CMS
+
+- frontend wdrażany automatycznie z Git,
+- CMS może działać na serwerze współdzielonym lub jako usługa zewnętrzna,
+- wymagane są CORS, konfiguracja `VITE_CMS_API_URL` i strategia cache.
+
+### Frontend i CMS na serwerze współdzielonym
+
+- `dist/` jest publikowany przez Apache,
+- CMS lub API PHP może działać na tej samej domenie,
+- prostszy CORS,
+- reguły `.htaccess` muszą omijać endpointy API i katalog panelu.
+
+Frontend nie powinien zależeć wyłącznie od funkcji jednej platformy, dopóki docelowy hosting nie zostanie wybrany.
+
+## 6. Routing i SEO
+
+Przed integracją CMS trzeba ustalić prawdziwe adresy, np.:
+
+```text
+/o-nas
+/konkurs
+/archiwum
+/kontakt
+/filar/eko-region
+/artykul/slug-artykulu
+```
+
+Każdy artykuł będzie potrzebował własnego title, description, canonical, Open Graph i danych strukturalnych. Należy zdecydować, czy pozostajemy przy SPA z prerenderem, czy wprowadzamy SSG/SSR. Zmiana frameworka nie jest obecnie przesądzona.
+
+## 7. Najbliższa roadmapa
+
+1. Utrzymywać aktualne README, `project-state` i TODO.
+2. Zdefiniować modele danych niezależne od CMS.
+3. Wydzielić lokalne dane z komponentów.
+4. Dodać lokalny adapter `contentRepository`.
+5. Wprowadzić slugi i routing URL.
+6. Ustalić strategię SEO.
+7. Porównać WordPress REST API z prostym API PHP.
+8. Przetestować oba warianty deploymentu.
+9. Wybrać CMS dopiero na podstawie proof of concept.

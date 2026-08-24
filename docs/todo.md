@@ -9,7 +9,7 @@ Ostatnia aktualizacja: 2026-08-19
 - [x] Konfiguracja projektu Vite + React.
 - [x] Podział głównych elementów interfejsu na katalog `src/components/`.
 - [x] Podłączenie winiety PNG w `src/components/layout/Header.jsx`.
-- [x] Dostosowanie wysokości i responsywności nagłówka.
+- [x] Dostosowanie wysokości i responsywności nagłówka, do `340px` na dużych ekranach.
 
 ### Podstrony i treści
 
@@ -19,6 +19,9 @@ Ostatnia aktualizacja: 2026-08-19
 - [x] Placeholder „Zdjęcie w przygotowaniu” dla brakujących obrazów.
 - [x] Usunięcie żądań do nieistniejących obrazów zwracających HTTP 400.
 - [x] Aktualizacja daty numeru 147 w Archiwum.
+- [x] Aktualizacja treści strony Konkurs.
+- [x] Wspólne, responsywne nagłówki O nas, Archiwum i Kontakt.
+- [x] Zastąpienie newslettera CTA prowadzącym do strony Kontakt.
 
 ### Hero i sekcje filarów
 
@@ -44,15 +47,18 @@ Ostatnia aktualizacja: 2026-08-19
 
 ### Dokumentacja
 
-- [ ] Zastąpić domyślny `README.md` Vite właściwym README projektu.
+- [x] Zastąpić domyślny `README.md` Vite właściwym README projektu.
 - [ ] W razie większych zmian aktualizować `docs/project-state.md` i tę listę.
 
 ### Porządki techniczne
 
-- [ ] Wyjaśnić status pustego `public/puls-regionu-winieta.svg` i rozbieżność ze starszymi instrukcjami dotyczącymi `puls-regionu-winieta-1.png`; nie usuwać assetów bez testu i aktualizacji dokumentacji.
+- [ ] Ustalić, czy pusty `public/puls-regionu-winieta.svg` ma pozostać jako plik legacy; nie usuwać assetów bez testu i aktualizacji dokumentacji.
 - [ ] Osobno przeanalizować i usunąć 4 znane ostrzeżenia lint bez zmiany działania aplikacji.
-- [ ] Rozważyć wydzielenie danych artykułów z `src/PulsRegionu.jsx` do osobnego modułu danych.
-- [ ] Rozważyć docelowy routing URL dla podstron i artykułów przed integracją z CMS.
+- [ ] Zdefiniować modele `Article`, `Pillar`, `ArchiveIssue`, `Page` i `SiteSettings`.
+- [ ] Wydzielić dane artykułów, filarów, Aktualności i Archiwum z komponentów.
+- [ ] Dodać lokalny adapter `contentRepository`.
+- [ ] Ustalić routing URL i slugi podstron oraz artykułów przed integracją z CMS.
+- [ ] Porównać proof of concept WordPress REST API z prostym API PHP.
 
 ### Treść i redakcja
 
@@ -68,6 +74,7 @@ Ostatnia aktualizacja: 2026-08-19
 
 ## Dalsza perspektywa
 
-- [ ] Przygotować warstwę danych pod przyszły Headless CMS.
+- [ ] Wybrać CMS na podstawie proof of concept i kosztów utrzymania.
 - [ ] Zaplanować SEO i indeksowanie artykułów przed przejściem na docelowe źródło treści.
-- [ ] Uzgodnić sposób wdrażania wersji produkcyjnej po integracji z CMS.
+- [ ] Przetestować deployment `dist/` na docelowym serwerze współdzielonym.
+- [ ] Uzgodnić produkcyjny wariant: Vercel + zewnętrzny CMS albo frontend i CMS na jednym serwerze.

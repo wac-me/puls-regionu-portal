@@ -1,10 +1,10 @@
-# Puls Regionu â instructions for coding agents
+# Puls Regionu — instructions for coding agents
 
 ## Project
 
 - Repository: `/Users/wac/Projects/puls-regionu-portal`
 - Stack: Vite, React, JavaScript, CSS
-- Deployment: Vercel (`https://puls-regionu.vercel.app/`)
+- Deployment: Vercel (`https://puls-regionu.vercel.app/`) lub statyczny `dist/` na serwerze współdzielonym
 - Main goal: maintain and develop the regional news portal without unnecessary architectural changes.
 
 ## Working rules
@@ -22,10 +22,10 @@
 
 - Header component: `src/components/layout/Header.jsx`
 - Global styles: `src/index.css`
-- Header artwork: `public/puls-regionu-winieta.svg`
-- Linked raster asset: `public/puls-regionu-winieta-1.png`
+- Active header artwork: `public/puls-regionu-winieta.png`
+- Legacy, currently empty asset: `public/puls-regionu-winieta.svg`
 
-The SVG intentionally references the PNG in `public/`. Do not remove or rename either file without updating the SVG and testing the deployed result.
+`Header.jsx` currently uses `/puls-regionu-winieta.png`. The legacy SVG is not used and `puls-regionu-winieta-1.png` is not present in the repository. Do not remove or rename header assets without checking their actual usage, direct public URLs and the deployed result.
 
 ## Validation
 
@@ -34,4 +34,4 @@ Use scripts available in `package.json`. At minimum:
 1. Run the appropriate build or type/lint checks.
 2. Start the local development server.
 3. Check the desktop layout and a narrow mobile viewport.
-4. Confirm that the header artwork loads from both the page and its direct public URL.
+4. Confirm that `/puls-regionu-winieta.png` loads from both the page and its direct public URL.
