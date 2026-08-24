@@ -40,10 +40,14 @@ export default function ContestPage(props) {
           </div>
         </div>
 
+        <p className="pr-contest-achievement">
+          DO TEJ PORY SOŁTYSI, STRAŻACY, KOŁA GOSPODYŃ WIEJSKICH ZEBRALI PONAD 2 MILIONY KILOGRAMÓW!
+        </p>
+
         <div className="pr-contest-deadline">
           <h2 className="pr-contest-deadline-title">UDZIAŁ W KONKURSIE</h2>
           <p className="pr-contest-deadline-text">
-            NALEŻY ZGŁOSIĆ DO DNIA <strong>30.IX.2026 R.</strong> LISTEM LUB MAILEM Z DANYMI SOŁTYSA, PEŁNYM ADRESEM, TELEFONEM KONTAKTOWYM ORAZ MIEJSCEM ZBIÓRKI.
+            NALEŻY ZGŁOSIĆ DO DNIA <strong>30.IX.2026 R.</strong> LISTEM LUB MAILEM Z IMIENIEM I NAZWISKIEM, PEŁNYM ADRESEM Z KODEM I GMINĄ, TELEFONEM KONTAKTOWYM ORAZ MIEJSCEM ZBIÓRKI.
           </p>
         </div>
 

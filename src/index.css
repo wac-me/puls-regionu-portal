@@ -1063,6 +1063,50 @@
         }
 
         /* ---- contact page ---- */
+        .pr-contact-section-head {
+          margin-bottom: 6rem;
+        }
+        .pr-contact-section-title {
+          flex: 0 1 100%;
+          width: 100%;
+          max-width: 100%;
+          align-items: baseline;
+          padding-bottom: 3rem;
+        }
+        .pr-contact-page-title {
+          margin: 0;
+          font-size: 2rem;
+          line-height: 1.2;
+        }
+        .pr-contact-page-separator {
+          color: #007BFF;
+          font-size: 2rem;
+          line-height: 1;
+        }
+        .pr-contact-page-subtitle {
+          margin: 0;
+          color: #555;
+          font-size: 1.25rem;
+          line-height: 1.35;
+          text-align: left;
+          white-space: nowrap;
+        }
+        @media (max-width: 900px) {
+          .pr-contact-section-head {
+            margin-bottom: 4rem;
+          }
+          .pr-contact-section-title {
+            flex-wrap: wrap;
+            padding-bottom: 2rem;
+          }
+          .pr-contact-page-separator {
+            display: none;
+          }
+          .pr-contact-page-subtitle {
+            flex-basis: 100%;
+            white-space: normal;
+          }
+        }
         .pr-contact-content {
           max-width: 700px;
         }
@@ -1178,6 +1222,19 @@
           color: var(--text);
           line-height: 1.7;
           margin: 0;
+        }
+        .pr-contest-achievement {
+          margin: 0 0 24px;
+          padding: 18px 22px;
+          border: 1px solid var(--border);
+          border-left: 4px solid var(--brand-green);
+          border-radius: 12px;
+          background: var(--surface-soft);
+          color: var(--brand-navy);
+          font-size: clamp(17px, 2vw, 21px);
+          font-weight: 700;
+          line-height: 1.4;
+          text-align: center;
         }
         .pr-contest-deadline {
           background: linear-gradient(135deg, #EAF1E4 0%, #D9ECF9 55%, #F4F7FF 100%);
