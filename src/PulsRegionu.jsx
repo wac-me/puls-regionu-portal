@@ -330,15 +330,12 @@ export default function PulsRegionuMockup(props) {
             <Mail size={22} />
           </div>
           <div>
-            <h2 className="pr-serif">Zapisz się po informacje lokalne</h2>
-            <p className="pr-section-desc">
-              Otrzymasz aktualności o konkursach, wydarzeniach i projektach z Warmii i Mazur.
-            </p>
+            <h2 className="pr-serif">Napisz do nas</h2>
           </div>
         </div>
         <div className="pr-newsletter-form">
-          <input type="email" placeholder="Twój e-mail" aria-label="E-mail do newslettera" />
-          <button type="button"><Sparkles size={16} /> Zapisz się</button>
+          <input type="email" placeholder="Twój e-mail" aria-label="E-mail kontaktowy" />
+          <button type="button"><Sparkles size={16} /> Napisz do nas</button>
         </div>
       </section>
 
