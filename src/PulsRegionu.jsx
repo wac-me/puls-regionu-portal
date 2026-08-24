@@ -7,7 +7,6 @@ import {
   Cpu,
   ArrowUpRight,
   Mail,
-  Sparkles,
 } from "lucide-react";
 import HeroSection from "./components/home/HeroSection";
 import PillarGrid from "./components/home/PillarGrid";
@@ -323,19 +322,20 @@ export default function PulsRegionuMockup(props) {
         handleOpenArticle={handleOpenArticle}
       />
 
-      {/* NEWSLETTER */}
-      <section className="pr-newsletter">
-        <div className="pr-newsletter-head">
-          <div className="pr-newsletter-icon">
-            <Mail size={22} />
+      {/* CONTACT PROMO */}
+      <section className="pr-contact-promo" aria-labelledby="pr-contact-promo-title">
+        <div className="pr-contact-promo-head">
+          <div className="pr-contact-promo-icon">
+            <Mail size={22} aria-hidden="true" />
           </div>
           <div>
-            <h2 className="pr-serif">Napisz do nas</h2>
+            <h2 id="pr-contact-promo-title" className="pr-serif">Napisz do nas</h2>
           </div>
         </div>
-        <div className="pr-newsletter-form">
-          <input type="email" placeholder="Twój e-mail" aria-label="E-mail kontaktowy" />
-          <button type="button"><Sparkles size={16} /> Napisz do nas</button>
+        <div className="pr-contact-promo-action">
+          <button type="button" onClick={() => onNavigate('kontakt')}>
+            Napisz do nas <ArrowUpRight size={16} aria-hidden="true" />
+          </button>
         </div>
       </section>
 
