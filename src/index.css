@@ -385,7 +385,7 @@
         .pr-top-block,
         .pr-topline,
         .pr-masthead {
-          background: linear-gradient(360deg, #EA0000 0%, #EA0000 100%);
+          background: #E30613;
         }
         /* ---- ticker ---- */
         .pr-ticker-wrapper {
