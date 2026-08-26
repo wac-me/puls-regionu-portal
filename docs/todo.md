@@ -68,6 +68,7 @@ Ostatnia aktualizacja: 2026-08-19
 
 ### UX do decyzji
 
+- [ ] Przy publicznej premierze usunąć `PreviewGate`, hasło przedpremierowe oraz meta `noindex, nofollow, noarchive`.
 - [ ] Po testach z użytkownikami zdecydować, czy zwinięte Aktualności mają pojawiać się także na końcu artykułów.
 - [ ] Przeprowadzić końcowy ręczny przegląd dostępności: klawiatura, wysoki kontrast, skala szarości i duży tekst.
 - [ ] Powtórzyć pełny przegląd desktopu, `1024px` i iPhone SE przed kolejnym większym wdrożeniem.

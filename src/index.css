@@ -5,6 +5,117 @@
           overflow-x: hidden;
         }
 
+        .pr-preview-gate,
+        .pr-preview-gate * {
+          box-sizing: border-box;
+        }
+        .pr-preview-gate {
+          min-height: 100vh;
+          min-height: 100dvh;
+          display: grid;
+          place-items: center;
+          padding: 24px;
+          background: #E30613;
+          color: #1F2937;
+          font-family: 'Public Sans', -apple-system, sans-serif;
+        }
+        .pr-preview-gate-shell {
+          width: min(100%, 520px);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+        }
+        .pr-preview-gate-logo {
+          display: block;
+          width: min(100%, 440px);
+          height: auto;
+        }
+        .pr-preview-gate-card {
+          width: 100%;
+          padding: clamp(24px, 6vw, 40px);
+          border: 1px solid rgba(15, 71, 111, 0.12);
+          border-radius: 20px;
+          background: #FFFFFF;
+          box-shadow: 0 24px 70px rgba(61, 0, 5, 0.24);
+          text-align: center;
+        }
+        .pr-preview-gate-card h1 {
+          margin: 0 0 12px;
+          color: #0F476F;
+          font-size: clamp(28px, 7vw, 40px);
+          line-height: 1.15;
+        }
+        .pr-preview-gate-lead {
+          margin: 0 0 28px;
+          color: #5B6670;
+          font-size: 18px;
+          line-height: 1.5;
+        }
+        .pr-preview-gate-form {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          text-align: left;
+        }
+        .pr-preview-gate-form label {
+          color: #1F2937;
+          font-size: 14px;
+          font-weight: 700;
+        }
+        .pr-preview-gate-form input {
+          width: 100%;
+          padding: 14px 16px;
+          border: 1px solid #C9D1DA;
+          border-radius: 10px;
+          background: #FFFFFF;
+          color: #1F2937;
+          font: inherit;
+        }
+        .pr-preview-gate-form input:focus-visible {
+          outline: 3px solid #F7D13D;
+          outline-offset: 2px;
+          border-color: #0F476F;
+        }
+        .pr-preview-gate-error {
+          min-height: 21px;
+          margin: 0;
+          color: #B42318;
+          font-size: 14px;
+          line-height: 1.5;
+        }
+        .pr-preview-gate-form button {
+          width: 100%;
+          padding: 14px 18px;
+          border: 1px solid #0F476F;
+          border-radius: 10px;
+          background: #0F476F;
+          color: #FFFFFF;
+          font: inherit;
+          font-weight: 700;
+          cursor: pointer;
+          transition: background-color 0.15s ease, box-shadow 0.15s ease;
+        }
+        .pr-preview-gate-form button:hover {
+          background: #16638A;
+          box-shadow: 0 6px 16px rgba(15, 71, 111, 0.2);
+        }
+        .pr-preview-gate-form button:focus-visible {
+          outline: 3px solid #F7D13D;
+          outline-offset: 2px;
+        }
+        @media (max-width: 375px) {
+          .pr-preview-gate {
+            padding: 16px;
+          }
+          .pr-preview-gate-shell {
+            gap: 18px;
+          }
+          .pr-preview-gate-card {
+            border-radius: 16px;
+          }
+        }
+
         .pr-root {
           --bg: #F6F8FB;
           --surface: #FFFFFF;

@@ -9,6 +9,7 @@ Ostatnia aktualizacja: 2026-08-19
 - Deployment: Vercel (`https://puls-regionu.vercel.app/`) lub statyczny `dist/` na serwerze współdzielonym
 - Główny branch: `main`
 - Punkt odniesienia aktualnego UI: `a7ddb15` (`Ujednolić nagłówki podstron`)
+- Tryb publikacji: ekran przedpremierowy z hasłem oraz meta `noindex, nofollow, noarchive`
 
 ## Ważne assety nagłówka
 
