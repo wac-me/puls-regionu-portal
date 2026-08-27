@@ -426,6 +426,11 @@
           background: transparent;
           display: flex;
         }
+        .pr-header-picture {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
         .pr-header-winieta {
           width: 100%;
           height: auto;
@@ -453,8 +458,8 @@
 
         @media (min-width: 1200px) {
           .pr-masthead-compact .pr-header-winieta {
-            height: clamp(275px, calc(-50px + 27.0833vw), 340px);
-            max-height: 340px;
+            height: clamp(320px, calc(35vw - 100px), 460px);
+            max-height: 460px;
           }
         }
 

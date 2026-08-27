@@ -70,7 +70,7 @@ Szczegóły: `architektura.md` i `docs/todo.md`.
 
 ## Ważny asset nagłówka
 
-`src/components/layout/Header.jsx` korzysta z `public/puls-regionu-winieta.png`. Plik `public/puls-regionu-winieta.svg` jest obecnie pustym, nieużywanym plikiem legacy. Nie należy usuwać ani zmieniać nazw assetów bez sprawdzenia kodu, bezpośrednich URL-i i wdrożenia.
+`src/components/layout/Header.jsx` korzysta z `public/puls-regionu-winieta.png` poniżej `1200px` oraz z `public/puls-regionu-winieta_920.png` od `1200px`. Plik `public/puls-regionu-winieta.svg` jest obecnie pustym, nieużywanym plikiem legacy. Nie należy usuwać ani zmieniać nazw assetów bez sprawdzenia kodu, bezpośrednich URL-i i wdrożenia.
 
 ## Dokumentacja
 

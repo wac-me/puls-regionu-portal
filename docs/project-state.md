@@ -1,6 +1,6 @@
 # Puls Regionu — stan projektu
 
-Ostatnia aktualizacja: 2026-08-19
+Ostatnia aktualizacja: 2026-08-27
 
 ## Środowisko
 
@@ -13,8 +13,8 @@ Ostatnia aktualizacja: 2026-08-19
 
 ## Ważne assety nagłówka
 
-- `src/components/layout/Header.jsx` korzysta obecnie z `/puls-regionu-winieta.png`.
-- Aktywny raster znajduje się w `public/puls-regionu-winieta.png` i ma wymiary `723 × 280px`.
+- `src/components/layout/Header.jsx` korzysta z `/puls-regionu-winieta.png` poniżej `1200px` oraz z `/puls-regionu-winieta_920.png` od `1200px`.
+- Raster dla mniejszych ekranów ma wymiary `1755 × 681px`, a wariant desktopowy `2927 × 920px`.
 - `public/puls-regionu-winieta.svg` ma obecnie `0 B` i nie jest używany przez `Header.jsx`.
 - W repozytorium nie ma pliku `public/puls-regionu-winieta-1.png`, wymienianego w starszej dokumentacji.
 - Pusty SVG pozostaje plikiem legacy; nie należy go usuwać ani zmieniać nazw assetów bez osobnego uzgodnienia i testu wdrożenia.
@@ -61,7 +61,7 @@ Ostatnia aktualizacja: 2026-08-19
 
 ## Ostatnie uzupełnienia UI
 
-- Winieta rośnie płynnie od `275px` do `340px` na dużych ekranach i zachowuje proporcje na mobile.
+- Od `1200px` wczytywana jest szersza winieta, która rośnie płynnie od `320px` do `460px` przy `1600px`; poniżej breakpointu używany jest dotychczasowy wariant zachowujący proporcje.
 - Strona Konkurs zawiera aktualne hasło o ponad 2 milionach kilogramów oraz rozszerzone dane wymagane przy zgłoszeniu.
 - O nas, Archiwum i Kontakt korzystają ze wspólnych, responsywnych nagłówków `pr-page-*`.
 - Dawny newsletter został zastąpiony CTA „Napisz do nas”, które prowadzi do strony Kontakt.
