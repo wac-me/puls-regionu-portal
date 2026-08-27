@@ -600,8 +600,8 @@
 
         @media (min-width: 1200px) {
           .pr-masthead-compact .pr-header-winieta {
-            height: clamp(320px, calc(35vw - 100px), 460px);
-            max-height: 460px;
+            height: clamp(320px, calc(35vw - 100px), 420px);
+            max-height: 420px;
           }
         }
 
