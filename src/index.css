@@ -30,6 +30,7 @@
           display: block;
           width: min(100%, 440px);
           height: auto;
+          background: #fff;
         }
         .pr-preview-gate-card {
           width: 100%;
@@ -600,8 +601,8 @@
 
         @media (min-width: 1200px) {
           .pr-masthead-compact .pr-header-winieta {
-            height: clamp(320px, calc(35vw - 100px), 460px);
-            max-height: 460px;
+            height: clamp(320px, calc(35vw - 100px), 420px);
+            max-height: 420px;
           }
         }
 
@@ -641,9 +642,11 @@
           margin: 0;
         }
         .pr-top-block,
-        .pr-topline,
-        .pr-masthead {
+        .pr-topline {
           background: #E30613;
+        }
+        .pr-masthead {
+          background: #fff;
         }
         /* ---- ticker ---- */
         .pr-ticker-wrapper {
