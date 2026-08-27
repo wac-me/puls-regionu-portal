@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Header from "./Header";
 import LiveTicker from "../common/LiveTicker";
 import AccessibilityBar from "./AccessibilityBar";
 import Footer from "./Footer";
 import NewsSidebar from "./NewsSidebar";
+import SearchPanel from "../common/SearchPanel";
 
 // Statyczna lista filarów (Eko, Ziemia, Natura, Rodzina, Techno)
 const FILARY = [
@@ -31,7 +32,8 @@ export default function Layout({
   activeFilarId,
   setActiveFilarId,
   selectedArticleId,
-  onOpenArticle
+  onOpenArticle,
+  searchArticles
 }) {
   const [navOpen, setNavOpen] = useState(false);
 
@@ -71,7 +73,13 @@ export default function Layout({
           <li><button className={`pr-main-nav-item${activePage === 'konkurs' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('konkurs'); }}>KONKURS</button></li>
           <li><button className={`pr-main-nav-item${activePage === 'archiwum' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('archiwum'); }}>ARCHIWUM</button></li>
           <li><button className={`pr-main-nav-item${activePage === 'kontakt' ? ' is-active' : ''}`} onClick={() => { setNavOpen(false); onNavigate('kontakt'); }}>KONTAKT</button></li>
-          <li><button className="pr-main-nav-item" disabled aria-label="Szukaj"><Search size={20} /></button></li>
+          <li>
+            <SearchPanel
+              articles={searchArticles}
+              onOpenArticle={onOpenArticle}
+              onResultSelect={() => setNavOpen(false)}
+            />
+          </li>
         </ul>
       </nav>
 

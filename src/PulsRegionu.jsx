@@ -181,6 +181,21 @@ const ARTICLE_LOOKUP = Object.fromEntries(
   Object.values(ARTICLES).flat().map((article) => [article.id, article])
 );
 
+// oxlint-disable-next-line react/only-export-components
+export const SEARCH_ARTICLES = Object.entries(ARTICLES).flatMap(([filarId, articles]) => {
+  const filarLabel = FILARY_DATA.find((filar) => filar.id === filarId)?.label || filarId;
+
+  return articles.map(({ id, title, excerpt, content, author }) => ({
+    id,
+    filarId,
+    filarLabel,
+    title,
+    excerpt,
+    content,
+    author,
+  }));
+});
+
 export default function PulsRegionuMockup(props) {
   const {
     onNavigate,

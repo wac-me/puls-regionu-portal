@@ -1,4 +1,4 @@
-import PulsRegionuMockup from './PulsRegionu';
+import PulsRegionuMockup, { SEARCH_ARTICLES } from './PulsRegionu';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import ContestPage from './pages/ContestPage';
@@ -50,6 +50,7 @@ export default function App() {
     selectedArticleId,
     setSelectedArticleId,
     onOpenArticle: openArticle,
+    searchArticles: SEARCH_ARTICLES,
     TICKER,
     panelOpen, setPanelOpen,
     largeText, setLargeText,

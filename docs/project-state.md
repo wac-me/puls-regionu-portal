@@ -65,6 +65,7 @@ Ostatnia aktualizacja: 2026-08-27
 - Strona Konkurs zawiera aktualne hasło o ponad 2 milionach kilogramów oraz rozszerzone dane wymagane przy zgłoszeniu.
 - O nas, Archiwum i Kontakt korzystają ze wspólnych, responsywnych nagłówków `pr-page-*`.
 - Dawny newsletter został zastąpiony CTA „Napisz do nas”, które prowadzi do strony Kontakt.
+- Główna nawigacja zawiera responsywną wyszukiwarkę lokalnych artykułów, działającą także dla zapytań bez polskich znaków.
 
 ## Kierunek CMS i hostingu
 
