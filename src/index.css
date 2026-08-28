@@ -598,9 +598,16 @@
           margin: 0 auto;
         }
 
+        @media (min-width: 768px) and (max-width: 1199px) {
+          .pr-masthead-compact .pr-header-winieta {
+            height: clamp(275px, 24vw, 300px);
+            max-height: 300px;
+          }
+        }
+
         @media (min-width: 1200px) {
           .pr-masthead-compact .pr-header-winieta {
-            height: clamp(320px, calc(35vw - 100px), 420px);
+            height: clamp(320px, 26.67vw, 420px);
             max-height: 420px;
           }
         }

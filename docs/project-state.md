@@ -61,7 +61,7 @@ Ostatnia aktualizacja: 2026-08-27
 
 ## Ostatnie uzupełnienia UI
 
-- Od `1200px` wczytywana jest szersza winieta, która rośnie płynnie od `320px` do maksymalnie `420px`; poniżej breakpointu używany jest dotychczasowy wariant zachowujący proporcje.
+- Winieta ma wysokość proporcjonalną do szerokości ekranu: od `768px` korzysta z `clamp(275px, 24vw, 300px)`, a od `1200px` wczytuje szerszy raster i korzysta z `clamp(320px, 26.67vw, 420px)`; poniżej `768px` zachowuje naturalne proporcje z limitem `275px`.
 - Strona Konkurs zawiera aktualne hasło o ponad 2 milionach kilogramów oraz rozszerzone dane wymagane przy zgłoszeniu.
 - O nas, Archiwum i Kontakt korzystają ze wspólnych, responsywnych nagłówków `pr-page-*`.
 - Dawny newsletter został zastąpiony CTA „Napisz do nas”, które prowadzi do strony Kontakt.
